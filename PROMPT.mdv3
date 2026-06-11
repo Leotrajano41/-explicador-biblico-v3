@@ -1,0 +1,69 @@
+# Prompt de Continuidade — Explicador Bíblico v3
+
+## Contexto do Projeto
+Canal católico no YouTube em espanhol neutro (América Latina), modelado no canal brasileiro Explicador Bíblico (@ExplicadorBiblico). Canal referência: 39k inscritos, 2,4 milhões de views em 10 vídeos.
+
+## Ferramenta
+- URL: leotrajano41.github.io/-explicador-biblico-v3
+- Repositório: github.com/Leotrajano41/-explicador-biblico-v3
+- Código atual: https://raw.githubusercontent.com/Leotrajano41/-explicador-biblico-v3/main/index.html
+
+## LEIA O CÓDIGO ANTES DE QUALQUER ALTERAÇÃO
+
+## Fórmula Narrativa dos 6 Passos
+1. GANCHO: Quebra de expectativa
+2. CONTEXTO INVISÍVEL: Etimologia hebraica/grega, arqueologia
+3. BATIDAS EMOCIONAIS: Fato histórico para sentimento para dilema atual
+4. BREADCRUMB: Suspense que promete revelação futura
+5. LISTA ESCALONADA: Informativos para surpreendentes para clímax. CTA no meio.
+6. FECHAMENTO MORAL: Reflexão espelho para o presente mais CTA
+
+## Tecnologias
+- HTML CSS JS puro (single file)
+- API OpenRouter: openrouter.ai/api/v1/chat/completions
+- Bearer token: chave sk-or-v1-
+- GitHub Pages para hospedagem
+
+## 8 Abas da Ferramenta
+1. CONFIG: Chave API + modelo + Configuração da Narrativa
+2. NARRATIVA: Roteiro completo com 6 passos + botão Continuar + contador palavras
+3. IDEIAS: 10 títulos virais em JSON + cards clicáveis
+4. KEYWORDS: Keywords em inglês por categoria para Pixabay/Pexels/Storyblocks
+5. IA VISUAL: Prompts por cena com cards individuais copiáveis
+6. THUMBNAILS: 3 prompts ABC com marcações OPCION_A OPCION_B OPCION_C
+7. SEO: 3 títulos + descrição + 30 tags + 15 hashtags + timestamps
+8. FÓRMULA: Os 6 passos explicados visualmente (estático)
+
+## Checkboxes Elementos Católicos
+- Hook de quebra de expectativa
+- Citação em Latim Hebraico ou Grego
+- Versículos bíblicos com referência exata
+- Santos Padres e Magistério Católico
+- Deuterocanônicos (Tobias, Judite, Macabeus)
+- Breadcrumb de suspense
+- CTA no meio do vídeo
+- Fechamento moral espelho
+
+## Design Visual
+- Header centralizado com cruz dourada e título grande
+- 8 abas horizontais no topo
+- Fundo escuro com gradiente bordô
+- Tema dourado com fonte Cinzel e Lato
+- Responsivo iPhone iPad e Mac
+- Safari iOS: font-size 16px, min-height 44px
+
+## Funcionalidades Especiais
+- Botão Continuar Escrevendo com contador de palavras e minutos
+- Cards por cena na IA Visual cada um copiável individualmente
+- Botão Usar nas Abas envia narrativa para Keywords e IA Visual
+- Ao trocar de aba Ideias Thumbnails e SEO preenchem automaticamente com o tema
+
+## Regras Para Melhorias
+- SEMPRE gerar HTML completo nunca parcial
+- SEMPRE manter compatibilidade Safari iOS
+- SEMPRE usar fetch com mode cors e headers OpenRouter
+- MANTER visual dourado e escuro existente
+- Após gerar: fazer upload no GitHub e Pages publica automaticamente
+
+## O Que Preciso Agora
+[DESCREVA AQUI O QUE QUER MELHORAR]
