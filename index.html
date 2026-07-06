@@ -198,6 +198,14 @@ select option { background: var(--darker); }
         <option value="pt">Português BR</option>
         <option value="en">Inglês</option>
         <option value="es">Espanhol</option>
+        <option value="la">Latim</option>
+        <option value="fr">Francês</option>
+        <option value="de">Alemão</option>
+        <option value="it">Italiano</option>
+        <option value="ru">Russo</option>
+        <option value="zh">Mandarim</option>
+        <option value="ja">Japonês</option>
+        <option value="ar">Árabe</option>
       </select>
     </div>
     <button class="btn btn-gold" onclick="saveConfig()">Salvar Configurações</button>
@@ -630,8 +638,24 @@ async function callAI(prompt, maxTokens) {
 
   if (!key) throw new Error('Configure sua chave API na aba Config!');
 
+  // Mapeamento de códigos de idioma para nomes completos para o prompt da IA
+  var langMap = {
+    pt: 'portugues BR',
+    en: 'ingles',
+    es: 'espanhol',
+    la: 'latim',
+    fr: 'frances',
+    de: 'alemao',
+    it: 'italiano',
+    ru: 'russo',
+    zh: 'mandarim (chines simplificado)',
+    ja: 'japones',
+    ar: 'arabe'
+  };
+  var langName = langMap[language] || 'portugues BR'; // Padrão para português se não encontrar
+
   // Adiciona o idioma ao prompt para que a IA saiba em que idioma responder
-  var finalPrompt = prompt + '\n\nResponda em ' + (language === 'pt' ? 'portugues BR' : language === 'en' ? 'ingles' : 'espanhol') + '.';
+  var finalPrompt = prompt + '\n\nResponda em ' + langName + '.';
 
   var body = JSON.stringify({ model: model, max_tokens: maxTokens, messages: [{ role: 'user', content: finalPrompt }] });
   if (provider === 'anthropic') {
@@ -668,7 +692,12 @@ async function callAI(prompt, maxTokens) {
   var tons = { cinematico: 'cinematografico e epico', didatico: 'didatico e claro', devocional: 'devocional e inspirador', investigativo: 'investigativo e curioso', epico: 'epico e grandioso' };
   var publicos = { geral: 'publico geral', iniciantes: 'iniciantes na Biblia', estudantes: 'estudantes biblicos', pastores: 'lideres e pastores', jovens: 'jovens' };
 
-  var prompt = 'Voce e um roteirista biblico profissional do canal Explicador Biblico no YouTube.\n\nCrie uma narrativa completa sobre: "' + tema + '"\nDuracao: ' + duracoes[duration] + '\nTom: ' + tons[tone] + '\nPublico: ' + publicos[audience] + '\nAngulo: ' + angulo + '\n' + (extras !== 'none' ? 'Extras: ' + extras + '\n' : '') + '\nESTRUTURA:\n1. GANCHO INICIAL (30 segundos irresistivel)\n2. INTRODUCAO E CONTEXTO HISTORICO\n3. DESENVOLVIMENTO PRINCIPAL\n4. ANALISE PROFUNDA\n5. APLICACAO CONTEMPORANEA\n6. CONCLUSAO IMPACTANTE\n7. CALL TO ACTION\n\nEscreva em ' + (language === 'pt' ? 'portugues BR' : language === 'en' ? 'ingles' : 'espanhol') + ', linguagem epica e cinematografica.';
+  var langMap = {
+    pt: 'portugues BR', en: 'ingles', es: 'espanhol', la: 'latim', fr: 'frances', de: 'alemao', it: 'italiano', ru: 'russo', zh: 'mandarim (chines simplificado)', ja: 'japones', ar: 'arabe'
+  };
+  var langName = langMap[language] || 'portugues BR';
+
+  var prompt = 'Voce e um roteirista biblico profissional do canal Explicador Biblico no YouTube.\n\nCrie uma narrativa completa sobre: "' + tema + '"\nDuracao: ' + duracoes[duration] + '\nTom: ' + tons[tone] + '\nPublico: ' + publicos[audience] + '\nAngulo: ' + angulo + '\n' + (extras !== 'none' ? 'Extras: ' + extras + '\n' : '') + '\nESTRUTURA:\n1. GANCHO INICIAL (30 segundos irresistivel)\n2. INTRODUCAO E CONTEXTO HISTORICO\n3. DESENVOLVIMENTO PRINCIPAL\n4. ANALISE PROFUNDA\n5. APLICACAO CONTEMPORANEA\n6. CONCLUSAO IMPACTANTE\n7. CALL TO ACTION\n\nEscreva em ' + langName + ', linguagem epica e cinematografica.';
 
   var btn = $('btnNarrativa');
   btn.textContent = 'Gerando...';
@@ -694,7 +723,13 @@ async function gerarIdeias() {
   var language = localStorage.getItem('ebp_language') || 'pt'; // Pega o idioma salvo
 
   var formatos = { viral: 'com alto potencial viral', serie: 'como serie tematica', perguntas: 'com perguntas intrigantes', misterios: 'focadas em misterios biblicos' };
-  var prompt = 'Voce e estrategista de conteudo do canal Explicador Biblico no YouTube.\n\nGere ' + qtd + ' ideias de videos sobre: "' + tema + '"\nFormato: ' + formatos[formato] + '\n\nPara cada ideia:\n1. TITULO PRINCIPAL\n2. TITULO ALTERNATIVO\n3. DESCRICAO (2-3 linhas)\n4. GANCHO (primeira frase irresistivel)\n5. POTENCIAL (por que vai performar bem)\n\nEscreva em ' + (language === 'pt' ? 'portugues BR' : language === 'en' ? 'ingles' : 'espanhol') + '.';
+
+  var langMap = {
+    pt: 'portugues BR', en: 'ingles', es: 'espanhol', la: 'latim', fr: 'frances', de: 'alemao', it: 'italiano', ru: 'russo', zh: 'mandarim (chines simplificado)', ja: 'japones', ar: 'arabe'
+  };
+  var langName = langMap[language] || 'portugues BR';
+
+  var prompt = 'Voce e estrategista de conteudo do canal Explicador Biblico no YouTube.\n\nGere ' + qtd + ' ideias de videos sobre: "' + tema + '"\nFormato: ' + formatos[formato] + '\n\nPara cada ideia:\n1. TITULO PRINCIPAL\n2. TITULO ALTERNATIVO\n3. DESCRICAO (2-3 linhas)\n4. GANCHO (primeira frase irresistivel)\n5. POTENCIAL (por que vai performar bem)\n\nEscreva em ' + langName + '.';
 
   var btn = $('btnIdeias');
   btn.textContent = 'Gerando...';
@@ -719,8 +754,14 @@ async function gerarKeywords() {
   var tipo = $('keywordsTipo').value;
   var language = localStorage.getItem('ebp_language') || 'pt'; // Pega o idioma salvo
 
-  var idiomas = { pt: 'portugues brasileiro', en: 'ingles', es: 'espanhol' };
-  var prompt = 'Especialista em SEO para canais biblicos no YouTube.\n\nKeywords para: "' + tema + '"\nIdioma: ' + idiomas[idioma] + '\nTipo: ' + tipo + '\n\nKEYWORDS PRINCIPAIS (alta busca) - 10 keywords\nKEYWORDS SECUNDARIAS (media busca) - 15 keywords\nKEYWORDS LONG TAIL - 15 keywords\nHASHTAGS - 10 hashtags\n\nSepare por virgula dentro de cada grupo.\n\nEscreva em ' + (language === 'pt' ? 'portugues BR' : language === 'en' ? 'ingles' : 'espanhol') + '.';
+  var idiomas = { pt: 'portugues brasileiro', en: 'ingles', es: 'espanhol' }; // Mapeamento para o campo de seleção de idioma da keyword
+
+  var langMap = {
+    pt: 'portugues BR', en: 'ingles', es: 'espanhol', la: 'latim', fr: 'frances', de: 'alemao', it: 'italiano', ru: 'russo', zh: 'mandarim (chines simplificado)', ja: 'japones', ar: 'arabe'
+  };
+  var langName = langMap[language] || 'portugues BR';
+
+  var prompt = 'Especialista em SEO para canais biblicos no YouTube.\n\nKeywords para: "' + tema + '"\nIdioma: ' + idiomas[idioma] + '\nTipo: ' + tipo + '\n\nKEYWORDS PRINCIPAIS (alta busca) - 10 keywords\nKEYWORDS SECUNDARIAS (media busca) - 15 keywords\nKEYWORDS LONG TAIL - 15 keywords\nHASHTAGS - 10 hashtags\n\nSepare por virgula dentro de cada grupo.\n\nEscreva em ' + langName + '.';
 
   var btn = $('btnKeywords');
   btn.textContent = 'Pesquisando...';
@@ -772,7 +813,13 @@ async function gerarVisual() {
   var language = localStorage.getItem('ebp_language') || 'pt'; // Pega o idioma salvo
 
   var estilos = { cinematico: 'photorealistic cinematic 8K dramatic lighting', painting: 'epic oil painting renaissance style', digital: 'digital art concept art highly detailed', ancient: 'ancient mosaic art byzantine style', watercolor: 'watercolor illustration soft colors' };
-  var prompt = 'Especialista em prompts de imagem IA.\n\nCrie ' + qtd + ' prompts visuais para: "' + tema + '"\nEstilo: ' + estilos[estilo] + '\nFerramenta: ' + ferramenta + '\n\nPara cada prompt:\nPROMPT [numero]: [prompt em ingles]\nTRADUCAO: [o que sera gerado]\nDICA: [configuracao para ' + ferramenta + ']\n\nEscreva em ' + (language === 'pt' ? 'portugues BR' : language === 'en' ? 'ingles' : 'espanhol') + '.';
+
+  var langMap = {
+    pt: 'portugues BR', en: 'ingles', es: 'espanhol', la: 'latim', fr: 'frances', de: 'alemao', it: 'italiano', ru: 'russo', zh: 'mandarim (chines simplificado)', ja: 'japones', ar: 'arabe'
+  };
+  var langName = langMap[language] || 'portugues BR';
+
+  var prompt = 'Especialista em prompts de imagem IA.\n\nCrie ' + qtd + ' prompts visuais para: "' + tema + '"\nEstilo: ' + estilos[estilo] + '\nFerramenta: ' + ferramenta + '\n\nPara cada prompt:\nPROMPT [numero]: [prompt em ingles]\nTRADUCAO: [o que sera gerado]\nDICA: [configuracao para ' + ferramenta + ']\n\nEscreva em ' + langName + '.';
 
   var btn = $('btnVisual');
   btn.textContent = 'Gerando...';
@@ -799,7 +846,13 @@ async function gerarThumbnails() {
 
   var estilos = { choque: 'choque e impacto', misterio: 'misterio e curiosidade', epico: 'epico cinematografico', moderno: 'moderno e clean' };
   var paletas = { gold: 'dourado e preto', fire: 'vermelho e laranja', divine: 'azul e dourado', dark: 'escuro e dramatico' };
-  var prompt = 'Designer de thumbnails para o canal Explicador Biblico no YouTube.\n\n3 conceitos de thumbnail para: "' + tema + '"\nEstilo: ' + estilos[estilo] + '\nPaleta: ' + paletas[cores] + '\n\nPara cada conceito:\nCONCEITO [numero]: [nome]\nELEMENTO CENTRAL: [descricao]\nFUNDO: [descricao]\nTEXTO PRINCIPAL: [max 4 palavras]\nTEXTO SECUNDARIO: [apoio]\nEFEITOS: [luz sombra particulas]\nPROMPT IA: [prompt em ingles]\n\nEscreva em ' + (language === 'pt' ? 'portugues BR' : language === 'en' ? 'ingles' : 'espanhol') + '.';
+
+  var langMap = {
+    pt: 'portugues BR', en: 'ingles', es: 'espanhol', la: 'latim', fr: 'frances', de: 'alemao', it: 'italiano', ru: 'russo', zh: 'mandarim (chines simplificado)', ja: 'japones', ar: 'arabe'
+  };
+  var langName = langMap[language] || 'portugues BR';
+
+  var prompt = 'Designer de thumbnails para o canal Explicador Biblico no YouTube.\n\n3 conceitos de thumbnail para: "' + tema + '"\nEstilo: ' + estilos[estilo] + '\nPaleta: ' + paletas[cores] + '\n\nPara cada conceito:\nCONCEITO [numero]: [nome]\nELEMENTO CENTRAL: [descricao]\nFUNDO: [descricao]\nTEXTO PRINCIPAL: [max 4 palavras]\nTEXTO SECUNDARIO: [apoio]\nEFEITOS: [luz sombra particulas]\nPROMPT IA: [prompt em ingles]\n\nEscreva em ' + langName + '.';
 
   var btn = $('btnThumbnails');
   btn.textContent = 'Gerando...';
@@ -825,7 +878,13 @@ async function gerarSEO() {
   var language = localStorage.getItem('ebp_language') || 'pt'; // Pega o idioma salvo
 
   var objetivos = { views: 'maximizar visualizacoes', subs: 'ganhar inscritos', search: 'ranquear na busca' };
-  var prompt = 'Especialista em SEO para o canal Explicador Biblico no YouTube.\n\nSEO completo para: "' + tema + '"\nPlataforma: ' + plataforma + '\nObjetivo: ' + objetivos[objetivo] + '\n\nTITULOS (3 opcoes):\n1. [Titulo A]\n2. [Titulo B]\n3. [Titulo C]\n\nDESCRICAO: [200-300 palavras com keywords]\n\nTAGS: [30 tags separadas por virgula]\n\nHASHTAGS: [10 hashtags]\n\nCATEGORIA RECOMENDADA\n\nANALISE DE COMPETITIVIDADE\n\nEscreva em ' + (language === 'pt' ? 'portugues BR' : language === 'en' ? 'ingles' : 'espanhol') + '.';
+
+  var langMap = {
+    pt: 'portugues BR', en: 'ingles', es: 'espanhol', la: 'latim', fr: 'frances', de: 'alemao', it: 'italiano', ru: 'russo', zh: 'mandarim (chines simplificado)', ja: 'japones', ar: 'arabe'
+  };
+  var langName = langMap[language] || 'portugues BR';
+
+  var prompt = 'Especialista em SEO para o canal Explicador Biblico no YouTube.\n\nSEO completo para: "' + tema + '"\nPlataforma: ' + plataforma + '\nObjetivo: ' + objetivos[objetivo] + '\n\nTITULOS (3 opcoes):\n1. [Titulo A]\n2. [Titulo B]\n3. [Titulo C]\n\nDESCRICAO: [200-300 palavras com keywords]\n\nTAGS: [30 tags separadas por virgula]\n\nHASHTAGS: [10 hashtags]\n\nCATEGORIA RECOMENDADA\n\nANALISE DE COMPETITIVIDADE\n\nEscreva em ' + langName + '.';
 
   var btn = $('btnSEO');
   btn.textContent = 'Gerando...';
@@ -848,7 +907,12 @@ async function gerarFormula() {
   if (!tema) { showToast('Digite um tema!', 'error'); return; }
   var language = localStorage.getItem('ebp_language') || 'pt'; // Pega o idioma salvo
 
-  var prompt = 'Estrategista de videos virais do canal Explicador Biblico no YouTube.\n\nFormula completa de video viral para: "' + tema + '"\n\nGANCHO (0-30s): [script exato de abertura]\nPROBLEMA/TENSAO (30s-2min): [como criar curiosidade]\nDESENVOLVIMENTO (2min-80%): [estrutura de blocos]\nLOOPS DE RETENCAO: [3 momentos de suspense]\nREVELACAO PRINCIPAL: [o momento uau]\nCTA ESTRATEGICO: [call to action que converte]\nMETRICAS ALVO: [CTR retencao e performance]\nPALAVRAS-CHAVE DO ROTEIRO: [palavras que aumentam SEO falado]\n\nEscreva em ' + (language === 'pt' ? 'portugues BR' : language === 'en' ? 'ingles' : 'espanhol') + '.';
+  var langMap = {
+    pt: 'portugues BR', en: 'ingles', es: 'espanhol', la: 'latim', fr: 'frances', de: 'alemao', it: 'italiano', ru: 'russo', zh: 'mandarim (chines simplificado)', ja: 'japones', ar: 'arabe'
+  };
+  var langName = langMap[language] || 'portugues BR';
+
+  var prompt = 'Estrategista de videos virais do canal Explicador Biblico no YouTube.\n\nFormula completa de video viral para: "' + tema + '"\n\nGANCHO (0-30s): [script exato de abertura]\nPROBLEMA/TENSAO (30s-2min): [como criar curiosidade]\nDESENVOLVIMENTO (2min-80%): [estrutura de blocos]\nLOOPS DE RETENCAO: [3 momentos de suspense]\nREVELACAO PRINCIPAL: [o momento uau]\nCTA ESTRATEGICO: [call to action que converte]\nMETRICAS ALVO: [CTR retencao e performance]\nPALAVRAS-CHAVE DO ROTEIRO: [palavras que aumentam SEO falado]\n\nEscreva em ' + langName + '.';
 
   var btn = $('btnFormula');
   btn.textContent = 'Gerando...';
