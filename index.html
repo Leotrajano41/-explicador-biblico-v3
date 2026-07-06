@@ -2,1188 +2,1352 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<title>Explicador Bíblico — Gerador de Narrativas</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Explicador Bíblico Pro</title>
 <style>
 :root {
-  --dark:  #0d0d0d;
-  --dark2: #141414;
-  --dark3: #1c1c1c;
-  --dark4: #252525;
-  --dark5: #2e2e2e;
-  --gold:  #c9a84c;
-  --gold2: #f0d080;
-  --gold3: #7a5f28;
-  --border:#333;
-  --txt:   #e8e0d0;
-  --muted: #888;
+  --dark: #0a0a0f;
+  --darker: #050508;
+  --card: #12121a;
+  --card2: #1a1a26;
+  --gold: #c9a84c;
+  --gold2: #e8c96d;
+  --gold3: #f5e6b0;
+  --red: #8b1a1a;
+  --red2: #c0392b;
+  --border: #2a2a3a;
+  --text: #e8e8f0;
+  --text2: #9999bb;
+  --success: #27ae60;
+  --info: #2980b9;
 }
-*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
-html{font-size:15px;-webkit-font-smoothing:antialiased}
-body{
-  background:var(--dark);color:var(--txt);
-  font-family:'Lato',sans-serif;min-height:100vh;
-  background-image:
-    radial-gradient(ellipse at 20% 0%,rgba(139,26,26,.15) 0%,transparent 50%),
-    radial-gradient(ellipse at 80% 100%,rgba(26,58,92,.15) 0%,transparent 50%);
+* { margin:0; padding:0; box-sizing:border-box; }
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background: var(--darker);
+  color: var(--text);
+  min-height: 100vh;
 }
-header{
-  text-align:center;padding:36px 20px 18px;
-  border-bottom:1px solid rgba(201,168,76,.2);
-  background:linear-gradient(180deg,rgba(201,168,76,.06) 0%,transparent 100%);
-  position:relative;overflow:hidden;
+/* HEADER */
+.header {
+  background: linear-gradient(135deg, #1a0a0a 0%, #2d1810 40%, #1a0f05 70%, #0f0a1a 100%);
+  border-bottom: 2px solid var(--gold);
+  padding: 16px 24px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  box-shadow: 0 4px 30px rgba(201,168,76,0.15);
 }
-header::after{
-  content:'';position:absolute;bottom:0;left:0;right:0;height:1px;
-  background:linear-gradient(90deg,transparent,var(--gold),transparent);opacity:.5;
+.header-cross {
+  font-size: 2.2rem;
+  color: var(--gold);
+  text-shadow: 0 0 20px rgba(201,168,76,0.6);
 }
-.hdr-cross{font-size:2rem;margin-bottom:6px;display:block;filter:drop-shadow(0 0 12px rgba(201,168,76,.5))}
-.hdr-title{
-  font-family:'Cinzel',serif;font-size:clamp(18px,3.5vw,36px);
-  font-weight:900;color:var(--gold);letter-spacing:3px;
-  text-shadow:0 0 30px rgba(201,168,76,.3);
+.header-title {
+  font-size: 1.5rem;
+  font-weight: 800;
+  letter-spacing: 3px;
+  color: var(--gold);
+  text-transform: uppercase;
+  text-shadow: 0 0 15px rgba(201,168,76,0.4);
 }
-.hdr-sub{color:var(--muted);font-size:12px;margin-top:6px;letter-spacing:1px}
-.hdr-status{
-  display:inline-flex;align-items:center;gap:7px;
-  margin-top:10px;font-size:11px;
-  background:rgba(201,168,76,.07);border:1px solid rgba(201,168,76,.2);
-  border-radius:20px;padding:4px 14px;color:var(--muted);cursor:pointer;
+.header-sub {
+  font-size: 0.7rem;
+  color: var(--text2);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-top: 2px;
 }
-.sdot{width:7px;height:7px;border-radius:50%;background:#c05050;box-shadow:0 0 6px #c05050;flex-shrink:0}
-.sdot.on{background:#5a9e6f;box-shadow:0 0 6px #5a9e6f}
-.tabs{
-  display:flex;flex-wrap:wrap;gap:3px;
-  max-width:1000px;margin:22px auto 0;
-  padding:0 16px;border-bottom:1px solid var(--border);
+.header-badge {
+  margin-left: auto;
+  background: var(--gold);
+  color: #000;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 1px;
 }
-.tab-btn{
-  background:transparent;border:none;color:var(--muted);
-  font-family:'Lato',sans-serif;font-size:11px;font-weight:700;
-  letter-spacing:1px;text-transform:uppercase;
-  padding:11px 16px;cursor:pointer;
-  border-bottom:2px solid transparent;
-  transition:.2s;white-space:nowrap;
-  -webkit-tap-highlight-color:transparent;touch-action:manipulation;
-  display:flex;align-items:center;gap:6px;
+/* TABS */
+.tabs-container {
+  background: var(--dark);
+  border-bottom: 1px solid var(--border);
+  padding: 0 16px;
+  display: flex;
+  gap: 2px;
+  overflow-x: auto;
 }
-.tab-btn:hover{color:var(--gold2)}
-.tab-btn.active{color:var(--gold);border-bottom-color:var(--gold)}
-.container{max-width:1000px;margin:0 auto;padding:24px 16px 60px}
-.tab-panel{display:none;flex-direction:column;gap:18px;animation:fadeUp .3s ease-out}
-.tab-panel.active{display:flex}
-@keyframes fadeUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
-.section{
-  background:var(--dark2);border:1px solid var(--border);
-  border-radius:8px;padding:20px;transition:border-color .2s;
+.tab {
+  padding: 12px 20px;
+  cursor: pointer;
+  color: var(--text2);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  border-bottom: 3px solid transparent;
+  white-space: nowrap;
+  transition: all 0.2s;
 }
-.section:hover{border-color:rgba(201,168,76,.3)}
-.sec-title{
-  font-family:'Cinzel',serif;color:var(--gold);
-  font-size:12px;letter-spacing:2px;text-transform:uppercase;
-  margin-bottom:14px;display:flex;align-items:center;gap:8px;
-  border-bottom:1px solid rgba(201,168,76,.12);padding-bottom:10px;
+.tab:hover { color: var(--gold); }
+.tab.active {
+  color: var(--gold);
+  border-bottom-color: var(--gold);
 }
-.g2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
-.g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px}
-.g4{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
-.fg{display:flex;flex-direction:column;gap:5px}
-label{font-size:11px;color:var(--muted);letter-spacing:1px;text-transform:uppercase;font-weight:700}
-input[type=text],input[type=password],select,textarea{
-  background:var(--dark3);border:1px solid var(--border);
-  color:var(--txt);padding:11px 13px;border-radius:6px;
-  font-family:'Lato',sans-serif;font-size:14px;width:100%;
-  outline:none;transition:.2s;-webkit-appearance:none;appearance:none;min-height:44px;
+/* MAIN */
+.main { padding: 24px; max-width: 1200px; margin: 0 auto; }
+/* CARDS */
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 20px;
 }
-input:focus,select:focus,textarea:focus{border-color:var(--gold);box-shadow:0 0 0 2px rgba(201,168,76,.1)}
-input:hover,select:hover,textarea:hover{border-color:rgba(201,168,76,.4)}
-select{
-  cursor:pointer;
-  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%23888' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
-  background-repeat:no-repeat;background-position:right 13px center;
-  background-color:var(--dark3);padding-right:36px;
+.card-title {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
-select option{background:#181818;color:var(--txt)}
-textarea{resize:vertical;line-height:1.6}
-.cin{display:none;margin-top:6px}
-.cin.show{display:block}
-@supports (-webkit-touch-callout:none){
-  select,input[type=text],input[type=password]{font-size:16px!important}
+/* FORM ELEMENTS */
+label {
+  display: block;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--text2);
+  margin-bottom: 6px;
 }
-.checks{display:grid;grid-template-columns:repeat(auto-fit,minmax(215px,1fr));gap:8px}
-.chk{
-  display:flex;align-items:flex-start;gap:10px;
-  background:var(--dark3);border:1px solid var(--border);
-  border-radius:6px;padding:10px 12px;cursor:pointer;
-  transition:.2s;user-select:none;
+input[type=text], input[type=password], select, textarea {
+  width: 100%;
+  background: var(--darker);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 10px 14px;
+  color: var(--text);
+  font-size: 0.88rem;
+  outline: none;
+  transition: border-color 0.2s;
 }
-.chk:hover{border-color:rgba(201,168,76,.4)}
-.chk.on{border-color:rgba(201,168,76,.5);background:rgba(201,168,76,.05)}
-.chk input{width:16px;height:16px;accent-color:var(--gold);cursor:pointer;flex-shrink:0;margin-top:2px}
-.chk strong{display:block;font-size:12px;color:var(--txt);font-weight:700;margin-bottom:2px}
-.chk span{font-size:11px;color:var(--muted);line-height:1.4}
-.btn{
-  display:inline-flex;align-items:center;justify-content:center;gap:8px;
-  padding:11px 20px;border:none;border-radius:6px;
-  font-family:'Lato',sans-serif;font-size:13px;font-weight:700;
-  letter-spacing:1px;text-transform:uppercase;cursor:pointer;
-  transition:.2s;white-space:nowrap;
-  -webkit-tap-highlight-color:transparent;touch-action:manipulation;min-height:44px;
+input[type=text]:focus, input[type=password]:focus, select:focus, textarea:focus {
+  border-color: var(--gold);
 }
-.btn:active{transform:translateY(1px)}
-.btn-gold{background:linear-gradient(135deg,var(--gold),#a07830);color:#000;border:1px solid var(--gold2)}
-.btn-gold:hover{opacity:.85;transform:translateY(-1px);box-shadow:0 4px 20px rgba(201,168,76,.3)}
-.btn-gold:disabled{opacity:.45;cursor:not-allowed;transform:none;box-shadow:none}
-.btn-outline{background:transparent;border:1px solid var(--gold);color:var(--gold)}
-.btn-outline:hover{background:rgba(201,168,76,.1)}
-.btn-wide{width:100%;padding:13px;font-size:14px;font-family:'Cinzel',serif;letter-spacing:2px;border-radius:8px}
-.btn-sm{padding:6px 14px;font-size:11px;min-height:32px}
-.btn-copy{
-  background:var(--dark4);border:1px solid var(--border);color:var(--muted);
-  font-size:11px;padding:6px 14px;border-radius:6px;cursor:pointer;
-  font-family:'Lato',sans-serif;font-weight:700;letter-spacing:1px;
-  text-transform:uppercase;transition:.2s;
-  display:inline-flex;align-items:center;gap:5px;min-height:32px;
+select option { background: var(--darker); }
+textarea { resize: vertical; min-height: 80px; }
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 16px;
 }
-.btn-copy:hover{border-color:var(--gold);color:var(--gold)}
-.btn-copy.ok{border-color:#5a9e6f!important;color:#5a9e6f!important;background:rgba(90,158,111,.08)!important}
-.btn-row{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-top:12px}
-.out-box{
-  background:var(--dark3);border:1px solid var(--border);
-  border-radius:6px;padding:16px;font-size:13px;line-height:1.75;
-  color:var(--txt);min-height:80px;white-space:pre-wrap;
-  word-break:break-word;font-family:'Lato',sans-serif;
+.form-group { margin-bottom: 16px; }
+/* BUTTONS */
+.btn {
+  padding: 10px 20px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  transition: all 0.2s;
 }
-.out-box.gold{border-color:rgba(201,168,76,.3);background:rgba(201,168,76,.02)}
-.out-hdr{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}
-.out-lbl{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--muted)}
-.meta-bar{display:none;align-items:center;gap:10px;flex-wrap:wrap;margin-top:10px}
-.wcount{
-  font-size:11px;color:var(--muted);background:var(--dark4);
-  border:1px solid var(--border);border-radius:4px;padding:4px 11px;
+.btn-gold {
+  background: linear-gradient(135deg, var(--gold), var(--gold2));
+  color: #000;
 }
-.wcount b{color:var(--gold2)}
-.wcount.good b{color:#5a9e6f}
-.wcount.short b{color:#c87e30}
-.btn-cont{
-  background:rgba(201,168,76,.1);border:1px solid var(--gold);
-  color:var(--gold);font-family:'Lato',sans-serif;font-size:12px;
-  font-weight:700;letter-spacing:1px;padding:6px 18px;
-  border-radius:6px;cursor:pointer;text-transform:uppercase;transition:.2s;
-  -webkit-tap-highlight-color:transparent;touch-action:manipulation;min-height:36px;
+.btn-gold:hover { opacity: 0.85; transform: translateY(-1px); }
+.btn-outline {
+  background: transparent;
+  border: 1px solid var(--gold);
+  color: var(--gold);
 }
-.btn-cont:hover{background:rgba(201,168,76,.2)}
-.btn-cont:disabled{opacity:.4;cursor:not-allowed}
-.idea-item{
-  display:flex;align-items:center;gap:8px;
-  padding:9px 13px;background:var(--dark3);
-  border:1px solid var(--border);border-radius:6px;
-  margin-bottom:6px;font-size:13px;transition:.2s;
+.btn-outline:hover { background: rgba(201,168,76,0.1); }
+.btn-red {
+  background: linear-gradient(135deg, var(--red), var(--red2));
+  color: #fff;
 }
-.idea-item:hover{border-color:rgba(201,168,76,.35)}
-.inum{font-size:10px;font-weight:700;padding:2px 8px;background:rgba(201,168,76,.1);color:var(--gold);border-radius:4px;flex-shrink:0}
-.itxt{flex:1;color:#bbb;line-height:1.4}
-.use-btn{
-  margin-left:auto;background:transparent;border:1px solid var(--gold);
-  color:var(--gold);font-size:10px;padding:3px 12px;border-radius:4px;
-  cursor:pointer;font-family:'Lato',sans-serif;letter-spacing:1px;
-  white-space:nowrap;font-weight:700;transition:.15s;
-  -webkit-tap-highlight-color:transparent;
+.btn-red:hover { opacity: 0.85; }
+.btn-sm { padding: 6px 14px; font-size: 0.75rem; }
+.btn-icon { padding: 8px; border-radius: 6px; }
+/* API INPUT */
+.api-input-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
 }
-.use-btn:hover{background:rgba(201,168,76,.1)}
-.scene-card{
-  background:var(--dark3);border:1px solid var(--border);
-  border-radius:6px;padding:14px;margin-bottom:10px;transition:.2s;
+.api-input-wrap input {
+  padding-right: 44px;
 }
-.scene-card:hover{border-color:rgba(201,168,76,.35)}
-.scene-head{display:flex;align-items:baseline;gap:10px;margin-bottom:8px}
-.scene-num{
-  font-size:10px;font-weight:700;letter-spacing:1px;color:var(--gold);
-  text-transform:uppercase;white-space:nowrap;
-  background:rgba(201,168,76,.1);padding:2px 8px;border-radius:4px;flex-shrink:0;
+.api-eye {
+  position: absolute;
+  right: 12px;
+  background: none;
+  border: none;
+  color: var(--text2);
+  cursor: pointer;
+  font-size: 1rem;
+  padding: 4px;
 }
-.scene-exc{font-size:11px;color:var(--muted);font-style:italic;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;flex:1}
-.scene-txt{font-size:13px;line-height:1.7;color:#bbb;margin-bottom:10px;white-space:pre-wrap}
-.scene-foot{display:flex;justify-content:flex-end}
-.thumb-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:14px}
-.thumb-card{background:var(--dark3);border-radius:8px;padding:16px}
-.thumb-card:nth-child(1){border:1px solid rgba(192,80,80,.4)}
-.thumb-card:nth-child(2){border:1px solid rgba(200,126,48,.4)}
-.thumb-card:nth-child(3){border:1px solid rgba(90,158,111,.4)}
-.tlbl{
-  font-family:'Cinzel',serif;font-size:11px;font-weight:700;
-  text-transform:uppercase;letter-spacing:1px;
-  display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;
+.api-eye:hover { color: var(--gold); }
+/* STATUS */
+.status-bar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 14px;
+  border-radius: 8px;
+  font-size: 0.8rem;
+  margin-top: 10px;
 }
-.thumb-card:nth-child(1) .tlbl{color:#c05050}
-.thumb-card:nth-child(2) .tlbl{color:#c87e30}
-.thumb-card:nth-child(3) .tlbl{color:#5a9e6f}
-.thumb-ta{
-  background:var(--dark);border:1px solid var(--border);
-  font-size:12px;line-height:1.5;padding:10px;border-radius:6px;
-  color:#bbb;min-height:100px;resize:none;width:100%;
-  font-family:'Lato',sans-serif;
+.status-ok { background: rgba(39,174,96,0.15); border: 1px solid rgba(39,174,96,0.3); color: #5dba7e; }
+.status-err { background: rgba(192,57,43,0.15); border: 1px solid rgba(192,57,43,0.3); color: #e87070; }
+.status-info { background: rgba(41,128,185,0.15); border: 1px solid rgba(41,128,185,0.3); color: #6ab0e0; }
+/* OUTPUT */
+.output-box {
+  background: var(--darker);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 16px;
+  min-height: 120px;
+  font-size: 0.88rem;
+  line-height: 1.7;
+  white-space: pre-wrap;
+  word-break: break-word;
 }
-.steps{display:flex;flex-direction:column;gap:12px}
-.step{display:flex;gap:14px;align-items:flex-start;background:var(--dark3);border:1px solid var(--border);border-radius:6px;padding:16px}
-.stepn{
-  width:34px;height:34px;border-radius:50%;flex-shrink:0;
-  background:linear-gradient(135deg,var(--gold),var(--gold3));
-  color:#000;font-family:'Cinzel',serif;font-size:14px;font-weight:900;
-  display:flex;align-items:center;justify-content:center;
-  box-shadow:0 0 12px rgba(201,168,76,.3);
+.output-placeholder {
+  color: var(--text2);
+  font-style: italic;
+  text-align: center;
+  padding: 40px 20px;
 }
-.stepb h4{font-family:'Cinzel',serif;font-size:12px;font-weight:700;color:var(--gold2);margin-bottom:5px}
-.stepb p{font-size:13px;color:#bbb;line-height:1.65}
-.stepb em{color:var(--muted);font-style:italic;font-size:12px;display:block;margin-top:5px;border-left:2px solid var(--gold3);padding-left:10px}
-.info{font-size:13px;color:var(--muted);margin-bottom:14px;line-height:1.6}
-.info a{color:var(--gold);text-decoration:none}
-.info strong{color:#c8b878}
-.vis-ctrl{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-bottom:14px}
-.badge{background:rgba(201,168,76,.12);border:1px solid rgba(201,168,76,.3);color:var(--gold);font-size:9px;padding:2px 8px;border-radius:12px;letter-spacing:1px}
-.loading{position:fixed;inset:0;background:rgba(13,13,13,.93);backdrop-filter:blur(8px);z-index:9999;display:none;align-items:center;justify-content:center;flex-direction:column;gap:18px}
-.loading.on{display:flex}
-.spin-wrap{position:relative;width:70px;height:70px}
-.spin{position:absolute;width:70px;height:70px;border:3px solid transparent;border-radius:50%;animation:spin 1.2s cubic-bezier(.5,0,.5,1) infinite}
-.spin:nth-child(1){border-top-color:var(--gold);animation-delay:-.45s}
-.spin:nth-child(2){border-right-color:var(--gold2);animation-delay:-.3s}
-.spin:nth-child(3){border-bottom-color:var(--gold3);animation-delay:-.15s}
-@keyframes spin{0%{transform:rotate(0)}100%{transform:rotate(360deg)}}
-.lt{font-family:'Cinzel',serif;font-size:1rem;color:var(--gold);text-align:center;letter-spacing:.05em}
-.ls{font-size:12px;color:var(--muted);text-align:center;max-width:280px;line-height:1.5;animation:pulse 2s infinite}
-@keyframes pulse{0%,100%{opacity:.5}50%{opacity:1}}
-.toasts{position:fixed;bottom:20px;right:20px;z-index:99999;display:flex;flex-direction:column;gap:8px;pointer-events:none}
-.toast{pointer-events:auto;background:rgba(20,20,20,.96);border:1px solid var(--border);padding:12px 18px;border-radius:6px;font-size:13px;box-shadow:0 8px 32px rgba(0,0,0,.7);display:flex;align-items:center;gap:10px;min-width:260px;max-width:400px;animation:tin .3s cubic-bezier(.34,1.56,.64,1);backdrop-filter:blur(8px)}
-.toast.s{border-left:3px solid #5a9e6f}.toast.e{border-left:3px solid #c05050}
-.toast.w{border-left:3px solid #c87e30}.toast.i{border-left:3px solid #4a8aaa}
-.toast.out{animation:tout .25s ease-in forwards}
-@keyframes tin{from{transform:translateX(110%);opacity:0}to{transform:translateX(0);opacity:1}}
-@keyframes tout{from{opacity:1}to{transform:translateX(110%);opacity:0}}
-::-webkit-scrollbar{width:7px;height:7px}
-::-webkit-scrollbar-track{background:#0a0a0a}
-::-webkit-scrollbar-thumb{background:rgba(201,168,76,.18);border-radius:4px}
-@media(max-width:700px){
-  .tabs{overflow-x:auto;flex-wrap:nowrap;scrollbar-width:none;-webkit-overflow-scrolling:touch}
-  .tabs::-webkit-scrollbar{display:none}
-  .g2,.g3,.g4,.vis-ctrl{grid-template-columns:1fr}
-  .thumb-grid{grid-template-columns:1fr}
-  .container{padding:16px 12px 40px}
+/* TABS CONTENT */
+.tab-content { display: none; }
+.tab-content.active { display: block; }
+/* GRID LAYOUTS */
+.grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; }
+/* KEYWORDS */
+.keywords-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 8px;
 }
+.keyword-tag {
+  background: rgba(201,168,76,0.15);
+  border: 1px solid rgba(201,168,76,0.3);
+  color: var(--gold2);
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 0.78rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  user-select: none;
+}
+.keyword-tag:hover { background: rgba(201,168,76,0.25); }
+.keyword-tag.selected {
+  background: var(--gold);
+  color: #000;
+  font-weight: 700;
+}
+/* THUMBNAIL */
+.thumb-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin-top: 12px;
+}
+.thumb-card {
+  background: var(--darker);
+  border: 2px solid var(--border);
+  border-radius: 10px;
+  padding: 16px;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-align: center;
+}
+.thumb-card:hover { border-color: var(--gold); transform: translateY(-2px); }
+.thumb-card.selected { border-color: var(--gold); background: rgba(201,168,76,0.08); }
+.thumb-preview {
+  width: 100%;
+  aspect-ratio: 16/9;
+  border-radius: 6px;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: #fff;
+  overflow: hidden;
+  position: relative;
+}
+/* SEO */
+.seo-score {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 16px;
+  background: var(--darker);
+  border-radius: 8px;
+  margin-bottom: 16px;
+}
+.score-circle {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: conic-gradient(var(--gold) 0% 80%, var(--border) 80%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: var(--gold);
+  flex-shrink: 0;
+}
+/* FORMULA */
+.formula-block {
+  background: var(--darker);
+  border-left: 3px solid var(--gold);
+  padding: 14px 18px;
+  border-radius: 0 8px 8px 0;
+  margin-bottom: 12px;
+}
+.formula-label {
+  font-size: 0.65rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 6px;
+}
+.formula-text { font-size: 0.88rem; line-height: 1.6; color: var(--text); }
+/* LOADING */
+.loading {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  border: 2px solid rgba(201,168,76,0.3);
+  border-top-color: var(--gold);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+  vertical-align: middle;
+  margin-right: 6px;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+/* COPY BTN */
+.copy-btn {
+  background: rgba(201,168,76,0.1);
+  border: 1px solid rgba(201,168,76,0.3);
+  color: var(--gold);
+  padding: 6px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.75rem;
+  transition: all 0.2s;
+}
+.copy-btn:hover { background: rgba(201,168,76,0.2); }
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .form-row, .grid-2, .grid-3 { grid-template-columns: 1fr; }
+  .thumb-grid { grid-template-columns: 1fr 1fr; }
+  .main { padding: 16px; }
+}
+/* CUSTOM MODEL INPUT */
+#customModel {
+  display: none;
+  margin-top: 8px;
+  width: 100%;
+}
+/* TOAST */
+.toasts {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.toast {
+  background: var(--card2);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 12px 18px;
+  font-size: 0.82rem;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+  animation: slideIn 0.3s ease;
+  max-width: 320px;
+}
+.toast.success { border-color: var(--success); color: #5dba7e; }
+.toast.error { border-color: var(--red2); color: #e87070; }
+.toast.info { border-color: var(--info); color: #6ab0e0; }
+@keyframes slideIn { from { transform: translateX(100%); opacity:0; } to { transform: translateX(0); opacity:1; } }
 </style>
 </head>
 <body>
 
-<header>
-  <span class="hdr-cross">✝</span>
-  <div class="hdr-title">📖 EXPLICADOR BÍBLICO</div>
-  <div class="hdr-sub">Canal Católico · Narrativas Bíblicas Dark · IA via OpenRouter</div>
-  <div class="hdr-status" onclick="switchTab('tConfig')">
-    <div class="sdot" id="sdot"></div>
-    <span id="slabel">Configurar API</span>
+<div class="header">
+  <div class="header-cross">✝</div>
+  <div>
+    <div class="header-title">Explicador Bíblico</div>
+    <div class="header-sub">Ferramenta Profissional de Conteúdo</div>
   </div>
-</header>
+  <div class="header-badge">PRO</div>
+</div>
 
-<nav class="tabs">
-  <button class="tab-btn active" data-tab="tConfig">⚙️ Config</button>
-  <button class="tab-btn" data-tab="tNarrativa">📜 Narrativa</button>
-  <button class="tab-btn" data-tab="tIdeias">💡 Ideias</button>
-  <button class="tab-btn" data-tab="tKeywords">🔍 Keywords</button>
-  <button class="tab-btn" data-tab="tVisual">🎨 IA Visual</button>
-  <button class="tab-btn" data-tab="tThumbs">🖼️ Thumbnails</button>
-  <button class="tab-btn" data-tab="tSEO">📊 SEO</button>
-  <button class="tab-btn" data-tab="tFormula">📐 Fórmula</button>
-</nav>
+<div class="tabs-container">
+  <div class="tab active" onclick="switchTab('config')">⚙ Config</div>
+  <div class="tab" onclick="switchTab('narrativa')">📖 Narrativa</div>
+  <div class="tab" onclick="switchTab('ideias')">💡 Ideias</div>
+  <div class="tab" onclick="switchTab('keywords')">🔑 Keywords</div>
+  <div class="tab" onclick="switchTab('visual')">🎨 IA Visual</div>
+  <div class="tab" onclick="switchTab('thumbnails')">🖼 Thumbnails</div>
+  <div class="tab" onclick="switchTab('seo')">📊 SEO</div>
+  <div class="tab" onclick="switchTab('formula')">⚡ Fórmula</div>
+</div>
 
-<div class="container">
+<div class="main">
 
-<!-- CONFIG -->
-<div class="tab-panel active" id="tConfig">
-  <div class="section">
-    <div class="sec-title">🔌 API OpenRouter</div>
-    <p class="info">Use sua chave do <a href="https://openrouter.ai/keys" target="_blank">OpenRouter</a> (começa com <strong>sk-or-v1-</strong>). Modelos recomendados: <strong>google/gemini-flash-1.5 ⚡</strong> (barato), <strong>openai/gpt-4o-mini</strong> (equilibrado), <strong>meta-llama/llama-3.1-8b-instruct:free</strong> 🆓</p>
-    <div class="g2">
-      <div class="fg">
-        <label>🔑 Chave API</label>
-        <div style="position:relative;display:flex;align-items:center">
-          <input type="password" id="apiKey" placeholder="sk-or-v1-..." autocomplete="off" style="padding-right:44px">
-          <button onclick="toggleKey()" style="position:absolute;right:8px;background:none;border:none;color:var(--muted);cursor:pointer;font-size:16px;padding:4px">👁</button>
-        </div>
-      </div>
-      <div class="fg">
-        <label>🤖 Modelo de IA</label>
-        <select id="aiModel">
-          <option value="google/gemini-flash-1.5">google/gemini-flash-1.5 ⚡ barato</option>
-          <option value="openai/gpt-4o-mini">openai/gpt-4o-mini — equilibrado</option>
-          <option value="anthropic/claude-sonnet-4-5">anthropic/claude-sonnet-4-5 — premium</option>
-          <option value="meta-llama/llama-3.1-8b-instruct:free">meta-llama — GRÁTIS 🆓</option>
-          <option value="google/gemini-2.0-flash-001">google/gemini-2.0-flash-001</option>
-          <option value="openai/gpt-4.1-mini">openai/gpt-4.1-mini</option>
-          <option value="custom">✏️ Digitar manualmente...</option>
-        </select>
-        <input type="text" id="customModel" class="cin" placeholder="Ex: mistralai/mistral-7b-instruct" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
+<!-- CONFIG TAB -->
+<div id="tab-config" class="tab-content active">
+  <div class="card">
+    <div class="card-title">🔑 Configuração da API</div>
+    <div class="form-group">
+      <label>Provedor de IA</label>
+      <select id="apiProvider" onchange="updateProviderInfo()">
+        <option value="openrouter">OpenRouter (Recomendado)</option>
+        <option value="openai">OpenAI</option>
+        <option value="anthropic">Anthropic (Claude)</option>
+        <option value="gemini">Google Gemini</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label>Chave API</label>
+      <div class="api-input-wrap">
+        <input type="password" id="apiKey" placeholder="sk-or-v1-...">
+        <button class="api-eye" onclick="toggleKey()">👁</button>
       </div>
     </div>
-    <div class="btn-row">
+    <div class="form-group">
+      <label>Modelo de IA</label>
+      <select id="aiModel" onchange="handleModelChange()">
+        <optgroup label="— OpenRouter —">
+          <option value="google/gemini-2.5-flash">Gemini 2.5 Flash (Rápido)</option>
+          <option value="google/gemini-2.5-pro">Gemini 2.5 Pro (Avançado)</option>
+          <option value="anthropic/claude-sonnet-4-5">Claude Sonnet 4.5</option>
+          <option value="anthropic/claude-opus-4">Claude Opus 4</option>
+          <option value="openai/gpt-4o">GPT-4o</option>
+          <option value="openai/gpt-4o-mini">GPT-4o Mini (Econômico)</option>
+          <option value="meta-llama/llama-3.3-70b-instruct">Llama 3.3 70B</option>
+          <option value="deepseek/deepseek-r1">DeepSeek R1</option>
+        </optgroup>
+        <option value="custom">✏ Digitar manualmente...</option>
+      </select>
+      <input type="text" id="customModel" placeholder="Ex: openai/gpt-4-turbo ou anthropic/claude-3-opus">
+    </div>
+    <div style="display:flex;gap:10px;flex-wrap:wrap;">
       <button class="btn btn-gold" onclick="saveAPI()">💾 Salvar API</button>
+      <button class="btn btn-outline" onclick="testAPI()">🧪 Testar Conexão</button>
     </div>
+    <div id="apiStatus"></div>
   </div>
 
-  <div class="section">
-    <div class="sec-title">📖 Configuração da Narrativa</div>
-    <p class="info">Configure uma vez — todos os geradores usam automaticamente.</p>
-    <div class="g4" style="margin-bottom:14px">
-      <div class="fg">
-        <label>🎯 Tema Principal</label>
-        <select id="cfgTema" onchange="toggleC('cfgTema','cfgTemaC')">
-          <option value="Espíritos malignos da Bíblia">Espíritos malignos</option>
-          <option value="Anjos e hierarquia celestial">Anjos e hierarquia</option>
-          <option value="Falsos deuses de Israel">Falsos deuses</option>
-          <option value="Pessoas malignas da Bíblia e seu fim trágico">Pessoas malignas</option>
-          <option value="Milagres de Jesus explicados">Milagres de Jesus</option>
-          <option value="Profecias cumpridas na Bíblia">Profecias cumpridas</option>
-          <option value="Pragas e julgamentos divinos">Pragas e julgamentos</option>
-          <option value="Santos e mártires católicos">Santos e mártires</option>
-          <option value="Mistérios do Apocalipse">Mistérios do Apocalipse</option>
-          <option value="Vida após a morte nas religiões">Vida após a morte</option>
-          <option value="custom">✏️ Personalizado</option>
-        </select>
-        <input type="text" id="cfgTemaC" class="cin" placeholder="Digite o tema..." autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
-      </div>
-      <div class="fg">
-        <label>🎭 Estilo Narrativo</label>
-        <select id="cfgEstilo">
-          <option value="Analítico-jornalístico">Analítico-jornalístico</option>
-          <option value="Contemplativo-espiritual">Contemplativo-espiritual</option>
-          <option value="Dramático-cinematográfico">Dramático-cinematográfico</option>
-          <option value="Didático-catequético">Didático-catequético</option>
+  <div class="card">
+    <div class="card-title">📺 Configuração da Narrativa</div>
+    <div class="form-row">
+      <div class="form-group">
+        <label>Duração do Vídeo</label>
+        <select id="videoDuration">
+          <option value="short">Curto (3-5 min)</option>
+          <option value="medium" selected>Médio (8-12 min)</option>
+          <option value="long">Longo (15-20 min)</option>
+          <option value="extended">Estendido (25-35 min)</option>
         </select>
       </div>
-      <div class="fg">
-        <label>🎙️ Tom</label>
-        <select id="cfgTom">
-          <option value="Oscuro, dramático y cinematográfico">Oscuro e dramático</option>
-          <option value="Solemne y reverencial">Solemne e reverencial</option>
-          <option value="Urgente e impactante">Urgente e impactante</option>
-          <option value="Accesible y conversacional">Accesible e conversacional</option>
-        </select>
-      </div>
-      <div class="fg">
-        <label>📺 Formato</label>
-        <select id="cfgDur">
-          <option value="video largo de 18 a 20 minutos para YouTube">YouTube Largo (18–20 min)</option>
-          <option value="video medio de 5 a 8 minutos para YouTube">YouTube Médio (5–8 min)</option>
-          <option value="video corto de 60 segundos para TikTok, Reels y Shorts">Short / Reels / TikTok</option>
-          <option value="podcast o narración larga de 30 o más minutos">Podcast / Narração longa</option>
+      <div class="form-group">
+        <label>Tom da Narrativa</label>
+        <select id="narrativeTone">
+          <option value="cinematico">Cinematográfico</option>
+          <option value="didatico">Didático</option>
+          <option value="devocional">Devocional</option>
+          <option value="investigativo">Investigativo</option>
+          <option value="epico">Épico</option>
         </select>
       </div>
     </div>
-    <div class="g2" style="margin-bottom:14px">
-      <div class="fg">
-        <label>🌐 Idioma de Saída</label>
-        <select id="cfgIdioma" onchange="toggleC('cfgIdioma','cfgIdiomaC')">
-          <option value="Español neutro (América Latina)">Español neutro (LATAM)</option>
-          <option value="Español (España)">Español (España)</option>
-          <option value="Português (Brasil)">Português (Brasil)</option>
-          <option value="English">English</option>
-          <option value="Français">Français</option>
-          <option value="Italiano">Italiano</option>
-          <option value="custom">✏️ Personalizado</option>
+    <div class="form-row">
+      <div class="form-group">
+        <label>Público-Alvo</label>
+        <select id="targetAudience">
+          <option value="geral">Geral</option>
+          <option value="iniciantes">Iniciantes na Bíblia</option>
+          <option value="estudantes">Estudantes Bíblicos</option>
+          <option value="pastores">Líderes/Pastores</option>
+          <option value="jovens">Jovens</option>
         </select>
-        <input type="text" id="cfgIdiomaC" class="cin" placeholder="Digite o idioma..." autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
       </div>
-      <div class="fg">
-        <label>🔖 Situação Específica (opcional)</label>
-        <select id="cfgSit">
-          <option value="">— Geral —</option>
-          <option value="Semana Santa / Pascua">Semana Santa / Páscoa</option>
-          <option value="Navidad / Adviento">Natal / Advento</option>
-          <option value="Mes de María / Mayo">Mês de Maria / Maio</option>
-          <option value="Mes de las Almas / Noviembre">Mês das Almas / Novembro</option>
-          <option value="Cuaresma / Conversión">Quaresma / Conversão</option>
+      <div class="form-group">
+        <label>Estilo Visual</label>
+        <select id="visualStyle">
+          <option value="cinematico">Cinematográfico Épico</option>
+          <option value="moderno">Moderno Minimalista</option>
+          <option value="artistico">Artístico Bíblico</option>
+          <option value="documental">Documental</option>
         </select>
       </div>
     </div>
+    <button class="btn btn-gold" onclick="saveConfig()">💾 Salvar Configurações</button>
+  </div>
+</div>
 
-    <div class="fg" style="margin-bottom:14px">
-      <label style="margin-bottom:8px">✨ Elementos Especiais a Incluir</label>
-      <div class="checks">
-        <label class="chk on"><input type="checkbox" value="Gancho de ruptura de expectativa obligatorio en la apertura" checked><div><strong>🪝 Hook de Quebra</strong><span>Abre derrubando o que o espectador acredita</span></div></label>
-        <label class="chk on"><input type="checkbox" value="Etimologías en hebreo o griego con transliteración y traducción exacta" checked><div><strong>📜 Latim/Hebraico/Grego</strong><span>Com transliteração e contexto etimológico</span></div></label>
-        <label class="chk on"><input type="checkbox" value="Versículos bíblicos con referencia exacta de libro, capítulo y versículo" checked><div><strong>📖 Versículos Integrados</strong><span>Referência exata (livro, cap., vers.)</span></div></label>
-        <label class="chk"><input type="checkbox" value="Referencias a Santos Padres, Concilios y Magisterio Católico"><div><strong>⛪ Santos Padres</strong><span>Catecismo, Concílios, Encíclicas</span></div></label>
-        <label class="chk"><input type="checkbox" value="Libros deuterocanónicos incluidos (Tobías, Judit, Macabeos, Sabiduría)"><div><strong>📚 Deuterocanônicos</strong><span>Tobias, Judite, Macabeus, Sabedoria</span></div></label>
-        <label class="chk on"><input type="checkbox" value="Técnica breadcrumb: suspenso y promesas de revelación futura para mantener la retención" checked><div><strong>🍞 Breadcrumb</strong><span>"Este detalle va a ser importante..."</span></div></label>
-        <label class="chk on"><input type="checkbox" value="CTA natural integrado en la narrativa pidiendo like y suscripción" checked><div><strong>📣 CTA no Meio</strong><span>Like, inscrição e sininho</span></div></label>
-        <label class="chk on"><input type="checkbox" value="Cierre moral espejo: reflexión profunda para la vida actual del espectador" checked><div><strong>🪞 Fechamento Moral</strong><span>Reflexão para o presente + CTA final</span></div></label>
-        <label class="chk on"><input type="checkbox" value="Tono dark cinematográfico con referencias visuales a 300, Ben-Hur y The Bible" checked><div><strong>🎬 Tom Dark Cinematográfico</strong><span>Influências: 300, Ben-Hur, The Bible</span></div></label>
+<!-- NARRATIVA TAB -->
+<div id="tab-narrativa" class="tab-content">
+  <div class="card">
+    <div class="card-title">📖 Gerador de Narrativa Completa</div>
+    <div class="form-group">
+      <label>Tema / Passagem Bíblica</label>
+      <input type="text" id="narrativaTema" placeholder="Ex: A criação do mundo (Gênesis 1), Davi e Golias, O Sermão da Montanha...">
+    </div>
+    <div class="form-row">
+      <div class="form-group">
+        <label>Ângulo da Narrativa</label>
+        <select id="narrativaAngulo">
+          <option value="historico">Histórico-Cultural</option>
+          <option value="teologico">Teológico</option>
+          <option value="aplicacao">Aplicação Prática</option>
+          <option value="profecia">Profético</option>
+          <option value="arqueologico">Arqueológico</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Extras</label>
+        <select id="narrativaExtras">
+          <option value="none">Nenhum</option>
+          <option value="curiosidades">+ Curiosidades Históricas</option>
+          <option value="arqueologia">+ Evidências Arqueológicas</option>
+          <option value="contexto">+ Contexto Cultural Profundo</option>
+        </select>
       </div>
     </div>
-
-    <div class="fg" style="margin-bottom:14px">
-      <label>💡 Ideia / Título Específico (importe da aba Ideias)</label>
-      <input type="text" id="cfgIdeia" placeholder="Cole aqui o título ou ideia importada..." autocomplete="off" autocorrect="off" spellcheck="false" style="margin-top:6px">
+    <button class="btn btn-gold" onclick="gerarNarrativa()" id="btnNarrativa">
+      ✨ Gerar Narrativa Completa
+    </button>
+  </div>
+  <div class="card">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;">
+      <div class="card-title" style="margin:0">📄 Resultado</div>
+      <button class="copy-btn" onclick="copyOutput('narrativaOutput')">📋 Copiar</button>
     </div>
-    <div class="btn-row">
-      <button class="btn btn-gold" onclick="saveCfg()">✅ Salvar Configurações</button>
+    <div class="output-box" id="narrativaOutput">
+      <div class="output-placeholder">A narrativa gerada aparecerá aqui...</div>
     </div>
   </div>
 </div>
 
-<!-- NARRATIVA -->
-<div class="tab-panel" id="tNarrativa">
-  <div class="section">
-    <div class="sec-title">📜 Narrativa Bíblica Completa</div>
-    <p class="info">A IA gera o roteiro completo seguindo a fórmula dos 6 passos — puro, sem marcações de edição, pronto para Text-to-Speech. Se parar no meio, clique <strong>▶ Continuar</strong> quantas vezes precisar.</p>
-    <button class="btn btn-gold btn-wide" id="btnNar" onclick="gerarNarrativa()">🚀 Gerar Narrativa Completa</button>
-    <div class="out-hdr" style="margin-top:14px">
-      <span class="out-lbl">📜 Narrativa Gerada</span>
-      <div style="display:flex;gap:6px;flex-wrap:wrap">
-        <button class="btn-copy" id="btnCopyNar" onclick="cp('outNar','btnCopyNar')">📋 Copiar Roteiro</button>
-        <button class="btn btn-outline btn-sm" id="btnSend" onclick="sendToAbas()" style="display:none">→ Usar nas Abas</button>
-      </div>
+<!-- IDEIAS TAB -->
+<div id="tab-ideias" class="tab-content">
+  <div class="card">
+    <div class="card-title">💡 Gerador de Ideias de Vídeos</div>
+    <div class="form-group">
+      <label>Nicho / Tema Geral</label>
+      <input type="text" id="ideiasTema" placeholder="Ex: Histórias do Antigo Testamento, Profecias Bíblicas, Milagres de Jesus...">
     </div>
-    <div class="out-box gold" id="outNar" style="min-height:180px;max-height:550px;overflow-y:auto">Clique em Gerar Narrativa...</div>
-    <div class="meta-bar" id="metaBar">
-      <div class="wcount" id="wcount">Palavras: <b>0</b> &nbsp;|&nbsp; ~<b>0</b> min</div>
-      <button class="btn-cont" id="btnCont" onclick="continuarNarrativa()">▶ Continuar Escrevendo</button>
-    </div>
-  </div>
-</div>
-
-<!-- IDEIAS -->
-<div class="tab-panel" id="tIdeias">
-  <div class="section">
-    <div class="sec-title">💡 10 Títulos Virais</div>
-    <p class="info">A IA gera 10 títulos virais com ângulo narrativo, gancho de abertura e referências bíblicas para cada ideia. Clique <strong>▶ Usar</strong> para importar para Config.</p>
-    <div class="fg" style="margin-bottom:14px">
-      <label>Nicho ou Tema Geral</label>
-      <input type="text" id="nicheIn" placeholder="Ex: Santos católicos, Anjos guerreiros, Relíquias bíblicas..." autocomplete="off" autocorrect="off" spellcheck="false">
-    </div>
-    <button class="btn btn-gold btn-wide" id="btnIdeias" onclick="gerarIdeias()">💡 Gerar 10 Ideias Virais</button>
-    <div class="out-hdr" style="margin-top:14px">
-      <span class="out-lbl">Títulos Gerados</span>
-      <button class="btn-copy" id="btnCopyIdeias" onclick="cp('outIdeias','btnCopyIdeias')">📋 Copiar</button>
-    </div>
-    <div class="out-box gold" id="outIdeias" style="min-height:60px">Clique em Gerar Ideias...</div>
-  </div>
-  <div class="section">
-    <div class="sec-title">▶ Clique para Usar</div>
-    <div id="ideasList"><p style="font-size:13px;color:var(--muted);text-align:center;padding:16px">Nenhuma ideia gerada ainda.</p></div>
-    <div style="margin-top:14px;border-top:1px solid var(--border);padding-top:14px">
-      <p class="info" style="margin-bottom:8px">Ou cole títulos manualmente (um por linha):</p>
-      <textarea id="ideasManual" rows="4" placeholder="1. Cada FALSO dios de Israel...&#10;2. El Trágico FIN de Judas..."></textarea>
-      <div class="btn-row"><button class="btn btn-outline btn-sm" onclick="loadIdeasManual()">📥 Carregar Lista</button></div>
-    </div>
-  </div>
-</div>
-
-<!-- KEYWORDS -->
-<div class="tab-panel" id="tKeywords">
-  <div class="section">
-    <div class="sec-title">🔍 Keywords para Bancos de Mídia</div>
-    <p class="info">Cole a narrativa. A IA gera keywords em inglês organizadas por banco (Pixabay, Pexels, Unsplash, Storyblocks) com combinações de busca recomendadas.</p>
-    <div class="fg" style="margin-bottom:14px">
-      <label>Narrativa Gerada (opcional)</label>
-      <textarea id="kwNar" rows="5" placeholder="Cole aqui a narrativa completa... (ou use o botão → da aba Narrativa)"></textarea>
-    </div>
-    <button class="btn btn-gold btn-wide" id="btnKw" onclick="gerarKeywords()">🔍 Gerar Keywords com IA</button>
-    <div class="out-hdr" style="margin-top:14px">
-      <span class="out-lbl">🔑 Keywords por Banco</span>
-      <button class="btn-copy" id="btnCopyKw" onclick="cp('outKw','btnCopyKw')">📋 Copiar</button>
-    </div>
-    <div class="out-box gold" id="outKw" style="min-height:120px">Clique em Gerar Keywords...</div>
-  </div>
-</div>
-
-<!-- IA VISUAL -->
-<div class="tab-panel" id="tVisual">
-  <div class="section">
-    <div class="sec-title">🎨 Prompts Visuais por Cena</div>
-    <p class="info">Cole a narrativa. A IA analisa cada cena e gera prompts completos para Midjourney, DALL-E e Runway ML com paleta de cores do canal.</p>
-    <div class="vis-ctrl">
-      <div class="fg">
-        <label>🖼️ Estilo Visual</label>
-        <select id="visE" onchange="toggleC('visE','visEC')">
-          <option value="dark biblical cinematic, watercolor sketch with expressive characters, clean composition">🎨 Aquarela/Sketch (canal)</option>
-          <option value="cinematic photorealistic 4K, dramatic lighting, anamorphic lens, dark biblical epic">🎬 Cinematográfico 4K</option>
-          <option value="oil painting, classical old master technique, chiaroscuro, rich impasto, biblical scene">🖌️ Pintura a Óleo</option>
-          <option value="digital concept art, ArtStation quality, epic detailed painting, dark fantasy biblical">✨ Arte Digital</option>
-          <option value="photorealistic 3D CGI, Unreal Engine 5 render, ray-traced lighting, biblical epic">🔷 3D CGI</option>
-          <option value="custom">✏️ Personalizar...</option>
+    <div class="form-row">
+      <div class="form-group">
+        <label>Quantidade de Ideias</label>
+        <select id="ideiasQtd">
+          <option value="5">5 ideias</option>
+          <option value="10" selected>10 ideias</option>
+          <option value="20">20 ideias</option>
+          <option value="30">30 ideias</option>
         </select>
-        <input type="text" id="visEC" class="cin" placeholder="Descreva o estilo..." autocomplete="off">
       </div>
-      <div class="fg">
-        <label>🎭 Tom Visual</label>
-        <select id="visT" onchange="toggleC('visT','visTC')">
-          <option value="dramatic lighting, chiaroscuro, spiritual contrast, intense shadows">⚡ Dramático</option>
-          <option value="epic and awe-inspiring, monumental spiritual scale, divine power">🏔️ Épico</option>
-          <option value="deeply intimate and emotionally moving, tender and personal, spiritual">💛 Íntimo</option>
-          <option value="profoundly serene, calm meditative, gentle spiritual peace, golden light">🌿 Sereno</option>
-          <option value="darkness transforming into divine light, powerful contrast, redemption">🌓 Escuridão à Luz</option>
-          <option value="custom">✏️ Personalizar...</option>
+      <div class="form-group">
+        <label>Formato</label>
+        <select id="ideiasFormato">
+          <option value="viral">Potencial Viral</option>
+          <option value="serie">Série Temática</option>
+          <option value="perguntas">Perguntas Intrigantes</option>
+          <option value="misterios">Mistérios Bíblicos</option>
         </select>
-        <input type="text" id="visTC" class="cin" placeholder="Descreva o tom..." autocomplete="off">
       </div>
-      <div class="fg">
-        <label>📐 Proporção</label>
-        <select id="visR" onchange="toggleC('visR','visRC')">
-          <option value="16:9">📺 16:9 — YouTube</option>
-          <option value="9:16">📱 9:16 — Shorts/Reels</option>
-          <option value="1:1">⬛ 1:1 — Quadrado</option>
-          <option value="custom">✏️ Personalizar...</option>
+    </div>
+    <button class="btn btn-gold" onclick="gerarIdeias()" id="btnIdeias">
+      💡 Gerar Ideias
+    </button>
+  </div>
+  <div class="card">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;">
+      <div class="card-title" style="margin:0">📋 Ideias Geradas</div>
+      <button class="copy-btn" onclick="copyOutput('ideiasOutput')">📋 Copiar</button>
+    </div>
+    <div class="output-box" id="ideiasOutput">
+      <div class="output-placeholder">As ideias geradas aparecerão aqui...</div>
+    </div>
+  </div>
+</div>
+
+<!-- KEYWORDS TAB -->
+<div id="tab-keywords" class="tab-content">
+  <div class="card">
+    <div class="card-title">🔑 Pesquisa de Keywords</div>
+    <div class="form-group">
+      <label>Tema do Vídeo</label>
+      <input type="text" id="keywordsTema" placeholder="Ex: Arca de Noé, Apocalipse, Salmos...">
+    </div>
+    <div class="form-row">
+      <div class="form-group">
+        <label>Idioma</label>
+        <select id="keywordsIdioma">
+          <option value="pt">Português BR</option>
+          <option value="en">Inglês</option>
+          <option value="es">Espanhol</option>
         </select>
-        <input type="text" id="visRC" class="cin" placeholder="Ex: 4:3, 21:9..." autocomplete="off">
+      </div>
+      <div class="form-group">
+        <label>Tipo</label>
+        <select id="keywordsTipo">
+          <option value="youtube">YouTube</option>
+          <option value="blog">Blog/SEO</option>
+          <option value="ambos">Ambos</option>
+        </select>
       </div>
     </div>
-    <div class="fg">
-      <label>Cole a Narrativa Completa</label>
-      <textarea id="visNar" rows="5" placeholder="Cole aqui a narrativa... (ou use → da aba Narrativa)"></textarea>
+    <button class="btn btn-gold" onclick="gerarKeywords()" id="btnKeywords">
+      🔍 Pesquisar Keywords
+    </button>
+  </div>
+  <div class="card">
+    <div class="card-title">🏷 Keywords Geradas</div>
+    <div id="keywordsOutput">
+      <div class="output-placeholder">As keywords aparecerão aqui como tags clicáveis...</div>
     </div>
-    <button class="btn btn-gold btn-wide" id="btnVis" onclick="gerarVisual()" style="margin-top:12px">🎨 Gerar Prompts Visuais com IA</button>
-    <div id="visOut" style="display:none;margin-top:16px">
-      <div class="out-hdr">
-        <span class="out-lbl" id="visCount">Prompts prontos</span>
-        <button class="btn-copy" id="btnCopyVisAll" onclick="copyVisAll()">📋 Copiar Tudo</button>
-      </div>
-      <div id="visCards"></div>
+    <div id="keywordsSelected" style="margin-top:16px;display:none;">
+      <label>Keywords Selecionadas:</label>
+      <div class="output-box" id="keywordsSelectedText" style="min-height:60px;"></div>
+      <button class="copy-btn" style="margin-top:8px;" onclick="copyOutput('keywordsSelectedText')">📋 Copiar Selecionadas</button>
     </div>
   </div>
 </div>
 
-<!-- THUMBNAILS -->
-<div class="tab-panel" id="tThumbs">
-  <div class="section">
-    <div class="sec-title">🖼️ 3 Prompts de Thumbnail — A/B/C</div>
-    <p class="info">A IA gera 3 variações com prompts Midjourney e DALL-E para cada opção, análise psicológica do CTR e guia de design completo.</p>
-    <div class="fg" style="margin-bottom:14px">
-      <label>Tema / Título do Vídeo</label>
-      <input type="text" id="thumbTema" placeholder="Ex: El Fin Trágico de Judas, El Arca del Pacto..." autocomplete="off" autocorrect="off" spellcheck="false">
+<!-- VISUAL TAB -->
+<div id="tab-visual" class="tab-content">
+  <div class="card">
+    <div class="card-title">🎨 Gerador de Prompts Visuais</div>
+    <div class="form-group">
+      <label>Cena / Momento Bíblico</label>
+      <input type="text" id="visualTema" placeholder="Ex: Moisés abrindo o Mar Vermelho, A última ceia, A criação...">
     </div>
-    <div class="btn-row" style="margin-bottom:4px">
-      <button class="btn btn-gold" id="btnThumbs" onclick="gerarThumbs()">🖼️ Gerar 3 Thumbnails com IA</button>
-      <button class="btn-copy" id="btnCopyAll3" onclick="copyAll3()">📋 Copiar A+B+C</button>
+    <div class="form-row">
+      <div class="form-group">
+        <label>Estilo Artístico</label>
+        <select id="visualEstilo">
+          <option value="cinematico">Cinematográfico Real</option>
+          <option value="painting">Pintura Épica</option>
+          <option value="digital">Arte Digital</option>
+          <option value="ancient">Arte Antiga/Mosaico</option>
+          <option value="watercolor">Aquarela</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Ferramenta Alvo</label>
+        <select id="visualFerramenta">
+          <option value="midjourney">Midjourney</option>
+          <option value="dalle">DALL-E 3</option>
+          <option value="stable">Stable Diffusion</option>
+          <option value="firefly">Adobe Firefly</option>
+        </select>
+      </div>
     </div>
-    <div class="thumb-grid" style="margin-top:14px">
-      <div class="thumb-card">
-        <div class="tlbl">🅰️ Mistério / Perigo <span class="badge">Urgência</span>
-          <button class="btn-copy btn-sm" id="btnCpA" onclick="cp('thumbA','btnCpA')" style="font-size:10px;min-height:24px;padding:2px 8px">Copiar</button>
-        </div>
-        <textarea class="thumb-ta" id="thumbA" readonly placeholder="Aguardando geração..."></textarea>
-      </div>
-      <div class="thumb-card">
-        <div class="tlbl">🅱️ Revelação / Conflito <span class="badge">Épico</span>
-          <button class="btn-copy btn-sm" id="btnCpB" onclick="cp('thumbB','btnCpB')" style="font-size:10px;min-height:24px;padding:2px 8px">Copiar</button>
-        </div>
-        <textarea class="thumb-ta" id="thumbB" readonly placeholder="Aguardando geração..."></textarea>
-      </div>
-      <div class="thumb-card">
-        <div class="tlbl">🅲 Impacto / Lição <span class="badge">Paz</span>
-          <button class="btn-copy btn-sm" id="btnCpC" onclick="cp('thumbC','btnCpC')" style="font-size:10px;min-height:24px;padding:2px 8px">Copiar</button>
-        </div>
-        <textarea class="thumb-ta" id="thumbC" readonly placeholder="Aguardando geração..."></textarea>
-      </div>
+    <div class="form-group">
+      <label>Quantidade de Prompts</label>
+      <select id="visualQtd">
+        <option value="3">3 prompts</option>
+        <option value="5" selected>5 prompts</option>
+        <option value="10">10 prompts</option>
+      </select>
+    </div>
+    <button class="btn btn-gold" onclick="gerarVisual()" id="btnVisual">
+      🎨 Gerar Prompts Visuais
+    </button>
+  </div>
+  <div class="card">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;">
+      <div class="card-title" style="margin:0">🖼 Prompts Gerados</div>
+      <button class="copy-btn" onclick="copyOutput('visualOutput')">📋 Copiar</button>
+    </div>
+    <div class="output-box" id="visualOutput">
+      <div class="output-placeholder">Os prompts visuais aparecerão aqui...</div>
     </div>
   </div>
 </div>
 
-<!-- SEO -->
-<div class="tab-panel" id="tSEO">
-  <div class="section">
-    <div class="sec-title">📊 SEO Completo — YouTube</div>
-    <p class="info">A IA gera o pacote SEO completo otimizado para Espanha, México, Argentina, Colômbia, Chile e Peru: 3 títulos A/B/C, descrição completa, 25 tags, 15 hashtags, timestamps e estratégia de publicação.</p>
-    <div class="g2" style="margin-bottom:14px">
-      <div class="fg">
-        <label>Tema / Título</label>
-        <input type="text" id="seoTema" placeholder="Ex: Falsos dioses de Israel..." autocomplete="off" autocorrect="off" spellcheck="false">
+<!-- THUMBNAILS TAB -->
+<div id="tab-thumbnails" class="tab-content">
+  <div class="card">
+    <div class="card-title">🖼 Gerador de Conceitos de Thumbnails</div>
+    <div class="form-group">
+      <label>Tema do Vídeo</label>
+      <input type="text" id="thumbTema" placeholder="Ex: O Dilúvio de Noé, A Torre de Babel...">
+    </div>
+    <div class="form-row">
+      <div class="form-group">
+        <label>Estilo Visual</label>
+        <select id="thumbEstilo">
+          <option value="choque">Choque e Impacto</option>
+          <option value="misterio">Mistério e Curiosidade</option>
+          <option value="epico">Épico Cinematográfico</option>
+          <option value="moderno">Moderno e Clean</option>
+        </select>
       </div>
-      <div class="fg">
-        <label>Narrativa (opcional — melhora o SEO)</label>
-        <input type="text" id="seoNar" placeholder="Resumo ou deixe em branco..." autocomplete="off" autocorrect="off" spellcheck="false">
+      <div class="form-group">
+        <label>Paleta de Cores</label>
+        <select id="thumbCores">
+          <option value="gold">Dourado/Preto</option>
+          <option value="fire">Vermelho/Laranja</option>
+          <option value="divine">Azul/Dourado</option>
+          <option value="dark">Escuro/Dramático</option>
+        </select>
       </div>
     </div>
-    <button class="btn btn-gold btn-wide" id="btnSEO" onclick="gerarSEO()">📊 Gerar SEO Completo com IA</button>
-    <div class="out-hdr" style="margin-top:14px">
-      <span class="out-lbl">📈 SEO Completo</span>
-      <button class="btn-copy" id="btnCopySEO" onclick="cp('outSEO','btnCopySEO')">📋 Copiar</button>
+    <button class="btn btn-gold" onclick="gerarThumbnails()" id="btnThumbnails">
+      🖼 Gerar Conceitos
+    </button>
+  </div>
+  <div class="card">
+    <div class="card-title">🎯 Conceitos de Thumbnails</div>
+    <div id="thumbOutput">
+      <div class="output-placeholder">Os conceitos de thumbnails aparecerão aqui...</div>
     </div>
-    <div class="out-box gold" id="outSEO" style="min-height:120px">Clique em Gerar SEO...</div>
   </div>
 </div>
 
-<!-- FÓRMULA -->
-<div class="tab-panel" id="tFormula">
-  <div class="section">
-    <div class="sec-title">📐 Fórmula Narrativa — Explicador Bíblico</div>
-    <p class="info">A estrutura exata dos 6 passos que fizeram o canal crescer 2,4 milhões de views em apenas 10 vídeos.</p>
-    <div class="steps">
-      <div class="step"><div class="stepn">1</div><div class="stepb"><h4>🪝 Gancho — Quebra de Expectativa</h4><p>O gancho nunca é apenas informativo — é provocativo ou corretivo. O narrador começa afirmando que o que o espectador "sabe" está incompleto ou errado.</p><em>"Aqui a crença popular de que todo anjo é gentil começa a desabar." / "Diferente do que muita gente acredita..."</em></div></div>
-      <div class="step"><div class="stepn">2</div><div class="stepb"><h4>🔍 Contexto Invisível</h4><p>Após o gancho, estabelece base técnica — etimologia hebraica/grega, arqueologia, cultura da época — que valida a autoridade do que será dito.</p><em>"Na cultura judaica do primeiro século, o terceiro dia não era neutro — era o dia associado à bênção divina..."</em></div></div>
-      <div class="step"><div class="stepn">3</div><div class="stepb"><h4>❤️ Batidas Emocionais</h4><p>Transição do fato histórico para o sentimento do personagem e depois para o dilema humano atual. Humaniza os relatos antigos.</p><em>"A sensação de estar no limite, de ver a alegria escorregando pelos dedos sem conseguir segurar..."</em></div></div>
-      <div class="step"><div class="stepn">4</div><div class="stepb"><h4>🍞 Breadcrumb — Suspense Contínuo</h4><p>Promessas de revelação futura para manter retenção. O espectador não pode parar porque "esse detalhe vai ser importante mais à frente".</p><em>"Esse detalhe vai ser importante mais à frente. A tormenta estava apenas começando."</em></div></div>
-      <div class="step"><div class="stepn">5</div><div class="stepb"><h4>📋 Lista Escalonada com CTA Central</h4><p>Itens 1–4 informativos → Itens 5–7 surpreendentes → Último item é o clímax. CTA de like/inscrição inserido no meio da lista.</p><em>"Este é o espírito mais perturbador desta lista... recebia o lixo moral de um povo inteiro."</em></div></div>
-      <div class="step"><div class="stepn">6</div><div class="stepb"><h4>🪞 Fechamento Moral Espelho + CTA Final</h4><p>Ponte moral entre a história bíblica e a vida do espectador hoje. Segue pedido de engajamento que reforça comunidade de "estudiosos sérios".</p><em>"Isso não é só história antiga; é um espelho que nos mostra que muitas vezes um mínimo descuido pode nos levar para longe."</em></div></div>
+<!-- SEO TAB -->
+<div id="tab-seo" class="tab-content">
+  <div class="card">
+    <div class="card-title">📊 Otimizador SEO Completo</div>
+    <div class="form-group">
+      <label>Tema / Título Provisório</label>
+      <input type="text" id="seoTema" placeholder="Ex: Por que Deus permitiu o sofrimento de Jó?">
+    </div>
+    <div class="form-row">
+      <div class="form-group">
+        <label>Plataforma</label>
+        <select id="seoPlataforma">
+          <option value="youtube">YouTube</option>
+          <option value="blog">Blog WordPress</option>
+          <option value="ambos">YouTube + Blog</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Objetivo</label>
+        <select id="seoObjetivo">
+          <option value="views">Maximizar Views</option>
+          <option value="subs">Ganhar Inscritos</option>
+          <option value="search">Ranquear no Search</option>
+        </select>
+      </div>
+    </div>
+    <button class="btn btn-gold" onclick="gerarSEO()" id="btnSEO">
+      📊 Gerar SEO Completo
+    </button>
+  </div>
+  <div class="card">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;">
+      <div class="card-title" style="margin:0">📈 Resultado SEO</div>
+      <button class="copy-btn" onclick="copyOutput('seoOutput')">📋 Copiar</button>
+    </div>
+    <div class="output-box" id="seoOutput">
+      <div class="output-placeholder">O SEO completo aparecerá aqui...</div>
     </div>
   </div>
 </div>
 
-</div><!-- /container -->
-
-<div class="loading" id="loading">
-  <div class="spin-wrap"><div class="spin"></div><div class="spin"></div><div class="spin"></div></div>
-  <div class="lt" id="lt">Processando...</div>
-  <div class="ls" id="ls">Aguarde de 10 a 30 segundos.</div>
+<!-- FORMULA TAB -->
+<div id="tab-formula" class="tab-content">
+  <div class="card">
+    <div class="card-title">⚡ Fórmula de Vídeo Viral</div>
+    <div class="form-group">
+      <label>Tema do Vídeo</label>
+      <input type="text" id="formulaTema" placeholder="Ex: Os Gigantes da Bíblia - Quem eram os Nefilins?">
+    </div>
+    <button class="btn btn-gold" onclick="gerarFormula()" id="btnFormula">
+      ⚡ Gerar Fórmula Viral
+    </button>
+  </div>
+  <div class="card" id="formulaOutput" style="display:none;">
+    <div class="card-title">📐 Sua Fórmula de Vídeo</div>
+    <div id="formulaContent"></div>
+  </div>
 </div>
+
+</div><!-- /main -->
+
 <div class="toasts" id="toasts"></div>
 <script>
-const state = { key:'', model:'google/gemini-flash-1.5' };
-const OR_URL = 'https://openrouter.ai/api/v1/chat/completions';
-const LOAD = {
-  nar:   {t:'Redigiendo Manuscrito Sagrado...',    s:'Estructurando gancho, etimología y golpes emocionales.'},
-  cont:  {t:'Continuando Narrativa...',            s:'Expandiendo con nuevas revelaciones y breadcrumbs.'},
-  ideas: {t:'Analizando Tendencias Bíblicas...',   s:'Procesando títulos virales con la fórmula del canal.'},
-  kw:    {t:'Examinando la Narrativa...',           s:'Extrayendo palabras clave por escena y banco de medios.'},
-  vis:   {t:'Pintando la Escena Bíblica...',        s:'Escribiendo prompts artísticos por escena.'},
-  th:    {t:'Proyectando Miniaturas Virales...',    s:'Modelando composiciones A/B/C para alto CTR.'},
-  seo:   {t:'Optimizando Metadatos...',             s:'Refinando títulos, tags y descripción para LATAM.'},
-};
-
+// ============================================================
+// UTILITÁRIOS
+// ============================================================
 const $ = id => document.getElementById(id);
 
-function toast(msg, type='s', dur=4000) {
+function showToast(msg, type='info') {
   const t = document.createElement('div');
   t.className = `toast ${type}`;
-  const ico = {s:'✨',e:'⚠️',w:'🔔',i:'📖'};
-  t.innerHTML = `<span>${ico[type]||'✨'}</span><span>${msg}</span>`;
+  t.textContent = msg;
   $('toasts').appendChild(t);
-  setTimeout(()=>{ t.classList.add('out'); setTimeout(()=>t.remove(),300); }, dur);
+  setTimeout(() => t.remove(), 3500);
 }
 
-function load(type) {
-  const m = LOAD[type]||{t:'Processando...',s:'Aguarde.'};
-  $('lt').textContent = m.t; $('ls').textContent = m.s;
-  $('loading').classList.add('on');
-}
-function unload() { $('loading').classList.remove('on'); }
-
-document.querySelectorAll('.tab-btn').forEach(btn => {
-  btn.addEventListener('click', () => switchTab(btn.dataset.tab));
-});
-
-function switchTab(id) {
-  document.querySelectorAll('.tab-panel').forEach(p=>p.classList.remove('active'));
-  document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
-  $(id)?.classList.add('active');
-  document.querySelectorAll(`[data-tab="${id}"]`).forEach(b=>b.classList.add('active'));
-  const c = getCfg();
-  const tema = c.ideia || c.tema;
-  if (id==='tIdeias'){ const ni=$('nicheIn'); if(ni&&!ni.value.trim()) ni.value=tema; }
-  if (id==='tThumbs'){ const tt=$('thumbTema'); if(tt&&!tt.value.trim()) tt.value=tema; }
-  if (id==='tSEO'){ const st=$('seoTema'); if(st&&!st.value.trim()) st.value=tema; }
+function copyOutput(id) {
+  const el = $(id);
+  const text = el.innerText || el.textContent;
+  navigator.clipboard.writeText(text).then(() => showToast('Copiado!', 'success'));
 }
 
-function toggleC(sid, iid) {
-  const s=$(sid), i=$(iid);
-  if (!i) return;
-  if (s.value==='custom') { i.classList.add('show'); i.style.display='block'; i.removeAttribute('disabled'); setTimeout(()=>i.focus(),100); }
-  else { i.classList.remove('show'); i.style.display='none'; }
+function toggleKey() {
+  const inp = $('apiKey');
+  inp.type = inp.type === 'password' ? 'text' : 'password';
 }
 
-$('aiModel').addEventListener('change', function(){
-  const c=$('customModel');
-  if (this.value==='custom') { c.classList.add('show'); c.style.display='block'; setTimeout(()=>c.focus(),100); }
-  else { c.classList.remove('show'); c.style.display='none'; }
-});
-
-document.querySelectorAll('.chk input[type=checkbox]').forEach(cb => {
-  const item = cb.closest('.chk');
-  cb.addEventListener('change', ()=> item.classList.toggle('on', cb.checked));
-});
-
-function getModel() { return $('aiModel').value==='custom' ? ($('customModel').value.trim()||'google/gemini-flash-1.5') : $('aiModel').value; }
-
-function updateStatus() {
-  const ok = state.key.startsWith('sk-or-v1-');
-  $('sdot').classList.toggle('on', ok);
-  $('slabel').textContent = ok ? `${getModel()} ✓` : 'Configurar API';
+// ============================================================
+// TABS
+// ============================================================
+function switchTab(tab) {
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+  event.target.classList.add('active');
+  $('tab-' + tab).classList.add('active');
 }
 
-function toggleKey() { const k=$('apiKey'); k.type = k.type==='password'?'text':'password'; }
+// ============================================================
+// MODELO CUSTOMIZADO
+// ============================================================
+function handleModelChange() {
+  const sel = $('aiModel');
+  const custom = $('customModel');
+  if (sel.value === 'custom') {
+    custom.style.display = 'block';
+    custom.style.marginTop = '8px';
+    custom.style.width = '100%';
+    custom.placeholder = 'Digite o modelo. Ex: openai/gpt-4-turbo';
+    setTimeout(() => custom.focus(), 100);
+  } else {
+    custom.style.display = 'none';
+  }
+}
+
+// ============================================================
+// API CONFIG
+// ============================================================
+function updateProviderInfo() {
+  const prov = $('apiProvider').value;
+  const placeholders = {
+    openrouter: 'sk-or-v1-...',
+    openai: 'sk-...',
+    anthropic: 'sk-ant-...',
+    gemini: 'AIza...'
+  };
+  $('apiKey').placeholder = placeholders[prov] || 'Sua chave API...';
+}
 
 function saveAPI() {
-  const k=$('apiKey').value.trim(), m=getModel();
-  if (!k) { toast('Cole sua chave.','w'); return; }
-  if (!k.startsWith('sk-or-v1-')) { toast('Chave inválida — deve começar com sk-or-v1-','e'); return; }
-  localStorage.setItem('eb_key', k); localStorage.setItem('eb_model', m);
-  state.key=k; state.model=m; updateStatus();
-  toast(`API configurada! Modelo: ${m}`,'s');
+  const key = $('apiKey').value.trim();
+  const provider = $('apiProvider').value;
+  const modelSel = $('aiModel').value;
+  const model = modelSel === 'custom' ? $('customModel').value.trim() : modelSel;
+  if (!key) { showToast('Digite sua chave API!', 'error'); return; }
+  localStorage.setItem('ebp_key', key);
+  localStorage.setItem('ebp_provider', provider);
+  localStorage.setItem('ebp_model', model);
+  showToast('API salva com sucesso!', 'success');
+  $('apiStatus').innerHTML = '<div class="status-bar status-ok">✅ API configurada e pronta para uso.</div>';
 }
 
-function loadAPI() {
-  const k=localStorage.getItem('eb_key'), m=localStorage.getItem('eb_model');
-  if (k) { $('apiKey').value=k; state.key=k; }
-  if (m) {
-    const pre=['google/gemini-flash-1.5','openai/gpt-4o-mini','anthropic/claude-sonnet-4-5','meta-llama/llama-3.1-8b-instruct:free','google/gemini-2.0-flash-001','openai/gpt-4.1-mini'];
-    if (pre.includes(m)) $('aiModel').value=m;
-    else { $('aiModel').value='custom'; $('customModel').value=m; $('customModel').classList.add('show'); $('customModel').style.display='block'; }
-    state.model=m;
+function saveConfig() {
+  localStorage.setItem('ebp_duration', $('videoDuration').value);
+  localStorage.setItem('ebp_tone', $('narrativeTone').value);
+  localStorage.setItem('ebp_audience', $('targetAudience').value);
+  localStorage.setItem('ebp_visual', $('visualStyle').value);
+  showToast('Configurações salvas!', 'success');
+}
+
+async function testAPI() {
+  const key = localStorage.getItem('ebp_key') || $('apiKey').value.trim();
+  if (!key) { showToast('Salve sua API primeiro!', 'error'); return; }
+  $('apiStatus').innerHTML = '<div class="status-bar status-info"><span class="loading"></span> Testando conexão...</div>';
+  try {
+    const result = await callAI('Responda apenas: OK', 10);
+    $('apiStatus').innerHTML = '<div class="status-bar status-ok">✅ Conexão bem-sucedida! IA respondeu: ' + result.slice(0,50) + '</div>';
+  } catch(e) {
+    $('apiStatus').innerHTML = '<div class="status-bar status-err">❌ Erro: ' + e.message + '</div>';
   }
-  updateStatus();
 }
 
-function getCfg() {
-  const tema = $('cfgTema').value==='custom' ? $('cfgTemaC').value.trim() : $('cfgTema').value;
-  const lang = $('cfgIdioma').value==='custom' ? $('cfgIdiomaC').value.trim() : $('cfgIdioma').value;
-  const checks = [...document.querySelectorAll('.chk input[type=checkbox]:checked')].map(c=>c.value);
-  return { tema, lang, estilo:$('cfgEstilo').value, tom:$('cfgTom').value, dur:$('cfgDur').value, sit:$('cfgSit').value, ideia:$('cfgIdeia').value.trim(), checks };
+// ============================================================
+// CHAMADA À IA
+// ============================================================
+async function callAI(prompt, maxTokens=2000) {
+  const key = localStorage.getItem('ebp_key');
+  const provider = localStorage.getItem('ebp_provider') || 'openrouter';
+  const model = localStorage.getItem('ebp_model') || 'google/gemini-2.5-flash';
+  if (!key) throw new Error('Configure sua chave API na aba Config!');
+
+  const endpoints = {
+    openrouter: 'https://openrouter.ai/api/v1/chat/completions',
+    openai: 'https://api.openai.com/v1/chat/completions',
+    anthropic: 'https://api.anthropic.com/v1/messages',
+    gemini: `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${key}`
+  };
+
+  const url = endpoints[provider];
+
+  if (provider === 'anthropic') {
+    const r = await fetch(url, {
+      method: 'POST',
+      headers: { 'x-api-key': key, 'anthropic-version': '2023-06-01', 'content-type': 'application/json' },
+      body: JSON.stringify({ model, max_tokens: maxTokens, messages: [{ role: 'user', content: prompt }] })
+    });
+    const d = await r.json();
+    if (!r.ok) throw new Error(d.error?.message || 'Erro Anthropic');
+    return d.content[0].text;
+  }
+
+  if (provider === 'gemini') {
+    const r = await fetch(url, {
+      method: 'POST',
+      headers: { 'content-type': 'application/json' },
+      body: JSON.stringify({ contents: [{ parts: [{ text: prompt }] }], generationConfig: { maxOutputTokens: maxTokens } })
+    });
+    const d = await r.json();
+    if (!r.ok) throw new Error(d.error?.message || 'Erro Gemini');
+    return d.candidates[0].content.parts[0].text;
+  }
+
+  // OpenRouter / OpenAI
+  const headers = { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + key };
+  if (provider === 'openrouter') {
+    headers['HTTP-Referer'] = 'https://leotrajano41.github.io/-explicador-biblico-v3/';
+    headers['X-Title'] = 'Explicador Bíblico Pro';
+  }
+  const r = await fetch(url, {
+    method: 'POST',
+    headers,
+    body: JSON.stringify({ model, max_tokens: maxTokens, messages: [{ role: 'user', content: prompt }] })
+  });
+  const d = await r.json();
+  if (!r.ok) throw new Error(d.error?.message || 'Erro na API');
+  return d.choices[0].message.content;
 }
 
-function saveCfg() {
-  const c = {tema:$('cfgTema').value,temaC:$('cfgTemaC').value,estilo:$('cfgEstilo').value,tom:$('cfgTom').value,idioma:$('cfgIdioma').value,idiomaC:$('cfgIdiomaC').value,dur:$('cfgDur').value,sit:$('cfgSit').value,ideia:$('cfgIdeia').value};
-  localStorage.setItem('eb_cfg', JSON.stringify(c));
-  toast('Configurações salvas!','s');
+// ============================================================
+// NARRATIVA
+// ============================================================
+async function gerarNarrativa() {
+  const tema = $('narrativaTema').value.trim();
+  if (!tema) { showToast('Digite um tema bíblico!', 'error'); return; }
+  const duration = localStorage.getItem('ebp_duration') || 'medium';
+  const tone = localStorage.getItem('ebp_tone') || 'cinematico';
+  const audience = localStorage.getItem('ebp_audience') || 'geral';
+  const angulo = $('narrativaAngulo').value;
+  const extras = $('narrativaExtras').value;
+  const duracoes = { short:'3 a 5 minutos', medium:'8 a 12 minutos', long:'15 a 20 minutos', extended:'25 a 35 minutos' };
+  const tons = { cinematico:'cinematográfico e épico', didatico:'didático e claro', devocional:'devocional e inspirador', investigativo:'investigativo e curioso', epico:'épico e grandioso' };
+  const publicos = { geral:'público geral', iniciantes:'pessoas iniciantes na Bíblia', estudantes:'estudantes bíblicos', pastores:'líderes e pastores', jovens:'jovens' };
+
+  const prompt = `Você é um roteirista bíblico profissional especializado em conteúdo para YouTube.
+
+Crie uma narrativa completa e profissional sobre: "${tema}"
+
+ESPECIFICAÇÕES:
+- Duração: ${duracoes[duration]}
+- Tom: ${tons[tone]}
+- Público: ${publicos[audience]}
+- Ângulo: ${angulo}
+${extras !== 'none' ? '- Extras: ' + extras : ''}
+
+ESTRUTURA OBRIGATÓRIA:
+1. 🎬 GANCHO INICIAL (primeiros 30 segundos - deve ser irresistível)
+2. 📖 INTRODUÇÃO E CONTEXTO HISTÓRICO
+3. 🏛️ DESENVOLVIMENTO PRINCIPAL (com subdivisões claras)
+4. 🔍 ANÁLISE PROFUNDA (significados, simbolismos, relevância)
+5. 💡 APLICAÇÃO CONTEMPORÂNEA
+6. 🎯 CONCLUSÃO IMPACTANTE
+7. 📣 CALL TO ACTION
+
+Escreva em português BR. Use linguagem envolvente e narrativa cinematográfica. Seja detalhado e completo.`;
+
+  const btn = $('btnNarrativa');
+  btn.innerHTML = '<span class="loading"></span> Gerando...';
+  btn.disabled = true;
+  $('narrativaOutput').innerHTML = '<div class="output-placeholder"><span class="loading"></span> A IA está criando sua narrativa...</div>';
+
+  try {
+    const result = await callAI(prompt, 3000);
+    $('narrativaOutput').textContent = result;
+    showToast('Narrativa gerada!', 'success');
+  } catch(e) {
+    $('narrativaOutput').innerHTML = '<div class="output-placeholder" style="color:#e87070">❌ ' + e.message + '</div>';
+    showToast(e.message, 'error');
+  } finally {
+    btn.innerHTML = '✨ Gerar Narrativa Completa';
+    btn.disabled = false;
+  }
+}
+
+// ============================================================
+// IDEIAS
+// ============================================================
+async function gerarIdeias() {
+  const tema = $('ideiasTema').value.trim();
+  if (!tema) { showToast('Digite um tema!', 'error'); return; }
+  const qtd = $('ideiasQtd').value;
+  const formato = $('ideiasFormato').value;
+  const formatos = { viral:'com alto potencial viral', serie:'organizadas como série temática', perguntas:'baseadas em perguntas intrigantes', misterios:'focadas em mistérios bíblicos' };
+
+  const prompt = `Você é um estrategista de conteúdo bíblico para YouTube.
+
+Gere ${qtd} ideias de vídeos sobre: "${tema}"
+Formato: ${formatos[formato]}
+
+Para cada ideia forneça:
+1. 🎬 TÍTULO PRINCIPAL (otimizado para CTR)
+2. 🔄 TÍTULO ALTERNATIVO
+3. 📝 DESCRIÇÃO (2-3 linhas do que o vídeo abordará)
+4. 🎯 GANCHO (primeira frase que prende o espectador)
+5. 📊 POTENCIAL (por que esse vídeo vai performar bem)
+
+Escreva em português BR. Seja criativo e estratégico.`;
+
+  const btn = $('btnIdeias');
+  btn.innerHTML = '<span class="loading"></span> Gerando...';
+  btn.disabled = true;
+  $('ideiasOutput').innerHTML = '<div class="output-placeholder"><span class="loading"></span> Gerando ideias...</div>';
+
+  try {
+    const result = await callAI(prompt, 2500);
+    $('ideiasOutput').textContent = result;
+    showToast('Ideias geradas!', 'success');
+  } catch(e) {
+    $('ideiasOutput').innerHTML = '<div class="output-placeholder" style="color:#e87070">❌ ' + e.message + '</div>';
+    showToast(e.message, 'error');
+  } finally {
+    btn.innerHTML = '💡 Gerar Ideias';
+    btn.disabled = false;
+  }
+}
+
+// ============================================================
+// KEYWORDS
+// ============================================================
+async function gerarKeywords() {
+  const tema = $('keywordsTema').value.trim();
+  if (!tema) { showToast('Digite um tema!', 'error'); return; }
+  const idioma = $('keywordsIdioma').value;
+  const tipo = $('keywordsTipo').value;
+  const idiomas = { pt:'português brasileiro', en:'inglês', es:'espanhol' };
+
+  const prompt = `Você é um especialista em SEO para canais bíblicos no YouTube.
+
+Gere uma lista completa de keywords para: "${tema}"
+Idioma: ${idiomas[idioma]}
+Tipo: ${tipo}
+
+Organize em grupos:
+🔥 KEYWORDS PRINCIPAIS (alta busca): liste 10
+📈 KEYWORDS SECUNDÁRIAS (média busca): liste 15
+🎯 KEYWORDS LONG TAIL (específicas): liste 15
+#️⃣ HASHTAGS RECOMENDADAS: liste 10
+
+Formate cada keyword separada por vírgula dentro de cada grupo.`;
+
+  const btn = $('btnKeywords');
+  btn.innerHTML = '<span class="loading"></span> Pesquisando...';
+  btn.disabled = true;
+  $('keywordsOutput').innerHTML = '<div class="output-placeholder"><span class="loading"></span> Pesquisando keywords...</div>';
+
+  try {
+    const result = await callAI(prompt, 1500);
+    renderKeywords(result);
+    showToast('Keywords geradas!', 'success');
+  } catch(e) {
+    $('keywordsOutput').innerHTML = '<div class="output-placeholder" style="color:#e87070">❌ ' + e.message + '</div>';
+    showToast(e.message, 'error');
+  } finally {
+    btn.innerHTML = '🔍 Pesquisar Keywords';
+    btn.disabled = false;
+  }
+}
+
+function renderKeywords(text) {
+  const container = $('keywordsOutput');
+  container.innerHTML = '<div class="output-box" style="margin-bottom:12px;">' + text + '</div>';
+  const words = text.match(/[^\n,|•\-]+/g) || [];
+  const grid = document.createElement('div');
+  grid.className = 'keywords-grid';
+  const selected = new Set();
+  words.filter(w => w.trim().length > 3).forEach(w => {
+    const tag = document.createElement('div');
+    tag.className = 'keyword-tag';
+    tag.textContent = w.trim();
+    tag.onclick = () => {
+      tag.classList.toggle('selected');
+      if (selected.has(w.trim())) selected.delete(w.trim()); else selected.add(w.trim());
+      updateSelected(selected);
+    };
+    grid.appendChild(tag);
+  });
+  container.appendChild(grid);
+}
+
+function updateSelected(selected) {
+  const div = $('keywordsSelected');
+  const txt = $('keywordsSelectedText');
+  if (selected.size > 0) {
+    div.style.display = 'block';
+    txt.textContent = [...selected].join(', ');
+  } else {
+    div.style.display = 'none';
+  }
+}
+
+// ============================================================
+// VISUAL
+// ============================================================
+async function gerarVisual() {
+  const tema = $('visualTema').value.trim();
+  if (!tema) { showToast('Digite uma cena bíblica!', 'error'); return; }
+  const estilo = $('visualEstilo').value;
+  const ferramenta = $('visualFerramenta').value;
+  const qtd = $('visualQtd').value;
+  const estilos = { cinematico:'photorealistic cinematic, 8K, dramatic lighting, epic scale', painting:'epic oil painting, renaissance style, dramatic chiaroscuro', digital:'digital art, concept art, highly detailed, vibrant colors', ancient:'ancient mosaic art, byzantine style, golden details', watercolor:'detailed watercolor illustration, soft colors, artistic' };
+
+  const prompt = `Você é um especialista em criar prompts para geração de imagens IA.
+
+Crie ${qtd} prompts profissionais para: "${tema}"
+Estilo: ${estilos[estilo]}
+Otimizado para: ${ferramenta}
+
+Para cada prompt:
+🎨 PROMPT [número]:
+[O prompt completo em inglês, detalhado e otimizado]
+
+📝 TRADUÇÃO:
+[Tradução em português do que será gerado]
+
+💡 DICA:
+[Configuração recomendada para ${ferramenta}]
+
+Faça prompts cinematográficos, épicos e detalhados.`;
+
+  const btn = $('btnVisual');
+  btn.innerHTML = '<span class="loading"></span> Gerando...';
+  btn.disabled = true;
+  $('visualOutput').innerHTML = '<div class="output-placeholder"><span class="loading"></span> Criando prompts visuais...</div>';
+
+  try {
+    const result = await callAI(prompt, 2000);
+    $('visualOutput').textContent = result;
+    showToast('Prompts gerados!', 'success');
+  } catch(e) {
+    $('visualOutput').innerHTML = '<div class="output-placeholder" style="color:#e87070">❌ ' + e.message + '</div>';
+    showToast(e.message, 'error');
+  } finally {
+    btn.innerHTML = '🎨 Gerar Prompts Visuais';
+    btn.disabled = false;
+  }
+}
+
+// ============================================================
+// THUMBNAILS
+// ============================================================
+async function gerarThumbnails() {
+  const tema = $('thumbTema').value.trim();
+  if (!tema) { showToast('Digite um tema!', 'error'); return; }
+  const estilo = $('thumbEstilo').value;
+  const cores = $('thumbCores').value;
+  const estilos = { choque:'choque e impacto visual', misterio:'mistério e curiosidade', epico:'épico cinematográfico', moderno:'moderno e clean' };
+  const paletas = { gold:'dourado e preto', fire:'vermelho e laranja', divine:'azul e dourado', dark:'escuro e dramático' };
+
+  const prompt = `Você é um designer especialista em thumbnails para YouTube bíblico.
+
+Crie 3 conceitos de thumbnail para: "${tema}"
+Estilo: ${estilos[estilo]}
+Paleta: ${paletas[cores]}
+
+Para cada conceito:
+🖼️ CONCEITO [número]: [Nome do conceito]
+
+ELEMENTO CENTRAL: [O que está no centro da imagem]
+FUNDO: [Descrição do fundo]
+TEXTO PRINCIPAL: [Texto em destaque - máx 4 palavras]
+TEXTO SECUNDÁRIO: [Texto de apoio se houver]
+EFEITOS: [Efeitos visuais, luz, sombra]
+COMPOSIÇÃO: [Como os elementos estão organizados]
+PROMPT IA: [Prompt em inglês para gerar a imagem base]
+
+Seja específico e visual. Pense em CTR máximo.`;
+
+  const btn = $('btnThumbnails');
+  btn.innerHTML = '<span class="loading"></span> Gerando...';
+  btn.disabled = true;
+  $('thumbOutput').innerHTML = '<div class="output-placeholder"><span class="loading"></span> Criando conceitos...</div>';
+
+  try {
+    const result = await callAI(prompt, 2000);
+    $('thumbOutput').innerHTML = '<div class="output-box">' + result.replace(/\n/g, '<br>') + '</div>';
+    showToast('Conceitos gerados!', 'success');
+  } catch(e) {
+    $('thumbOutput').innerHTML = '<div class="output-placeholder" style="color:#e87070">❌ ' + e.message + '</div>';
+    showToast(e.message, 'error');
+  } finally {
+    btn.innerHTML = '🖼 Gerar Conceitos';
+    btn.disabled = false;
+  }
+}
+
+// ============================================================
+// SEO
+// ============================================================
+async function gerarSEO() {
+  const tema = $('seoTema').value.trim();
+  if (!tema) { showToast('Digite um tema!', 'error'); return; }
+  const plataforma = $('seoPlataforma').value;
+  const objetivo = $('seoObjetivo').value;
+  const objetivos = { views:'maximizar visualizações', subs:'ganhar inscritos', search:'ranquear na busca' };
+
+  const prompt = `Você é um especialista em SEO para canais bíblicos.
+
+Crie o SEO completo para: "${tema}"
+Plataforma: ${plataforma}
+Objetivo: ${objetivos[objetivo]}
+
+Entregue:
+📌 TÍTULOS (3 opções ranqueadas por potencial):
+1. [Título A]
+2. [Título B]  
+3. [Título C]
+
+📝 DESCRIÇÃO COMPLETA:
+[Descrição otimizada de 200-300 palavras com keywords naturais, links section, timestamps sugeridos]
+
+🏷️ TAGS (30 tags):
+[Lista de tags separadas por vírgula]
+
+#️⃣ HASHTAGS (10):
+[Hashtags para usar no vídeo]
+
+🗂️ CATEGORIA RECOMENDADA:
+[Categoria ideal]
+
+📊 ANÁLISE DE COMPETITIVIDADE:
+[Análise breve do nicho e estratégia]
+
+Escreva em português BR.`;
+
+  const btn = $('btnSEO');
+  btn.innerHTML = '<span class="loading"></span> Gerando...';
+  btn.disabled = true;
+  $('seoOutput').innerHTML = '<div class="output-placeholder"><span class="loading"></span> Analisando e gerando SEO...</div>';
+
+  try {
+    const result = await callAI(prompt, 2500);
+    $('seoOutput').textContent = result;
+    showToast('SEO gerado!', 'success');
+  } catch(e) {
+    $('seoOutput').innerHTML = '<div class="output-placeholder" style="color:#e87070">❌ ' + e.message + '</div>';
+    showToast(e.message, 'error');
+  } finally {
+    btn.innerHTML = '📊 Gerar SEO Completo';
+    btn.disabled = false;
+  }
+}
+
+// ============================================================
+// FÓRMULA VIRAL
+// ============================================================
+async function gerarFormula() {
+  const tema = $('formulaTema').value.trim();
+  if (!tema) { showToast('Digite um tema!', 'error'); return; }
+
+  const prompt = `Você é um estrategista de vídeos virais bíblicos no YouTube.
+
+Crie a fórmula completa de vídeo viral para: "${tema}"
+
+Entregue:
+⚡ GANCHO (0-30s): [Script exato de abertura]
+❓ PROBLEMA/TENSÃO (30s-2min): [Como criar curiosidade irresistível]
+📖 DESENVOLVIMENTO (2min-80%): [Estrutura de blocos de conteúdo]
+🔄 LOOPS DE RETENÇÃO: [3 momentos de suspense para manter audiência]
+💡 REVELAÇÃO PRINCIPAL: [O momento "Uau" do vídeo]
+🎯 CTA ESTRATÉGICO: [Call to action que converte]
+📊 MÉTRICAS ALVO: [CTR, retenção e performance esperados]
+🔑 PALAVRAS-CHAVE DO ROTEIRO: [Palavras que aumentam SEO falado]
+
+Seja específico, estratégico e focado em máximo engajamento.`;
+
+  const btn = $('btnFormula');
+  btn.innerHTML = '<span class="loading"></span> Gerando...';
+  btn.disabled = true;
+
+  try {
+    const result = await callAI(prompt, 2000);
+    $('formulaOutput').style.display = 'block';
+    $('formulaContent').innerHTML = '<div class="output-box">' + result.replace(/\n/g, '<br>') + '</div>';
+    showToast('Fórmula gerada!', 'success');
+  } catch(e) {
+    showToast(e.message, 'error');
+  } finally {
+    btn.innerHTML = '⚡ Gerar Fórmula Viral';
+    btn.disabled = false;
+  }
+}
+
+// ============================================================
+// LOAD SAVED CONFIG
+// ============================================================
+function loadAPI() {
+  const key = localStorage.getItem('ebp_key');
+  const provider = localStorage.getItem('ebp_provider');
+  const model = localStorage.getItem('ebp_model');
+  if (key) {
+    $('apiKey').value = key;
+    $('apiStatus').innerHTML = '<div class="status-bar status-ok">✅ API carregada do armazenamento local.</div>';
+  }
+  if (provider) $('apiProvider').value = provider;
+  if (model) {
+    const opt = $('aiModel');
+    let found = false;
+    for (let o of opt.options) { if (o.value === model) { found = true; break; } }
+    if (found) { opt.value = model; }
+    else {
+      opt.value = 'custom';
+      $('customModel').value = model;
+      $('customModel').style.display = 'block';
+      $('customModel').style.marginTop = '8px';
+    }
+  }
 }
 
 function loadCfg() {
-  try {
-    const raw=localStorage.getItem('eb_cfg'); if(!raw) return;
-    const c=JSON.parse(raw);
-    const s=(id,v)=>{ const el=$(id); if(el&&v!==undefined) el.value=v; };
-    s('cfgTema',c.tema);s('cfgTemaC',c.temaC);s('cfgEstilo',c.estilo);s('cfgTom',c.tom);
-    s('cfgIdioma',c.idioma);s('cfgIdiomaC',c.idiomaC);s('cfgDur',c.dur);s('cfgSit',c.sit);s('cfgIdeia',c.ideia);
-    if(c.tema==='custom'){$('cfgTemaC').classList.add('show');$('cfgTemaC').style.display='block';}
-    if(c.idioma==='custom'){$('cfgIdiomaC').classList.add('show');$('cfgIdiomaC').style.display='block';}
-  } catch(e){}
-}
-
-function cp(elId, btnId) {
-  const el=$(elId), btn=$(btnId);
-  const txt=(el.value||el.innerText||el.textContent||'').trim();
-  if (!txt||txt.includes('Clique em')||txt.includes('Aguardando')||txt.includes('Clique em Gerar')) { toast('Nada para copiar.','w'); return; }
-  navigator.clipboard.writeText(txt).then(()=>{
-    toast('Copiado!','s');
-    if (!btn) return;
-    btn.classList.add('ok');
-    const orig=btn.innerHTML; btn.innerHTML='✓ Copiado';
-    setTimeout(()=>{ btn.classList.remove('ok'); btn.innerHTML=orig; }, 2500);
-  }).catch(()=>toast('Erro ao copiar.','e'));
-}
-
-async function apiCall(sys, usr) {
-  if (!state.key) { toast('Configure a API primeiro.','e'); throw new Error('Sem chave'); }
-  const r = await fetch(OR_URL, {
-    method:'POST', mode:'cors',
-    headers: { 'Authorization':`Bearer ${state.key}`, 'Content-Type':'application/json', 'HTTP-Referer':location.href, 'X-Title':'Explicador Biblico' },
-    body: JSON.stringify({ model:state.model, max_tokens:4000, messages:[{role:'system',content:sys},{role:'user',content:usr}] })
-  });
-  if (!r.ok) { const e=await r.json().catch(()=>({})); throw new Error(e.error?.message||`HTTP ${r.status}`); }
-  const d=await r.json(); return d.choices[0].message.content;
-}
-
-function updateWc(txt) {
-  const bar=$('metaBar'), wc=$('wcount'); if(!bar) return;
-  const words=txt.trim().split(/\s+/).filter(w=>w.length>0).length;
-  const mins=Math.round(words/130);
-  bar.style.display='flex';
-  wc.className='wcount '+(words>=2200?'good':'short');
-  wc.innerHTML=`Palabras: <b>${words.toLocaleString()}</b> &nbsp;|&nbsp; ~<b>${mins} min</b>`;
-}
-
-async function gerarNarrativa() {
-  const c=getCfg();
-  if (!c.tema) { toast('Configure o tema na aba Config.','w'); return; }
-  const elStr=c.checks.length?`\nElementos especiales:\n- ${c.checks.join('\n- ')}`:'';
-  const sitStr=c.sit?`\nSituación especial: ${c.sit}`:'';
-  const idStr=c.ideia?`\nTítulo específico: "${c.ideia}"`:'';
-  const isShort=c.dur.includes('60 segundos');
-
-  const sysLong=`Eres un guionista de élite especializado en contenido bíblico dark para YouTube. Tu narrativa tiene el ritmo de una serie de Netflix y la profundidad de un documental histórico.
-
-FÓRMULA OBLIGATORIA DE 6 PASOS:
-1. GANCHO DE RUPTURA (0-2 min): Afirmación que contradice la creencia popular. NUNCA empezar con presentación. Primera frase = disonancia cognitiva inmediata.
-2. CONTEXTO INVISIBLE (2-4 min): Etimología hebraica/griega con transliteración, arqueología, cultura de la época. Versículo exacto (libro, capítulo, versículo).
-3. GOLPES EMOCIONALES (4-8 min): Hecho histórico → sentimiento del personaje → dilema humano actual. Mínimo 3 transiciones.
-4. BREADCRUMB CONTINUO: Promesas de revelación futura cada 2-3 minutos. "Lo que viene ahora va a cambiar cómo lees este pasaje para siempre..."
-5. LISTA ESCALONADA CON CTA (8-14 min): Ítems 1-3 informativos, 4-5 sorprendentes, último = clímax máximo. CTA natural entre ítem 3 y 4.
-6. CIERRE MORAL ESPEJO (17-20 min): Puente entre historia bíblica y vida del espectador hoy + CTA triple final.
-
-REGLAS ABSOLUTAS:
-- Narrativa pura — sin marcaciones de edición, sin "CORTE A:", listo para Text-to-Speech
-- Todas las referencias con libro, capítulo y versículo exactos
-- Etimologías verificadas con transliteración (hebreo/griego) y traducción
-- Nunca inventar citas de Santos Padres, Concilios o fuentes históricas
-- Tono: oscuro, dramático, cinematográfico — influencias visuales: 300, Ben-Hur, The Bible
-- Mínimo 2500 palabras`;
-
-  const sysShort=`Eres un guionista especializado en contenido bíblico dark viral para TikTok, Reels y Shorts. Escribes guiones que paran el scroll en los primeros 3 segundos.
-
-ESTRUCTURA OBLIGATORIA (60 segundos):
-[0-3s] GANCHO DE RUPTURA: Frase que rompe una creencia popular. NUNCA "¿Sabías que...?"
-[3-15s] CONTEXTO INVISIBLE: Dato etimológico/histórico + versículo exacto
-[15-35s] GOLPE EMOCIONAL + REVELACIÓN: Hecho → sentimiento → breadcrumb
-[35-50s] CLÍMAX: Revelación más impactante + versículo confirmatorio
-[50-60s] CIERRE MORAL + CTA: Reflexión en 2 frases + "Comenta [palabra] si quieres la historia completa"
-
-REGLAS: Narrativa pura, sin marcaciones, listo para Text-to-Speech. Oraciones cortas y contundentes.`;
-
-  const usr=`Genera la narrativa completa:
-- Tema: ${c.tema}
-- Idioma: ${c.lang}
-- Formato: ${c.dur}
-- Estilo: ${c.estilo}
-- Tono: ${c.tom}${sitStr}${idStr}${elStr}
-
-Retorna EXCLUSIVAMENTE la narración lista para ser hablada.`;
-
-  const btn=$('btnNar');
-  btn.disabled=true; btn.innerHTML='⏳ Gerando...';
-  $('metaBar').style.display='none';
-  load('nar');
-  try {
-    const r=await apiCall(isShort?sysShort:sysLong, usr);
-    $('outNar').textContent=r;
-    $('kwNar').value=r; $('visNar').value=r;
-    $('btnSend').style.display='inline-flex';
-    updateWc(r); toast('Narrativa gerada!','s');
-  } catch(e){ toast(`Erro: ${e.message}`,'e'); }
-  finally { unload(); btn.disabled=false; btn.innerHTML='🚀 Gerar Narrativa Completa'; }
-}
-
-async function continuarNarrativa() {
-  const outEl=$('outNar'), btn=$('btnCont');
-  const cur=(outEl.textContent||'').trim();
-  if (!cur||cur.includes('Clique')) return;
-  const c=getCfg();
-  const tail=cur.split(/\s+/).slice(-600).join(' ');
-  const sys=`Continúa la narrativa bíblica dark de donde se detuvo. NO repitas nada de lo ya escrito. Mismo idioma (${c.lang}), mismo tono (${c.tom}), misma voz narrativa. Mínimo 600 palabras adicionales. Narrativa pura sin marcaciones.`;
-  const usr=`Continúa EXACTAMENTE desde aquí. NO repitas:\n"...${tail}"`;
-  btn.disabled=true; btn.innerHTML='⏳...';
-  load('cont');
-  try {
-    const r=await apiCall(sys,usr);
-    const nxt=cur+'\n\n'+r;
-    $('outNar').textContent=nxt; $('kwNar').value=nxt; $('visNar').value=nxt;
-    updateWc(nxt); $('outNar').scrollTop=$('outNar').scrollHeight;
-    toast('Narrativa expandida!','s');
-  } catch(e){ toast(`Erro: ${e.message}`,'e'); }
-  finally { unload(); btn.disabled=false; btn.innerHTML='▶ Continuar Escrevendo'; }
-}
-
-function sendToAbas() {
-  const txt=$('outNar').textContent;
-  if (!txt||txt.includes('Clique')) return;
-  $('kwNar').value=txt; $('visNar').value=txt;
-  toast('Narrativa enviada para Keywords e IA Visual!','i');
-}
-
-async function gerarIdeias() {
-  const niche=$('nicheIn').value.trim();
-  if (!niche) { toast('Digite o nicho.','w'); return; }
-  const c=getCfg();
-  const sys=`Eres un estratega de contenido especializado en canales de YouTube bíblico dark para el mercado hispanohablante de América Latina.
-
-Genera exactamente 10 ideas de vídeos virales. Para cada idea usa esta estructura:
-{"titulo":"título poderoso máximo 60 caracteres","angulo":"el secreto o revelación que entrega el vídeo","gancho":"primeras 2 frases del vídeo","referencias":"mínimo 3 versículos exactos","viral":"por qué el mercado hispano comparte este contenido"}
-
-Retorna SOLO JSON válido — array con los 10 objetos. Sin markdown, sin explicaciones.
-Las ideas deben escalar desde "interesante" hasta "explosivo". La idea 10 = la más impactante.`;
-
-  const btn=$('btnIdeias');
-  btn.disabled=true; btn.innerHTML='⏳ Gerando...';
-  load('ideas');
-  try {
-    let raw=await apiCall(sys,`Genera 10 ideas virales para: "${niche}". Idioma: ${c.lang}. Tono: oscuro, dramático, cinematográfico.`);
-    raw=raw.trim().replace(/
-^
-```json\s*/,'').replace(/
-^
-```/,'').replace(/```
-$
-/,'').trim();
-    const ideas=JSON.parse(raw);
-    $('outIdeias').textContent=ideas.map((v,i)=>`${i+1}. ${v.titulo}`).join('\n');
-    renderIdeas(ideas); toast('10 ideias geradas!','s');
-  } catch(e){
-    $('outIdeias').textContent='Erro ao processar. Tente novamente.';
-    $('ideasList').innerHTML='<p style="color:#c05050;font-size:13px;padding:12px">Erro. Tente novamente.</p>';
-    toast('Erro ao gerar ideias.','e');
-  } finally { unload(); btn.disabled=false; btn.innerHTML='💡 Gerar 10 Ideias Virais'; }
-}
-
-function esc(s){ return (s||'').replace(/[&<>'"]/g,t=>({'&':'&','<':'<','>':'>',"'":'&#39;','"':'&quot;'}[t]||t)); }
-
-function renderIdeas(list) {
-  const c=$('ideasList'); c.innerHTML='';
-  if (!Array.isArray(list)||!list.length) return;
-  list.forEach((idea,i)=>{
-    const d=document.createElement('div'); d.className='idea-item';
-    const btn=document.createElement('button'); btn.className='use-btn'; btn.textContent='▶ Usar';
-    btn.onclick=()=>useIdea(idea.titulo);
-    d.innerHTML=`<span class="inum">#${i+1}</span><span class="itxt">${esc(idea.titulo)}</span>`;
-    d.appendChild(btn); c.appendChild(d);
-  });
-}
-
-function loadIdeasManual() {
-  const txt=$('ideasManual').value.trim(); if(!txt) return;
-  const list=txt.split('\n').filter(l=>l.trim().length>5).map(l=>({titulo:l.replace(/
-^
-\d+[\.$|]\s*/,'').trim()}));
-  renderIdeas(list); toast('Lista carregada!','s');
-}
-
-function useIdea(titulo) {
-  $('cfgTema').value='custom'; $('cfgTemaC').classList.add('show'); $('cfgTemaC').style.display='block'; $('cfgTemaC').value=titulo;
-  $('cfgIdeia').value=titulo; $('thumbTema').value=titulo; $('seoTema').value=titulo;
-  switchTab('tConfig'); toast(`Tema: "${titulo}"`,'i');
-}
-
-async function gerarKeywords() {
-  const nar=$('kwNar').value.trim(), c=getCfg();
-  const base=nar?`Narrativa:\n"${nar.substring(0,900)}"` : `Tema: "${c.tema}"`;
-  const sys=`Eres un investigador visual especializado en contenido bíblico dark para YouTube.
-Genera keywords en inglés organizadas por banco de medios para buscar el material visual perfecto.
-
-PIXABAY (gratuito):
-- 15 keywords específicas del tema
-- 10 keywords de ambiente (cielo oscuro, fuego, ruinas, desierto)
-- 8 keywords de emoción visual (dramatic, epic, mysterious, dark, ancient)
-- 5 keywords de período histórico (ancient Israel, biblical times, Jerusalem)
-
-PEXELS (gratuito):
-- 12 keywords para escenas principales
-- 8 keywords de texturas y fondos (stone texture, old parchment, fire, smoke)
-- 6 keywords de personas (desperate man, ancient warrior, prayer, grief)
-
-UNSPLASH (gratuito):
-- 10 keywords para thumbnails y momentos de impacto
-- 6 keywords de paisajes bíblicos
-- 5 keywords de luz y sombra (dramatic light, dark contrast, golden hour)
-
-STORYBLOCKS / ENVATO (premium):
-- 10 keywords cinematográficas épicas
-- 5 términos de búsqueda avanzada para material bíblico premium
-
-TOP 10 COMBINACIONES RECOMENDADAS: Las 10 búsquedas de 2-3 palabras más efectivas para este vídeo.
-TÉRMINOS A EVITAR: 5 keywords que dan resultados genéricos o inapropiados.`;
-
-  const btn=$('btnKw');
-  btn.disabled=true; btn.innerHTML='⏳ Gerando...';
-  load('kw');
-  try { $('outKw').textContent=await apiCall(sys,base); toast('Keywords geradas!','s'); }
-  catch(e){ toast(`Erro: ${e.message}`,'e'); }
-  finally { unload(); btn.disabled=false; btn.innerHTML='🔍 Gerar Keywords com IA'; }
-}
-
-async function gerarVisual() {
-  const nar=$('visNar').value.trim();
-  if (!nar) { toast('Cole a narrativa.','w'); return; }
-  const estilo=$('visE').value==='custom'?$('visEC').value.trim():$('visE').value;
-  const tom=$('visT').value==='custom'?$('visTC').value.trim():$('visT').value;
-  const ratio=$('visR').value==='custom'?$('visRC').value.trim():$('visR').value;
-
-  const sys=`Eres un director de arte especializado en contenido bíblico dark cinematográfico para YouTube.
-Estilo visual: ${estilo}
-Tono: ${tom}
-Proporción: ${ratio}
-Paleta: tonos dorados, rojos profundos, negros y grises. Influencias: 300 (2007), Ben-Hur, The Bible.
-
-Para cada escena/párrafo de la narrativa genera:
-
-ESCENA [número] — [10 palabras del fragmento]
-MIDJOURNEY: [prompt completo en inglés, una línea, con --ar ${ratio} --style raw --v 6 --q 2]
-DALLE: [prompt descriptivo completo en inglés para DALL-E 3]
-RUNWAY: [prompt de movimiento para clip de 5-10 segundos]
-
-Genera entre 8 y 15 escenas cubriendo toda la narrativa.`;
-
-  const btn=$('btnVis');
-  btn.disabled=true; btn.innerHTML='⏳ Gerando...';
-  $('visOut').style.display='none';
-  load('vis');
-  try {
-    const r=await apiCall(sys,nar.substring(0,3500));
-    const scenes=parseCenas(r);
-    const cards=$('visCards'); cards.innerHTML='';
-    if (!scenes.length) { cards.innerHTML=`<div class="out-box">${esc(r)}</div>`; }
-    else {
-      scenes.forEach((s,i)=>{
-        const pid=`vp${i}`,bid=`vb${i}`;
-        const d=document.createElement('div'); d.className='scene-card';
-        d.innerHTML=`<div class="scene-head"><span class="scene-num">Escena ${s.num}</span><span class="scene-exc">${esc(s.excerpt)}</span></div><div class="scene-txt" id="${pid}">${esc(s.prompt)}</div><div class="scene-foot"><button class="btn-copy" id="${bid}" onclick="cpV('${pid}','${bid}')">📋 Copiar</button></div>`;
-        cards.appendChild(d);
-      });
-    }
-    $('visCount').textContent=`${scenes.length} prompts gerados`;
-    $('visOut').style.display='block';
-    toast(`${scenes.length} prompts visuais!`,'s');
-  } catch(e){ toast(`Erro: ${e.message}`,'e'); }
-  finally { unload(); btn.disabled=false; btn.innerHTML='🎨 Gerar Prompts Visuais com IA'; }
-}
-
-function parseCenas(txt) {
-  const scenes=[];
-  const re=/ESCENA\s+(\d+)\s*[—\-–]\s*([^\n]*)\n([\s\S]*?)(?=ESCENA\s+\d+\s*[—\-–]|
-$
-)/gi;
-  let m; while((m=re.exec(txt))!==null){ const p=m[3].trim(); if(p) scenes.push({num:parseInt(m[1]),excerpt:m[2].trim(),prompt:p}); }
-  return scenes;
-}
-
-function cpV(pid, bid) {
-  const txt=$(pid).textContent, btn=$(bid);
-  navigator.clipboard.writeText(txt).then(()=>{ toast('Copiado!','s'); btn.classList.add('ok'); const o=btn.innerHTML; btn.innerHTML='✓'; setTimeout(()=>{btn.classList.remove('ok');btn.innerHTML=o;},2000); });
-}
-
-function copyVisAll() {
-  const all=[...document.querySelectorAll('.scene-txt')].map(e=>e.textContent).join('\n\n');
-  const btn=$('btnCopyVisAll');
-  navigator.clipboard.writeText(all).then(()=>{ toast('Tudo copiado!','s'); btn.classList.add('ok'); const o=btn.innerHTML; btn.innerHTML='✓ Copiado'; setTimeout(()=>{btn.classList.remove('ok');btn.innerHTML=o;},2500); });
-}
-
-async function gerarThumbs() {
-  const tema=$('thumbTema').value.trim()||getCfg().tema;
-  if (!tema) { toast('Digite o tema.','w'); return; }
-  const c=getCfg();
-  const sys=`Eres un especialista en thumbnails virales para YouTube con foco en contenido bíblico dark hispanohablante. Tus thumbnails generan CTR superior al 8%.
-
-Crea 3 variaciones usando EXACTAMENTE [OPCION_A], [OPCION_B], [OPCION_C].
-
-[OPCION_A] — MISTERIO / PELIGRO (Urgencia)
-CONCEPTO: imagen principal, expresión, fondo oscuro, elemento de contraste
-TEXTO: Línea 1 (máx 3 palabras) | Línea 2 (máx 4 palabras) | Color: blanco con borde rojo
-MIDJOURNEY: [prompt completo en inglés --ar 16:9 --style raw --v 6]
-DALLE: [prompt descriptivo completo en inglés]
-PSICOLOGÍA: por qué activa el clic en el mercado hispano
-
-[OPCION_B] — REVELACIÓN / CONFLICTO (Épico)
-CONCEPTO: escena de conflicto o revelación, regla de tercios
-TEXTO: pregunta de disonancia cognitiva | elemento de urgencia | Color: rojo sobre negro
-MIDJOURNEY: [prompt completo en inglés --ar 16:9]
-DALLE: [prompt descriptivo completo en inglés]
-PSICOLOGÍA: por qué activa el clic en el mercado hispano
-
-[OPCION_C] — CONSECUENCIA / IMPACTO (Paz/Juicio)
-CONCEPTO: resultado, consecuencia, fuego, destrucción o gloria divina
-TEXTO: afirmación impactante | promesa de revelación | Color: dorado sobre negro
-MIDJOURNEY: [prompt completo en inglés --ar 16:9]
-DALLE: [prompt descriptivo completo en inglés]
-PSICOLOGÍA: por qué activa el clic en el mercado hispano
-
-GUÍA FINAL: resolución 1280x720px, margen 60px, herramienta recomendada, qué opción genera mayor CTR y por qué.`;
-
-  const btn=$('btnThumbs');
-  btn.disabled=true; btn.innerHTML='⏳ Gerando...';
-  [$('thumbA'),$('thumbB'),$('thumbC')].forEach(t=>t.value='⏳ Gerando...');
-  load('th');
-  try {
-    const r=await apiCall(sys,`Tema: "${tema}". Mercado: España y América Latina. Idioma instrucciones: ${c.lang}`);
-    $('thumbA').value=(r.match(/|
-$
-$
-OPCION_A
-$
-$
-|([\s\S]*?)(?=|
-$
-$
-OPCION_B
-$
-$
-||
-$
-)/i)?.[1]||'').trim();
-    $('thumbB').value=(r.match(/|
-$
-$
-OPCION_B
-$
-$
-|([\s\S]*?)(?=|
-$
-$
-OPCION_C
-$
-$
-||
-$
-)/i)?.[1]||'').trim();
-    $('thumbC').value=(r.match(/|
-$
-$
-OPCION_C
-$
-$
-|([\s\S]*?)
-$
-/i)?.[1]||'').trim();
-    toast('3 thumbnails geradas!','s');
-  } catch(e){ toast(`Erro: ${e.message}`,'e'); }
-  finally { unload(); btn.disabled=false; btn.innerHTML='🖼️ Gerar 3 Thumbnails com IA'; }
-}
-
-function copyAll3() {
-  const a=$('thumbA').value, b=$('thumbB').value, c=$('thumbC').value;
-  if (!a.trim()||a.includes('⏳')) { toast('Gere as thumbnails primeiro.','w'); return; }
-  const btn=$('btnCopyAll3');
-  navigator.clipboard.writeText(`THUMBNAIL A\n${a}\n\nTHUMBNAIL B\n${b}\n\nTHUMBNAIL C\n${c}`)
-    .then(()=>{ toast('A+B+C copiados!','s'); btn.classList.add('ok'); const o=btn.innerHTML; btn.innerHTML='✓'; setTimeout(()=>{btn.classList.remove('ok');btn.innerHTML=o;},2500); });
-}
-
-async function gerarSEO() {
-  const tema=$('seoTema').value.trim();
-  if (!tema) { toast('Digite o tema.','w'); return; }
-  const nar=$('seoNar').value.trim(), c=getCfg();
-  const sys=`Eres un experto en SEO para YouTube especializado en el mercado hispanohablante. Optimizado para España, México, Argentina, Colombia, Chile y Perú.
-
-Genera el paquete SEO completo:
-
-1. TÍTULOS A/B/C (máx 60 caracteres cada uno):
-   A: foco en misterio
-   B: foco en revelación/secreto
-   C: foco en pregunta/disonancia cognitiva
-
-2. TAGS DE YOUTUBE (25 tags):
-   - 5 tags exactas (alta competencia, alto volumen)
-   - 8 tags relacionadas (media competencia)
-   - 7 tags de nicho (baja competencia, alta relevancia)
-   - 5 tags de canal (branding)
-
-3. HASHTAGS (15 hashtags):
-   - 5 de alta visibilidad
-   - 5 de nicho bíblico
-   - 5 de contenido específico
-
-4. DESCRIPCIÓN COMPLETA (250-300 palabras):
-   - Párrafo 1: Hook visible sin expandir + keyword principal
-   - Párrafo 2: Resumen con keywords secundarias
-   - Párrafo 3: Diferenciales del canal y fuentes
-   - Párrafo 4: CTAs (suscripción, playlist, redes)
-   - Timestamps sugeridos para vídeo de 18-20 min
-
-5. ESTRATEGIA DE PUBLICACIÓN:
-   - Mejor horario para mercado hispanohablante
-   - Frecuencia recomendada
-   - Sugerencia de playlist
-   - Primer comentario fijado
-   - Cards y pantalla final
-
-6. ANÁLISIS DIFERENCIAL:
-   - Qué hace único este vídeo
-   - Ángulo narrativo que posiciona el canal`;
-
-  const btn=$('btnSEO');
-  btn.disabled=true; btn.innerHTML='⏳ Gerando...';
-  load('seo');
-  try {
-    $('outSEO').textContent=await apiCall(sys,`Tema: ${tema}\nIdioma: ${c.lang}${nar?'\nNarrativa: '+nar:''}\nOptimizado para YouTube 2025-2026.`);
-    toast('SEO gerado!','s');
-  } catch(e){ toast(`Erro: ${e.message}`,'e'); }
-  finally { unload(); btn.disabled=false; btn.innerHTML='📊 Gerar SEO Completo com IA'; }
+  const d = localStorage.getItem('ebp_duration');
+  const t = localStorage.getItem('ebp_tone');
+  const a = localStorage.getItem('ebp_audience');
+  const v = localStorage.getItem('ebp_visual');
+  if (d) $('videoDuration').value = d;
+  if (t) $('narrativeTone').value = t;
+  if (a) $('targetAudience').value = a;
+  if (v) $('visualStyle').value = v;
 }
 
 loadAPI();
