@@ -473,13 +473,12 @@ var TEMAS = {
   'Arqueologia Biblica': ['A Arca de Noe - Descoberta no Monte Ararat','Sodoma e Gomorra - Encontradas pelos Arqueologos','O Exodo - Evidencias Historicas','O Templo de Salomao - Onde estava realmente','A Cidade de Jerico - Confirmada pela Arqueologia','Os Manuscritos do Mar Morto - O Maior Achado Biblico','A Cruz de Jesus - Reliquias e Evidencias','Nazare de Jesus - Como era a cidade','O Monte Sinai - Localizacao Real','Evidencias de Moises no Egito']
 };
 
-function renderTemas(containerId, inputId, busca) {
-  busca = busca || '';
+function renderTemas(containerId, inputId, filtro) {
   var container = $(containerId);
   container.innerHTML = '';
-  var s = busca.toLowerCase();
+  var s = filtro ? filtro.toLowerCase() : '';
   Object.keys(TEMAS).forEach(function(cat) {
-    var lista = TEMAS[cat].filter(function(t) { return !s || t.toLowerCase().indexOf(s) >= 0; });
+    var lista = TEMAS[cat].filter(function(t) { return !s || t.toLowerCase().includes(s); });
     if (!lista.length) return;
     var titulo = document.createElement('div');
     titulo.className = 'temas-categoria-title';
@@ -492,10 +491,16 @@ function renderTemas(containerId, inputId, busca) {
       pill.className = 'tema-pill';
       pill.textContent = tema;
       pill.onclick = function() {
-        container.querySelectorAll('.tema-pill').forEach(function(p) { p.classList.remove('ativo'); });
+        document.querySelectorAll('.tema-pill').forEach(function(p) { p.classList.remove('ativo'); });
         pill.classList.add('ativo');
-        $(inputId).value = tema;
-        showToast('Tema selecionado!', 'success');
+        $('narrativaTema').value = tema;
+        $('ideiasTema').value = tema;
+        $('keywordsTema').value = tema;
+        $('seoTema').value = tema;
+        $('thumbTema').value = tema;
+        $('visualTema').value = tema;
+        $('formulaTema').value = tema;
+        showToast('Tema aplicado em todas as abas!', 'success');
       };
       grid.appendChild(pill);
     });
