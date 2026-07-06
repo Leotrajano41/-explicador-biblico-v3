@@ -12,8 +12,6 @@
   --card2: #1a1a26;
   --gold: #c9a84c;
   --gold2: #e8c96d;
-  --gold3: #f5e6b0;
-  --red: #8b1a1a;
   --red2: #c0392b;
   --border: #2a2a3a;
   --text: #e8e8f0;
@@ -22,37 +20,23 @@
   --info: #2980b9;
 }
 * { margin:0; padding:0; box-sizing:border-box; }
-body {
-  font-family: 'Segoe UI', sans-serif;
-  background: var(--darker);
-  color: var(--text);
-  min-height: 100vh;
-}
-.header {
-  background: linear-gradient(135deg, #1a0a0a 0%, #2d1810 40%, #1a0f05 70%, #0f0a1a 100%);
-  border-bottom: 2px solid var(--gold);
-  padding: 16px 24px;
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  box-shadow: 0 4px 30px rgba(201,168,76,0.15);
-}
-.header-cross { font-size: 2.2rem; color: var(--gold); text-shadow: 0 0 20px rgba(201,168,76,0.6); }
-.header-title { font-size: 1.5rem; font-weight: 800; letter-spacing: 3px; color: var(--gold); text-transform: uppercase; text-shadow: 0 0 15px rgba(201,168,76,0.4); }
+body { font-family: 'Segoe UI', sans-serif; background: var(--darker); color: var(--text); min-height: 100vh; }
+.header { background: linear-gradient(135deg, #1a0a0a 0%, #2d1810 40%, #1a0f05 70%, #0f0a1a 100%); border-bottom: 2px solid var(--gold); padding: 16px 24px; display: flex; align-items: center; gap: 16px; box-shadow: 0 4px 30px rgba(201,168,76,0.15); }
+.header-cross { font-size: 2.2rem; color: var(--gold); }
+.header-title { font-size: 1.5rem; font-weight: 800; letter-spacing: 3px; color: var(--gold); text-transform: uppercase; }
 .header-sub { font-size: 0.7rem; color: var(--text2); letter-spacing: 2px; text-transform: uppercase; margin-top: 2px; }
-.header-badge { margin-left: auto; background: var(--gold); color: #000; padding: 4px 12px; border-radius: 20px; font-size: 0.7rem; font-weight: 700; letter-spacing: 1px; }
+.header-badge { margin-left: auto; background: var(--gold); color: #000; padding: 4px 12px; border-radius: 20px; font-size: 0.7rem; font-weight: 700; }
 .tabs-container { background: var(--dark); border-bottom: 1px solid var(--border); padding: 0 16px; display: flex; gap: 2px; overflow-x: auto; }
 .tab { padding: 12px 20px; cursor: pointer; color: var(--text2); font-size: 0.78rem; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; border-bottom: 3px solid transparent; white-space: nowrap; transition: all 0.2s; }
 .tab:hover { color: var(--gold); }
 .tab.active { color: var(--gold); border-bottom-color: var(--gold); }
 .main { padding: 24px; max-width: 1200px; margin: 0 auto; }
 .card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 20px; margin-bottom: 20px; }
-.card-title { font-size: 0.75rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); margin-bottom: 16px; display: flex; align-items: center; gap: 8px; }
+.card-title { font-size: 0.75rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); margin-bottom: 16px; }
 label { display: block; font-size: 0.72rem; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; color: var(--text2); margin-bottom: 6px; }
 input[type=text], input[type=password], select, textarea { width: 100%; background: var(--darker); border: 1px solid var(--border); border-radius: 8px; padding: 10px 14px; color: var(--text); font-size: 0.88rem; outline: none; transition: border-color 0.2s; }
 input[type=text]:focus, input[type=password]:focus, select:focus, textarea:focus { border-color: var(--gold); }
 select option { background: var(--darker); }
-textarea { resize: vertical; min-height: 80px; }
 .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px; }
 .form-group { margin-bottom: 16px; }
 .btn { padding: 10px 20px; border-radius: 8px; border: none; cursor: pointer; font-size: 0.82rem; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; transition: all 0.2s; }
@@ -63,7 +47,6 @@ textarea { resize: vertical; min-height: 80px; }
 .api-input-wrap { position: relative; display: flex; align-items: center; }
 .api-input-wrap input { padding-right: 44px; }
 .api-eye { position: absolute; right: 12px; background: none; border: none; color: var(--text2); cursor: pointer; font-size: 1rem; padding: 4px; }
-.api-eye:hover { color: var(--gold); }
 .status-bar { display: flex; align-items: center; gap: 8px; padding: 10px 14px; border-radius: 8px; font-size: 0.8rem; margin-top: 10px; }
 .status-ok { background: rgba(39,174,96,0.15); border: 1px solid rgba(39,174,96,0.3); color: #5dba7e; }
 .status-err { background: rgba(192,57,43,0.15); border: 1px solid rgba(192,57,43,0.3); color: #e87070; }
@@ -72,21 +55,17 @@ textarea { resize: vertical; min-height: 80px; }
 .output-placeholder { color: var(--text2); font-style: italic; text-align: center; padding: 40px 20px; }
 .tab-content { display: none; }
 .tab-content.active { display: block; }
-.keywords-grid { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
-.keyword-tag { background: rgba(201,168,76,0.15); border: 1px solid rgba(201,168,76,0.3); color: var(--gold2); padding: 6px 14px; border-radius: 20px; font-size: 0.78rem; cursor: pointer; transition: all 0.2s; user-select: none; }
-.keyword-tag:hover { background: rgba(201,168,76,0.25); }
+.keyword-tag { background: rgba(201,168,76,0.15); border: 1px solid rgba(201,168,76,0.3); color: var(--gold2); padding: 6px 14px; border-radius: 20px; font-size: 0.78rem; cursor: pointer; transition: all 0.2s; user-select: none; display: inline-block; margin: 3px; }
 .keyword-tag.selected { background: var(--gold); color: #000; font-weight: 700; }
 .loading { display: inline-block; width: 16px; height: 16px; border: 2px solid rgba(201,168,76,0.3); border-top-color: var(--gold); border-radius: 50%; animation: spin 0.8s linear infinite; vertical-align: middle; margin-right: 6px; }
 @keyframes spin { to { transform: rotate(360deg); } }
 .copy-btn { background: rgba(201,168,76,0.1); border: 1px solid rgba(201,168,76,0.3); color: var(--gold); padding: 6px 12px; border-radius: 6px; cursor: pointer; font-size: 0.75rem; transition: all 0.2s; }
 .copy-btn:hover { background: rgba(201,168,76,0.2); }
-.temas-biblioteca { margin-bottom: 16px; }
-.temas-categoria-title { font-size: 0.68rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); margin: 12px 0 8px 0; display: flex; align-items: center; gap: 6px; }
-.temas-grid { display: flex; flex-wrap: wrap; gap: 6px; }
+.temas-categoria-title { font-size: 0.68rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); margin: 12px 0 8px 0; }
+.temas-grid { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 8px; }
 .tema-pill { background: rgba(201,168,76,0.08); border: 1px solid rgba(201,168,76,0.2); color: var(--text); padding: 5px 12px; border-radius: 20px; font-size: 0.76rem; cursor: pointer; transition: all 0.2s; }
-.tema-pill:hover { background: rgba(201,168,76,0.2); border-color: var(--gold); color: var(--gold2); transform: translateY(-1px); }
-.tema-pill.ativo { background: var(--gold); color: #000; font-weight: 700; border-color: var(--gold); }
-.temas-search { margin-bottom: 12px; }
+.tema-pill:hover { background: rgba(201,168,76,0.2); border-color: var(--gold); color: var(--gold2); }
+.tema-pill.ativo { background: var(--gold); color: #000; font-weight: 700; }
 #customModel { display: none; margin-top: 8px; width: 100%; }
 .toasts { position: fixed; bottom: 24px; right: 24px; z-index: 9999; display: flex; flex-direction: column; gap: 8px; }
 .toast { background: var(--card2); border: 1px solid var(--border); border-radius: 8px; padding: 12px 18px; font-size: 0.82rem; box-shadow: 0 4px 20px rgba(0,0,0,0.4); animation: slideIn 0.3s ease; max-width: 320px; }
@@ -143,34 +122,34 @@ textarea { resize: vertical; min-height: 80px; }
     <div class="form-group">
       <label>Modelo de IA</label>
       <select id="aiModel" onchange="handleModelChange()">
-        <optgroup label="— Google —">
-          <option value="google/gemini-2.5-flash">Gemini 2.5 Flash (Rápido)</option>
-          <option value="google/gemini-2.5-pro">Gemini 2.5 Pro (Avançado)</option>
+        <optgroup label="Google">
+          <option value="google/gemini-2.5-flash">Gemini 2.5 Flash</option>
+          <option value="google/gemini-2.5-pro">Gemini 2.5 Pro</option>
         </optgroup>
-        <optgroup label="— Anthropic —">
+        <optgroup label="Anthropic">
           <option value="anthropic/claude-sonnet-4-5">Claude Sonnet 4.5</option>
           <option value="anthropic/claude-opus-4">Claude Opus 4</option>
         </optgroup>
-        <optgroup label="— OpenAI —">
+        <optgroup label="OpenAI">
           <option value="openai/gpt-4o">GPT-4o</option>
-          <option value="openai/gpt-4o-mini">GPT-4o Mini (Econômico)</option>
+          <option value="openai/gpt-4o-mini">GPT-4o Mini</option>
         </optgroup>
-        <optgroup label="— Outros —">
+        <optgroup label="Outros">
           <option value="meta-llama/llama-3.3-70b-instruct">Llama 3.3 70B</option>
           <option value="deepseek/deepseek-r1">DeepSeek R1</option>
         </optgroup>
-        <option value="custom">✏ Digitar manualmente...</option>
+        <option value="custom">Digitar manualmente...</option>
       </select>
       <input type="text" id="customModel" placeholder="Ex: openai/gpt-4-turbo">
     </div>
     <div style="display:flex;gap:10px;flex-wrap:wrap;">
-      <button class="btn btn-gold" onclick="saveAPI()">💾 Salvar API</button>
-      <button class="btn btn-outline" onclick="testAPI()">🧪 Testar Conexão</button>
+      <button class="btn btn-gold" onclick="saveAPI()">Salvar API</button>
+      <button class="btn btn-outline" onclick="testAPI()">Testar Conexão</button>
     </div>
     <div id="apiStatus"></div>
   </div>
   <div class="card">
-    <div class="card-title">📺 Configuração da Narrativa</div>
+    <div class="card-title">📺 Configurações Gerais</div>
     <div class="form-row">
       <div class="form-group">
         <label>Duração do Vídeo</label>
@@ -197,7 +176,7 @@ textarea { resize: vertical; min-height: 80px; }
         <label>Público-Alvo</label>
         <select id="targetAudience">
           <option value="geral">Geral</option>
-          <option value="iniciantes">Iniciantes na Bíblia</option>
+          <option value="iniciantes">Iniciantes</option>
           <option value="estudantes">Estudantes Bíblicos</option>
           <option value="pastores">Líderes/Pastores</option>
           <option value="jovens">Jovens</option>
@@ -206,34 +185,34 @@ textarea { resize: vertical; min-height: 80px; }
       <div class="form-group">
         <label>Estilo Visual</label>
         <select id="visualStyle">
-          <option value="cinematico">Cinematográfico Épico</option>
-          <option value="moderno">Moderno Minimalista</option>
-          <option value="artistico">Artístico Bíblico</option>
+          <option value="cinematico">Cinematográfico</option>
+          <option value="moderno">Moderno</option>
+          <option value="artistico">Artístico</option>
           <option value="documental">Documental</option>
         </select>
       </div>
     </div>
-    <button class="btn btn-gold" onclick="saveConfig()">💾 Salvar Configurações</button>
+    <button class="btn btn-gold" onclick="saveConfig()">Salvar Configurações</button>
   </div>
 </div>
 
 <div id="tab-narrativa" class="tab-content">
   <div class="card">
-    <div class="card-title">📚 Biblioteca de Temas Bíblicos</div>
-    <div class="temas-search">
-      <input type="text" id="temasSearch" placeholder="🔍 Buscar tema na biblioteca..." oninput="filtrarTemas()">
+    <div class="card-title">📚 Biblioteca de Temas</div>
+    <div class="form-group">
+      <input type="text" id="temasSearch" placeholder="Buscar tema..." oninput="filtrarTemas()">
     </div>
-    <div class="temas-biblioteca" id="temasContainer"></div>
+    <div id="temasContainer"></div>
   </div>
   <div class="card">
-    <div class="card-title">📖 Gerador de Narrativa Completa</div>
+    <div class="card-title">📖 Gerador de Narrativa</div>
     <div class="form-group">
-      <label>Tema Selecionado</label>
+      <label>Tema</label>
       <input type="text" id="narrativaTema" placeholder="Selecione um tema acima ou digite aqui...">
     </div>
     <div class="form-row">
       <div class="form-group">
-        <label>Ângulo da Narrativa</label>
+        <label>Ângulo</label>
         <select id="narrativaAngulo">
           <option value="historico">Histórico-Cultural</option>
           <option value="teologico">Teológico</option>
@@ -246,45 +225,44 @@ textarea { resize: vertical; min-height: 80px; }
         <label>Extras</label>
         <select id="narrativaExtras">
           <option value="none">Nenhum</option>
-          <option value="curiosidades">+ Curiosidades Históricas</option>
-          <option value="arqueologia">+ Evidências Arqueológicas</option>
-          <option value="contexto">+ Contexto Cultural Profundo</option>
+          <option value="curiosidades">+ Curiosidades</option>
+          <option value="arqueologia">+ Arqueologia</option>
+          <option value="contexto">+ Contexto Cultural</option>
         </select>
       </div>
     </div>
-    <button class="btn btn-gold" onclick="gerarNarrativa()" id="btnNarrativa">✨ Gerar Narrativa Completa</button>
+    <button class="btn btn-gold" onclick="gerarNarrativa()" id="btnNarrativa">Gerar Narrativa Completa</button>
   </div>
   <div class="card">
     <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;">
-      <div class="card-title" style="margin:0">📄 Resultado</div>
-      <button class="copy-btn" onclick="copyOutput('narrativaOutput')">📋 Copiar</button>
+      <div class="card-title" style="margin:0">Resultado</div>
+      <button class="copy-btn" onclick="copyOutput('narrativaOutput')">Copiar</button>
     </div>
-    <div class="output-box" id="narrativaOutput"><div class="output-placeholder">A narrativa gerada aparecerá aqui...</div></div>
+    <div class="output-box" id="narrativaOutput"><div class="output-placeholder">A narrativa aparecerá aqui...</div></div>
   </div>
 </div>
 
 <div id="tab-ideias" class="tab-content">
   <div class="card">
-    <div class="card-title">📚 Biblioteca de Temas — Ideias</div>
-    <div class="temas-search">
-      <input type="text" id="temasSearchIdeias" placeholder="🔍 Buscar tema..." oninput="filtrarTemasIdeias()">
+    <div class="card-title">📚 Biblioteca de Temas</div>
+    <div class="form-group">
+      <input type="text" id="temasSearchIdeias" placeholder="Buscar tema..." oninput="filtrarTemasIdeias()">
     </div>
-    <div class="temas-biblioteca" id="temasContainerIdeias"></div>
+    <div id="temasContainerIdeias"></div>
   </div>
   <div class="card">
-    <div class="card-title">💡 Gerador de Ideias de Vídeos</div>
+    <div class="card-title">💡 Gerador de Ideias</div>
     <div class="form-group">
-      <label>Nicho / Tema Selecionado</label>
+      <label>Tema</label>
       <input type="text" id="ideiasTema" placeholder="Selecione um tema acima ou digite aqui...">
     </div>
     <div class="form-row">
       <div class="form-group">
-        <label>Quantidade de Ideias</label>
+        <label>Quantidade</label>
         <select id="ideiasQtd">
           <option value="5">5 ideias</option>
           <option value="10" selected>10 ideias</option>
           <option value="20">20 ideias</option>
-          <option value="30">30 ideias</option>
         </select>
       </div>
       <div class="form-group">
@@ -297,14 +275,14 @@ textarea { resize: vertical; min-height: 80px; }
         </select>
       </div>
     </div>
-    <button class="btn btn-gold" onclick="gerarIdeias()" id="btnIdeias">💡 Gerar Ideias</button>
+    <button class="btn btn-gold" onclick="gerarIdeias()" id="btnIdeias">Gerar Ideias</button>
   </div>
   <div class="card">
     <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;">
-      <div class="card-title" style="margin:0">📋 Ideias Geradas</div>
-      <button class="copy-btn" onclick="copyOutput('ideiasOutput')">📋 Copiar</button>
+      <div class="card-title" style="margin:0">Ideias Geradas</div>
+      <button class="copy-btn" onclick="copyOutput('ideiasOutput')">Copiar</button>
     </div>
-    <div class="output-box" id="ideiasOutput"><div class="output-placeholder">As ideias geradas aparecerão aqui...</div></div>
+    <div class="output-box" id="ideiasOutput"><div class="output-placeholder">As ideias aparecerão aqui...</div></div>
   </div>
 </div>
 
@@ -312,8 +290,8 @@ textarea { resize: vertical; min-height: 80px; }
   <div class="card">
     <div class="card-title">🔑 Pesquisa de Keywords</div>
     <div class="form-group">
-      <label>Tema do Vídeo</label>
-      <input type="text" id="keywordsTema" placeholder="Ex: Arca de Noé, Apocalipse, Salmos...">
+      <label>Tema</label>
+      <input type="text" id="keywordsTema" placeholder="Ex: Arca de Noé, Apocalipse...">
     </div>
     <div class="form-row">
       <div class="form-group">
@@ -333,39 +311,39 @@ textarea { resize: vertical; min-height: 80px; }
         </select>
       </div>
     </div>
-    <button class="btn btn-gold" onclick="gerarKeywords()" id="btnKeywords">🔍 Pesquisar Keywords</button>
+    <button class="btn btn-gold" onclick="gerarKeywords()" id="btnKeywords">Pesquisar Keywords</button>
   </div>
   <div class="card">
-    <div class="card-title">🏷 Keywords Geradas</div>
-    <div id="keywordsOutput"><div class="output-placeholder">As keywords aparecerão aqui como tags clicáveis...</div></div>
+    <div class="card-title">Keywords Geradas</div>
+    <div id="keywordsOutput"><div class="output-placeholder">As keywords aparecerão aqui...</div></div>
     <div id="keywordsSelected" style="margin-top:16px;display:none;">
-      <label>Keywords Selecionadas:</label>
+      <label>Selecionadas:</label>
       <div class="output-box" id="keywordsSelectedText" style="min-height:60px;"></div>
-      <button class="copy-btn" style="margin-top:8px;" onclick="copyOutput('keywordsSelectedText')">📋 Copiar Selecionadas</button>
+      <button class="copy-btn" style="margin-top:8px;" onclick="copyOutput('keywordsSelectedText')">Copiar Selecionadas</button>
     </div>
   </div>
 </div>
 
 <div id="tab-visual" class="tab-content">
   <div class="card">
-    <div class="card-title">🎨 Gerador de Prompts Visuais</div>
+    <div class="card-title">🎨 Prompts Visuais</div>
     <div class="form-group">
-      <label>Cena / Momento Bíblico</label>
+      <label>Cena Bíblica</label>
       <input type="text" id="visualTema" placeholder="Ex: Moisés abrindo o Mar Vermelho...">
     </div>
     <div class="form-row">
       <div class="form-group">
-        <label>Estilo Artístico</label>
+        <label>Estilo</label>
         <select id="visualEstilo">
-          <option value="cinematico">Cinematográfico Real</option>
+          <option value="cinematico">Cinematográfico</option>
           <option value="painting">Pintura Épica</option>
           <option value="digital">Arte Digital</option>
-          <option value="ancient">Arte Antiga/Mosaico</option>
+          <option value="ancient">Arte Antiga</option>
           <option value="watercolor">Aquarela</option>
         </select>
       </div>
       <div class="form-group">
-        <label>Ferramenta Alvo</label>
+        <label>Ferramenta</label>
         <select id="visualFerramenta">
           <option value="midjourney">Midjourney</option>
           <option value="dalle">DALL-E 3</option>
@@ -375,43 +353,43 @@ textarea { resize: vertical; min-height: 80px; }
       </div>
     </div>
     <div class="form-group">
-      <label>Quantidade de Prompts</label>
+      <label>Quantidade</label>
       <select id="visualQtd">
         <option value="3">3 prompts</option>
         <option value="5" selected>5 prompts</option>
         <option value="10">10 prompts</option>
       </select>
     </div>
-    <button class="btn btn-gold" onclick="gerarVisual()" id="btnVisual">🎨 Gerar Prompts Visuais</button>
+    <button class="btn btn-gold" onclick="gerarVisual()" id="btnVisual">Gerar Prompts Visuais</button>
   </div>
   <div class="card">
     <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;">
-      <div class="card-title" style="margin:0">🖼 Prompts Gerados</div>
-      <button class="copy-btn" onclick="copyOutput('visualOutput')">📋 Copiar</button>
+      <div class="card-title" style="margin:0">Prompts Gerados</div>
+      <button class="copy-btn" onclick="copyOutput('visualOutput')">Copiar</button>
     </div>
-    <div class="output-box" id="visualOutput"><div class="output-placeholder">Os prompts visuais aparecerão aqui...</div></div>
+    <div class="output-box" id="visualOutput"><div class="output-placeholder">Os prompts aparecerão aqui...</div></div>
   </div>
 </div>
 
 <div id="tab-thumbnails" class="tab-content">
   <div class="card">
-    <div class="card-title">🖼 Gerador de Conceitos de Thumbnails</div>
+    <div class="card-title">🖼 Conceitos de Thumbnails</div>
     <div class="form-group">
-      <label>Tema do Vídeo</label>
-      <input type="text" id="thumbTema" placeholder="Ex: O Dilúvio de Noé, A Torre de Babel...">
+      <label>Tema</label>
+      <input type="text" id="thumbTema" placeholder="Ex: O Dilúvio de Noé...">
     </div>
     <div class="form-row">
       <div class="form-group">
-        <label>Estilo Visual</label>
+        <label>Estilo</label>
         <select id="thumbEstilo">
           <option value="choque">Choque e Impacto</option>
-          <option value="misterio">Mistério e Curiosidade</option>
-          <option value="epico">Épico Cinematográfico</option>
-          <option value="moderno">Moderno e Clean</option>
+          <option value="misterio">Mistério</option>
+          <option value="epico">Épico</option>
+          <option value="moderno">Moderno</option>
         </select>
       </div>
       <div class="form-group">
-        <label>Paleta de Cores</label>
+        <label>Paleta</label>
         <select id="thumbCores">
           <option value="gold">Dourado/Preto</option>
           <option value="fire">Vermelho/Laranja</option>
@@ -420,19 +398,19 @@ textarea { resize: vertical; min-height: 80px; }
         </select>
       </div>
     </div>
-    <button class="btn btn-gold" onclick="gerarThumbnails()" id="btnThumbnails">🖼 Gerar Conceitos</button>
+    <button class="btn btn-gold" onclick="gerarThumbnails()" id="btnThumbnails">Gerar Conceitos</button>
   </div>
   <div class="card">
-    <div class="card-title">🎯 Conceitos de Thumbnails</div>
-    <div id="thumbOutput"><div class="output-placeholder">Os conceitos de thumbnails aparecerão aqui...</div></div>
+    <div class="card-title">Conceitos</div>
+    <div id="thumbOutput"><div class="output-placeholder">Os conceitos aparecerão aqui...</div></div>
   </div>
 </div>
 
 <div id="tab-seo" class="tab-content">
   <div class="card">
-    <div class="card-title">📊 Otimizador SEO Completo</div>
+    <div class="card-title">📊 SEO Completo</div>
     <div class="form-group">
-      <label>Tema / Título Provisório</label>
+      <label>Tema</label>
       <input type="text" id="seoTema" placeholder="Ex: Por que Deus permitiu o sofrimento de Jó?">
     </div>
     <div class="form-row">
@@ -440,8 +418,8 @@ textarea { resize: vertical; min-height: 80px; }
         <label>Plataforma</label>
         <select id="seoPlataforma">
           <option value="youtube">YouTube</option>
-          <option value="blog">Blog WordPress</option>
-          <option value="ambos">YouTube + Blog</option>
+          <option value="blog">Blog</option>
+          <option value="ambos">Ambos</option>
         </select>
       </div>
       <div class="form-group">
@@ -453,156 +431,68 @@ textarea { resize: vertical; min-height: 80px; }
         </select>
       </div>
     </div>
-    <button class="btn btn-gold" onclick="gerarSEO()" id="btnSEO">📊 Gerar SEO Completo</button>
+    <button class="btn btn-gold" onclick="gerarSEO()" id="btnSEO">Gerar SEO Completo</button>
   </div>
   <div class="card">
     <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;">
-      <div class="card-title" style="margin:0">📈 Resultado SEO</div>
-      <button class="copy-btn" onclick="copyOutput('seoOutput')">📋 Copiar</button>
+      <div class="card-title" style="margin:0">Resultado SEO</div>
+      <button class="copy-btn" onclick="copyOutput('seoOutput')">Copiar</button>
     </div>
-    <div class="output-box" id="seoOutput"><div class="output-placeholder">O SEO completo aparecerá aqui...</div></div>
+    <div class="output-box" id="seoOutput"><div class="output-placeholder">O SEO aparecerá aqui...</div></div>
   </div>
 </div>
 
 <div id="tab-formula" class="tab-content">
   <div class="card">
-    <div class="card-title">⚡ Fórmula de Vídeo Viral</div>
+    <div class="card-title">⚡ Fórmula Viral</div>
     <div class="form-group">
-      <label>Tema do Vídeo</label>
-      <input type="text" id="formulaTema" placeholder="Ex: Os Gigantes da Bíblia — Quem eram os Nefilins?">
+      <label>Tema</label>
+      <input type="text" id="formulaTema" placeholder="Ex: Os Gigantes da Bíblia...">
     </div>
-    <button class="btn btn-gold" onclick="gerarFormula()" id="btnFormula">⚡ Gerar Fórmula Viral</button>
+    <button class="btn btn-gold" onclick="gerarFormula()" id="btnFormula">Gerar Fórmula Viral</button>
   </div>
   <div class="card" id="formulaOutput" style="display:none;">
-    <div class="card-title">📐 Sua Fórmula de Vídeo</div>
+    <div class="card-title">Sua Fórmula</div>
     <div id="formulaContent"></div>
   </div>
 </div>
 
 </div>
 <div class="toasts" id="toasts"></div>
-
 <script>
-const $ = id => document.getElementById(id);
+var $ = function(id) { return document.getElementById(id); };
 
-const TEMAS_BIBLICOS = {
-  '🔥 Histórias Épicas': [
-    'Davi e Golias — O Jovem que Derrotou um Gigante',
-    'Moisés e o Mar Vermelho — A Grande Travessia',
-    'Noé e o Dilúvio — O Fim de um Mundo',
-    'Sansão e Dalila — Força, Traição e Redenção',
-    'José do Egito — De Escravo a Governador',
-    'A Queda de Jericó — As Muralhas que Desabaram',
-    'Elias e os Profetas de Baal — O Duelo no Monte Carmelo',
-    'Daniel na Cova dos Leões — Fé Inabalável',
-    'Ester — A Rainha que Salvou um Povo',
-    'Rute e Noemi — Lealdade além do Sangue'
-  ],
-  '👁 Mistérios Bíblicos': [
-    'Os Nefilins — Quem eram os Gigantes da Bíblia?',
-    'A Arca da Aliança — Onde está hoje?',
-    'O Número 666 — O Verdadeiro Significado',
-    'O Jardim do Éden — Onde ficava realmente?',
-    'A Torre de Babel — O que realmente aconteceu?',
-    'Os Anjos Caídos — A Rebelião nos Céus',
-    'O Livro de Enoque — O Texto Proibido da Bíblia',
-    'A Marca da Besta — O que é e o que representa?',
-    'Os Cavaleiros do Apocalipse — Quem são?',
-    'O Sudário de Turim — Real ou Falso?'
-  ],
-  '🔮 Profecias': [
-    'As Profecias de Daniel — Reinos que Viriam',
-    'O Apocalipse de João — O Fim dos Tempos',
-    'Isaías 53 — A Profecia do Servo Sofredor',
-    'Ezequiel e os Ossos Secos — A Visão da Ressurreição',
-    'As 70 Semanas de Daniel — O Cronograma Profético',
-    'O Retorno de Israel — Profecia Cumprida em 1948',
-    'Armagedão — A Batalha Final',
-    'A Nova Jerusalém — O Paraíso Prometido',
-    'O Anticristo — Quem será?',
-    'Os Sinais do Fim dos Tempos — Já estamos vivendo?'
-  ],
-  '✝ Vida de Jesus': [
-    'O Nascimento de Jesus — A Noite que Mudou o Mundo',
-    'O Batismo de Jesus — O Céu se Abriu',
-    'O Sermão da Montanha — As Bem-Aventuranças',
-    'A Última Ceia — A Noite da Traição',
-    'A Crucificação — O Sacrifício Supremo',
-    'A Ressurreição — O Maior Milagre da História',
-    'Os Milagres de Jesus — Sinais do Reino de Deus',
-    'Jesus e Maria Madalena — A Verdade por Trás da História',
-    'A Transfiguração de Jesus — A Glória Revelada',
-    'Jesus no Deserto — 40 Dias de Tentação'
-  ],
-  '⚔ Guerras e Batalhas': [
-    'A Guerra nos Céus — Miguel contra Satanás',
-    'As Guerras de Davi — O Rei Guerreiro',
-    'A Destruição de Sodoma e Gomorra',
-    'As Pragas do Egito — A Guerra de Moisés contra o Faraó',
-    'A Batalha de Gog e Magog',
-    'Josué e a Conquista de Canaã',
-    'A Queda de Babilônia',
-    'Débora — A Profetisa Guerreira',
-    'Gideão e os 300 — Estratégia Divina',
-    'Saul — O Rei que Perdeu o Trono'
-  ],
-  '🌍 Origens e Criação': [
-    'A Criação do Mundo — Gênesis 1',
-    'Adão e Eva — O Início de Tudo',
-    'A Queda do Homem — O Pecado Original',
-    'Caim e Abel — O Primeiro Assassinato',
-    'A Origem de Satanás — Quem é o Diabo?',
-    'Os 7 Dias da Criação — Ciência e Bíblia',
-    'O Dilúvio Universal — Evidências Científicas',
-    'A Dispersão das Nações — Depois de Babel',
-    'A Origem dos Anjos — Quando foram criados?',
-    'O Céu e o Inferno — O que a Bíblia realmente diz?'
-  ],
-  '👑 Personagens Marcantes': [
-    'Salomão — O Rei mais Rico da História',
-    'João Batista — O Profeta do Deserto',
-    'Paulo de Tarso — De Perseguidor a Apóstolo',
-    'Maria — A Mãe de Jesus',
-    'Pedro — Da Negação ao Martírio',
-    'Abraão — O Pai da Fé',
-    'Jeremias — O Profeta Lamentoso',
-    'Maria Madalena — A Mulher que Jesus Libertou',
-    'Judas Iscariotes — Por que ele traiu?',
-    'João — O Discípulo Amado'
-  ],
-  '🏛 Arqueologia Bíblica': [
-    'A Arca de Noé — Descoberta no Monte Ararat?',
-    'Sodoma e Gomorra — Encontradas pelos Arqueólogos',
-    'O Êxodo — Evidências Históricas',
-    'O Templo de Salomão — Onde estava realmente?',
-    'A Cidade de Jericó — Confirmada pela Arqueologia',
-    'Os Manuscritos do Mar Morto — O Maior Achado Bíblico',
-    'A Cruz de Jesus — Relíquias e Evidências',
-    'Nazaré de Jesus — Como era a cidade',
-    'O Monte Sinai — Localização Real',
-    'Evidências de Moisés no Egito'
-  ]
+var TEMAS = {
+  'Historias Epicas': ['Davi e Golias - O Jovem que Derrotou um Gigante','Moises e o Mar Vermelho - A Grande Travessia','Noe e o Diluvio - O Fim de um Mundo','Sansao e Dalila - Forca Traicao e Redencao','Jose do Egito - De Escravo a Governador','A Queda de Jerico - As Muralhas que Desabaram','Elias e os Profetas de Baal - O Duelo no Monte Carmelo','Daniel na Cova dos Leoes - Fe Inabalavel','Ester - A Rainha que Salvou um Povo','Rute e Noemi - Lealdade alem do Sangue'],
+  'Misterios Biblicos': ['Os Nefilins - Quem eram os Gigantes da Biblia','A Arca da Alianca - Onde esta hoje','O Numero 666 - O Verdadeiro Significado','O Jardim do Eden - Onde ficava realmente','A Torre de Babel - O que realmente aconteceu','Os Anjos Caidos - A Rebeliao nos Ceus','O Livro de Enoque - O Texto Proibido da Biblia','A Marca da Besta - O que e e o que representa','Os Cavaleiros do Apocalipse - Quem sao','O Sudario de Turim - Real ou Falso'],
+  'Profecias': ['As Profecias de Daniel - Reinos que Viriam','O Apocalipse de Joao - O Fim dos Tempos','Isaias 53 - A Profecia do Servo Sofredor','Ezequiel e os Ossos Secos - A Visao da Ressurreicao','As 70 Semanas de Daniel - O Cronograma Profetico','O Retorno de Israel - Profecia Cumprida em 1948','Armagedon - A Batalha Final','A Nova Jerusalem - O Paraiso Prometido','O Anticristo - Quem sera','Os Sinais do Fim dos Tempos - Ja estamos vivendo'],
+  'Vida de Jesus': ['O Nascimento de Jesus - A Noite que Mudou o Mundo','O Batismo de Jesus - O Ceu se Abriu','O Sermao da Montanha - As Bem-Aventurancas','A Ultima Ceia - A Noite da Traicao','A Crucificacao - O Sacrificio Supremo','A Ressurreicao - O Maior Milagre da Historia','Os Milagres de Jesus - Sinais do Reino de Deus','Jesus e Maria Madalena - A Verdade por Tras da Historia','A Transfiguracao de Jesus - A Gloria Revelada','Jesus no Deserto - 40 Dias de Tentacao'],
+  'Guerras e Batalhas': ['A Guerra nos Ceus - Miguel contra Satanas','As Guerras de Davi - O Rei Guerreiro','A Destruicao de Sodoma e Gomorra','As Pragas do Egito - A Guerra de Moises contra o Farao','A Batalha de Gog e Magog','Josue e a Conquista de Canaa','A Queda de Babilonia','Debora - A Profetisa Guerreira','Gideao e os 300 - Estrategia Divina','Saul - O Rei que Perdeu o Trono'],
+  'Origens e Criacao': ['A Criacao do Mundo - Genesis 1','Adao e Eva - O Inicio de Tudo','A Queda do Homem - O Pecado Original','Caim e Abel - O Primeiro Assassinato','A Origem de Satanas - Quem e o Diabo','Os 7 Dias da Criacao - Ciencia e Biblia','O Diluvio Universal - Evidencias Cientificas','A Dispersao das Nacoes - Depois de Babel','A Origem dos Anjos - Quando foram criados','O Ceu e o Inferno - O que a Biblia realmente diz'],
+  'Personagens Marcantes': ['Salomao - O Rei mais Rico da Historia','Joao Batista - O Profeta do Deserto','Paulo de Tarso - De Perseguidor a Apostolo','Maria - A Mae de Jesus','Pedro - Da Negacao ao Martirio','Abraao - O Pai da Fe','Jeremias - O Profeta Lamentoso','Maria Madalena - A Mulher que Jesus Libertou','Judas Iscariotes - Por que ele traiu','Joao - O Discipulo Amado'],
+  'Arqueologia Biblica': ['A Arca de Noe - Descoberta no Monte Ararat','Sodoma e Gomorra - Encontradas pelos Arqueologos','O Exodo - Evidencias Historicas','O Templo de Salomao - Onde estava realmente','A Cidade de Jerico - Confirmada pela Arqueologia','Os Manuscritos do Mar Morto - O Maior Achado Biblico','A Cruz de Jesus - Reliquias e Evidencias','Nazare de Jesus - Como era a cidade','O Monte Sinai - Localizacao Real','Evidencias de Moises no Egito']
 };
 
-function renderTemas(containerId, inputId, searchVal='') {
-  const container = $(containerId);
+function renderTemas(containerId, inputId, busca) {
+  busca = busca || '';
+  var container = $(containerId);
   container.innerHTML = '';
-  const search = searchVal.toLowerCase();
-  Object.entries(TEMAS_BIBLICOS).forEach(([cat, temas]) => {
-    const filtrados = temas.filter(t => !search || t.toLowerCase().includes(search));
-    if (!filtrados.length) return;
-    const catTitle = document.createElement('div');
-    catTitle.className = 'temas-categoria-title';
-    catTitle.textContent = cat;
-    container.appendChild(catTitle);
-    const grid = document.createElement('div');
+  var s = busca.toLowerCase();
+  Object.keys(TEMAS).forEach(function(cat) {
+    var lista = TEMAS[cat].filter(function(t) { return !s || t.toLowerCase().indexOf(s) >= 0; });
+    if (!lista.length) return;
+    var titulo = document.createElement('div');
+    titulo.className = 'temas-categoria-title';
+    titulo.textContent = cat;
+    container.appendChild(titulo);
+    var grid = document.createElement('div');
     grid.className = 'temas-grid';
-    filtrados.forEach(tema => {
-      const pill = document.createElement('div');
+    lista.forEach(function(tema) {
+      var pill = document.createElement('div');
       pill.className = 'tema-pill';
       pill.textContent = tema;
-      pill.onclick = () => {
-        container.querySelectorAll('.tema-pill').forEach(p => p.classList.remove('ativo'));
+      pill.onclick = function() {
+        container.querySelectorAll('.tema-pill').forEach(function(p) { p.classList.remove('ativo'); });
         pill.classList.add('ativo');
         $(inputId).value = tema;
         showToast('Tema selecionado!', 'success');
@@ -616,58 +506,60 @@ function renderTemas(containerId, inputId, searchVal='') {
 function filtrarTemas() { renderTemas('temasContainer', 'narrativaTema', $('temasSearch').value); }
 function filtrarTemasIdeias() { renderTemas('temasContainerIdeias', 'ideiasTema', $('temasSearchIdeias').value); }
 
-function showToast(msg, type='info') {
-  const t = document.createElement('div');
-  t.className = `toast ${type}`;
+function showToast(msg, type) {
+  type = type || 'info';
+  var t = document.createElement('div');
+  t.className = 'toast ' + type;
   t.textContent = msg;
   $('toasts').appendChild(t);
-  setTimeout(() => t.remove(), 3500);
+  setTimeout(function() { if (t.parentNode) t.parentNode.removeChild(t); }, 3500);
 }
 
 function copyOutput(id) {
-  const el = $(id);
-  navigator.clipboard.writeText(el.innerText || el.textContent).then(() => showToast('Copiado!', 'success'));
+  var el = $(id);
+  var txt = el.innerText || el.textContent;
+  navigator.clipboard.writeText(txt).then(function() { showToast('Copiado!', 'success'); });
 }
 
 function toggleKey() {
-  const inp = $('apiKey');
+  var inp = $('apiKey');
   inp.type = inp.type === 'password' ? 'text' : 'password';
 }
 
 function switchTab(tab, el) {
-  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
-  document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.tab').forEach(function(t) { t.classList.remove('active'); });
+  document.querySelectorAll('.tab-content').forEach(function(t) { t.classList.remove('active'); });
   el.classList.add('active');
   $('tab-' + tab).classList.add('active');
 }
 
 function handleModelChange() {
-  const sel = $('aiModel');
-  const custom = $('customModel');
+  var sel = $('aiModel');
+  var custom = $('customModel');
   if (sel.value === 'custom') {
     custom.style.display = 'block';
-    setTimeout(() => custom.focus(), 100);
+    custom.focus();
   } else {
     custom.style.display = 'none';
   }
 }
 
 function updateProviderInfo() {
-  const placeholders = { openrouter:'sk-or-v1-...', openai:'sk-...', anthropic:'sk-ant-...', gemini:'AIza...' };
-  $('apiKey').placeholder = placeholders[$('apiProvider').value] || 'Sua chave API...';
+  var map = { openrouter: 'sk-or-v1-...', openai: 'sk-...', anthropic: 'sk-ant-...', gemini: 'AIza...' };
+  $('apiKey').placeholder = map[$('apiProvider').value] || 'Sua chave API...';
 }
 
 function saveAPI() {
-  const key = $('apiKey').value.trim();
-  const provider = $('apiProvider').value;
-  const modelSel = $('aiModel').value;
-  const model = modelSel === 'custom' ? $('customModel').value.trim() : modelSel;
+  var key = $('apiKey').value.trim();
+  var provider = $('apiProvider').value;
+  var modelSel = $('aiModel').value;
+  var model = modelSel === 'custom' ? $('customModel').value.trim() : modelSel;
   if (!key) { showToast('Digite sua chave API!', 'error'); return; }
   localStorage.setItem('ebp_key', key);
   localStorage.setItem('ebp_provider', provider);
   localStorage.setItem('ebp_model', model);
-  showToast('API salva com sucesso!', 'success');
-  $('apiStatus').innerHTML = '<div class="status-bar status-ok">✅ API configurada e pronta para uso.</div>';
+  showToast('API salva!', 'success');
+  $('apiStatus').innerHTML = '<div class="status-bar status-ok">API configurada e pronta para uso.</div>';
 }
 
 function saveConfig() {
@@ -675,405 +567,260 @@ function saveConfig() {
   localStorage.setItem('ebp_tone', $('narrativeTone').value);
   localStorage.setItem('ebp_audience', $('targetAudience').value);
   localStorage.setItem('ebp_visual', $('visualStyle').value);
-  showToast('Configurações salvas!', 'success');
+  showToast('Configuracoes salvas!', 'success');
+}
+
+function loadSaved() {
+  var key = localStorage.getItem('ebp_key');
+  var provider = localStorage.getItem('ebp_provider');
+  var model = localStorage.getItem('ebp_model');
+  var duration = localStorage.getItem('ebp_duration');
+  var tone = localStorage.getItem('ebp_tone');
+  var audience = localStorage.getItem('ebp_audience');
+  var visual = localStorage.getItem('ebp_visual');
+  if (key) { $('apiKey').value = key; $('apiStatus').innerHTML = '<div class="status-bar status-ok">API carregada.</div>'; }
+  if (provider) $('apiProvider').value = provider;
+  if (model) {
+    var opt = $('aiModel');
+    var found = false;
+    for (var i = 0; i < opt.options.length; i++) { if (opt.options[i].value === model) { found = true; break; } }
+    if (found) { opt.value = model; } else { opt.value = 'custom'; $('customModel').value = model; $('customModel').style.display = 'block'; }
+  }
+  if (duration) $('videoDuration').value = duration;
+  if (tone) $('narrativeTone').value = tone;
+  if (audience) $('targetAudience').value = audience;
+  if (visual) $('visualStyle').value = visual;
 }
 
 async function testAPI() {
-  const key = localStorage.getItem('ebp_key') || $('apiKey').value.trim();
+  var key = localStorage.getItem('ebp_key') || $('apiKey').value.trim();
   if (!key) { showToast('Salve sua API primeiro!', 'error'); return; }
-  $('apiStatus').innerHTML = '<div class="status-bar status-info"><span class="loading"></span> Testando conexão...</div>';
+  $('apiStatus').innerHTML = '<div class="status-bar status-info">Testando...</div>';
   try {
-    const result = await callAI('Responda apenas: OK', 10);
-    $('apiStatus').innerHTML = '<div class="status-bar status-ok">✅ Conexão bem-sucedida! Resposta: ' + result.slice(0,50) + '</div>';
+    var result = await callAI('Responda apenas: OK', 10);
+    $('apiStatus').innerHTML = '<div class="status-bar status-ok">Conexao ok! ' + result.slice(0,30) + '</div>';
   } catch(e) {
-    $('apiStatus').innerHTML = '<div class="status-bar status-err">❌ Erro: ' + e.message + '</div>';
+    $('apiStatus').innerHTML = '<div class="status-bar status-err">Erro: ' + e.message + '</div>';
   }
 }
 
-async function callAI(prompt, maxTokens=2000) {
-  const key = localStorage.getItem('ebp_key');
-  const provider = localStorage.getItem('ebp_provider') || 'openrouter';
-  const model = localStorage.getItem('ebp_model') || 'google/gemini-2.5-flash';
+async function callAI(prompt, maxTokens) {
+  maxTokens = maxTokens || 2000;
+  var key = localStorage.getItem('ebp_key');
+  var provider = localStorage.getItem('ebp_provider') || 'openrouter';
+  var model = localStorage.getItem('ebp_model') || 'google/gemini-2.5-flash';
   if (!key) throw new Error('Configure sua chave API na aba Config!');
-
+  var body = JSON.stringify({ model: model, max_tokens: maxTokens, messages: [{ role: 'user', content: prompt }] });
   if (provider === 'anthropic') {
-    const r = await fetch('https://api.anthropic.com/v1/messages', {
-      method: 'POST',
-      headers: { 'x-api-key': key, 'anthropic-version': '2023-06-01', 'content-type': 'application/json' },
-      body: JSON.stringify({ model, max_tokens: maxTokens, messages: [{ role: 'user', content: prompt }] })
-    });
-    const d = await r.json();
-    if (!r.ok) throw new Error(d.error?.message || 'Erro Anthropic');
+    var r = await fetch('https://api.anthropic.com/v1/messages', { method: 'POST', headers: { 'x-api-key': key, 'anthropic-version': '2023-06-01', 'content-type': 'application/json' }, body: body });
+    var d = await r.json();
+    if (!r.ok) throw new Error(d.error ? d.error.message : 'Erro Anthropic');
     return d.content[0].text;
   }
-
   if (provider === 'gemini') {
-    const r = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${key}`, {
-      method: 'POST',
-      headers: { 'content-type': 'application/json' },
-      body: JSON.stringify({ contents: [{ parts: [{ text: prompt }] }], generationConfig: { maxOutputTokens: maxTokens } })
-    });
-    const d = await r.json();
-    if (!r.ok) throw new Error(d.error?.message || 'Erro Gemini');
+    var r = await fetch('https://generativelanguage.googleapis.com/v1beta/models/' + model + ':generateContent?key=' + key, { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ contents: [{ parts: [{ text: prompt }] }], generationConfig: { maxOutputTokens: maxTokens } }) });
+    var d = await r.json();
+    if (!r.ok) throw new Error(d.error ? d.error.message : 'Erro Gemini');
     return d.candidates[0].content.parts[0].text;
   }
-
-  const headers = { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + key };
-  if (provider === 'openrouter') {
-    headers['HTTP-Referer'] = 'https://leotrajano41.github.io/-explicador-biblico-v3/';
-    headers['X-Title'] = 'Explicador Bíblico Pro';
-  }
-  const url = provider === 'openai' ? 'https://api.openai.com/v1/chat/completions' : 'https://openrouter.ai/api/v1/chat/completions';
-  const r = await fetch(url, {
-    method: 'POST',
-    headers,
-    body: JSON.stringify({ model, max_tokens: maxTokens, messages: [{ role: 'user', content: prompt }] })
-  });
-  const d = await r.json();
-  if (!r.ok) throw new Error(d.error?.message || 'Erro na API');
+  var headers = { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + key };
+  if (provider === 'openrouter') { headers['HTTP-Referer'] = 'https://leotrajano41.github.io/-explicador-biblico-v3/'; headers['X-Title'] = 'Explicador Biblico Pro'; }
+  var url = provider === 'openai' ? 'https://api.openai.com/v1/chat/completions' : 'https://openrouter.ai/api/v1/chat/completions';
+  var r = await fetch(url, { method: 'POST', headers: headers, body: body });
+  var d = await r.json();
+  if (!r.ok) throw new Error(d.error ? d.error.message : 'Erro na API');
   return d.choices[0].message.content;
 }
-
-async function gerarNarrativa() {
-  const tema = $('narrativaTema').value.trim();
-  if (!tema) { showToast('Selecione ou digite um tema!', 'error'); return; }
-  const duration = localStorage.getItem('ebp_duration') || 'medium';
-  const tone = localStorage.getItem('ebp_tone') || 'cinematico';
-  const audience = localStorage.getItem('ebp_audience') || 'geral';
-  const angulo = $('narrativaAngulo').value;
-  const extras = $('narrativaExtras').value;
-  const duracoes = { short:'3 a 5 minutos', medium:'8 a 12 minutos', long:'15 a 20 minutos', extended:'25 a 35 minutos' };
-  const tons = { cinematico:'cinematográfico e épico', didatico:'didático e claro', devocional:'devocional e inspirador', investigativo:'investigativo e curioso', epico:'épico e grandioso' };
-  const publicos = { geral:'público geral', iniciantes:'iniciantes na Bíblia', estudantes:'estudantes bíblicos', pastores:'líderes e pastores', jovens:'jovens' };
-
-  const prompt = `Você é um roteirista bíblico profissional do canal Explicador Bíblico no YouTube, especializado em conteúdo épico, cinematográfico e investigativo.
-
-Crie uma narrativa completa e profissional sobre: "${tema}"
-
-ESPECIFICAÇÕES:
-- Duração: ${duracoes[duration]}
-- Tom: ${tons[tone]}
-- Público: ${publicos[audience]}
-- Ângulo: ${angulo}
-${extras !== 'none' ? '- Extras: ' + extras : ''}
-
-ESTRUTURA OBRIGATÓRIA:
-1. 🎬 GANCHO INICIAL (primeiros 30 segundos — deve ser irresistível e cinematográfico)
-2. 📖 INTRODUÇÃO E CONTEXTO HISTÓRICO
-3. 🏛️ DESENVOLVIMENTO PRINCIPAL (com subdivisões claras)
-4. 🔍 ANÁLISE PROFUNDA (significados, simbolismos, relevância)
-5. 💡 APLICAÇÃO CONTEMPORÂNEA
-6. 🎯 CONCLUSÃO IMPACTANTE
-7. 📣 CALL TO ACTION (inscrição, like, comentário)
-
-Escreva em português BR. Use linguagem envolvente, épica e cinematográfica.`;
-
-  const btn = $('btnNarrativa');
-  btn.innerHTML = '<span class="loading"></span> Gerando...';
+  async function gerarNarrativa() {
+  var tema = $('narrativaTema').value.trim();
+  if (!tema) { showToast('Digite um tema!', 'error'); return; }
+  var duration = localStorage.getItem('ebp_duration') || 'medium';
+  var tone = localStorage.getItem('ebp_tone') || 'cinematico';
+  var audience = localStorage.getItem('ebp_audience') || 'geral';
+  var angulo = $('narrativaAngulo').value;
+  var extras = $('narrativaExtras').value;
+  var duracoes = { short: '3 a 5 minutos', medium: '8 a 12 minutos', long: '15 a 20 minutos', extended: '25 a 35 minutos' };
+  var tons = { cinematico: 'cinematografico e epico', didatico: 'didatico e claro', devocional: 'devocional e inspirador', investigativo: 'investigativo e curioso', epico: 'epico e grandioso' };
+  var publicos = { geral: 'publico geral', iniciantes: 'iniciantes na Biblia', estudantes: 'estudantes biblicos', pastores: 'lideres e pastores', jovens: 'jovens' };
+  var prompt = 'Voce e um roteirista biblico profissional do canal Explicador Biblico no YouTube.\n\nCrie uma narrativa completa sobre: "' + tema + '"\nDuracao: ' + duracoes[duration] + '\nTom: ' + tons[tone] + '\nPublico: ' + publicos[audience] + '\nAngulo: ' + angulo + '\n' + (extras !== 'none' ? 'Extras: ' + extras + '\n' : '') + '\nESTRUTURA:\n1. GANCHO INICIAL (30 segundos irresistivel)\n2. INTRODUCAO E CONTEXTO HISTORICO\n3. DESENVOLVIMENTO PRINCIPAL\n4. ANALISE PROFUNDA\n5. APLICACAO CONTEMPORANEA\n6. CONCLUSAO IMPACTANTE\n7. CALL TO ACTION\n\nEscreva em portugues BR, linguagem epica e cinematografica.';
+  var btn = $('btnNarrativa');
+  btn.textContent = 'Gerando...';
   btn.disabled = true;
-  $('narrativaOutput').innerHTML = '<div class="output-placeholder"><span class="loading"></span> A IA está criando sua narrativa...</div>';
+  $('narrativaOutput').innerHTML = '<div class="output-placeholder">Criando sua narrativa...</div>';
   try {
-    const result = await callAI(prompt, 3000);
+    var result = await callAI(prompt, 3000);
     $('narrativaOutput').textContent = result;
     showToast('Narrativa gerada!', 'success');
   } catch(e) {
-    $('narrativaOutput').innerHTML = '<div class="output-placeholder" style="color:#e87070">❌ ' + e.message + '</div>';
+    $('narrativaOutput').innerHTML = '<div class="output-placeholder" style="color:#e87070">Erro: ' + e.message + '</div>';
     showToast(e.message, 'error');
-  } finally {
-    btn.innerHTML = '✨ Gerar Narrativa Completa';
-    btn.disabled = false;
   }
+  btn.textContent = 'Gerar Narrativa Completa';
+  btn.disabled = false;
 }
 
 async function gerarIdeias() {
-  const tema = $('ideiasTema').value.trim();
-  if (!tema) { showToast('Selecione ou digite um tema!', 'error'); return; }
-  const qtd = $('ideiasQtd').value;
-  const formato = $('ideiasFormato').value;
-  const formatos = { viral:'com alto potencial viral', serie:'organizadas como série temática', perguntas:'baseadas em perguntas intrigantes', misterios:'focadas em mistérios bíblicos' };
-
-  const prompt = `Você é estrategista de conteúdo do canal Explicador Bíblico no YouTube.
-
-Gere ${qtd} ideias de vídeos sobre: "${tema}"
-Formato: ${formatos[formato]}
-
-Para cada ideia:
-1. 🎬 TÍTULO PRINCIPAL (otimizado para CTR alto)
-2. 🔄 TÍTULO ALTERNATIVO
-3. 📝 DESCRIÇÃO (2-3 linhas)
-4. 🎯 GANCHO (primeira frase irresistível)
-5. 📊 POTENCIAL (por que vai performar bem)
-
-Escreva em português BR. Seja épico e estratégico.`;
-
-  const btn = $('btnIdeias');
-  btn.innerHTML = '<span class="loading"></span> Gerando...';
+  var tema = $('ideiasTema').value.trim();
+  if (!tema) { showToast('Digite um tema!', 'error'); return; }
+  var qtd = $('ideiasQtd').value;
+  var formato = $('ideiasFormato').value;
+  var formatos = { viral: 'com alto potencial viral', serie: 'como serie tematica', perguntas: 'com perguntas intrigantes', misterios: 'focadas em misterios biblicos' };
+  var prompt = 'Voce e estrategista de conteudo do canal Explicador Biblico no YouTube.\n\nGere ' + qtd + ' ideias de videos sobre: "' + tema + '"\nFormato: ' + formatos[formato] + '\n\nPara cada ideia:\n1. TITULO PRINCIPAL\n2. TITULO ALTERNATIVO\n3. DESCRICAO (2-3 linhas)\n4. GANCHO (primeira frase irresistivel)\n5. POTENCIAL (por que vai performar bem)\n\nEscreva em portugues BR.';
+  var btn = $('btnIdeias');
+  btn.textContent = 'Gerando...';
   btn.disabled = true;
-  $('ideiasOutput').innerHTML = '<div class="output-placeholder"><span class="loading"></span> Gerando ideias...</div>';
+  $('ideiasOutput').innerHTML = '<div class="output-placeholder">Gerando ideias...</div>';
   try {
-    const result = await callAI(prompt, 2500);
+    var result = await callAI(prompt, 2500);
     $('ideiasOutput').textContent = result;
     showToast('Ideias geradas!', 'success');
   } catch(e) {
-    $('ideiasOutput').innerHTML = '<div class="output-placeholder" style="color:#e87070">❌ ' + e.message + '</div>';
+    $('ideiasOutput').innerHTML = '<div class="output-placeholder" style="color:#e87070">Erro: ' + e.message + '</div>';
     showToast(e.message, 'error');
-  } finally {
-    btn.innerHTML = '💡 Gerar Ideias';
-    btn.disabled = false;
   }
+  btn.textContent = 'Gerar Ideias';
+  btn.disabled = false;
 }
 
 async function gerarKeywords() {
-  const tema = $('keywordsTema').value.trim();
+  var tema = $('keywordsTema').value.trim();
   if (!tema) { showToast('Digite um tema!', 'error'); return; }
-  const idioma = $('keywordsIdioma').value;
-  const tipo = $('keywordsTipo').value;
-  const idiomas = { pt:'português brasileiro', en:'inglês', es:'espanhol' };
-
-  const prompt = `Especialista em SEO para canais bíblicos no YouTube.
-
-Keywords para: "${tema}" | Idioma: ${idiomas[idioma]} | Tipo: ${tipo}
-
-🔥 KEYWORDS PRINCIPAIS (alta busca) — 10 keywords
-📈 KEYWORDS SECUNDÁRIAS (média busca) — 15 keywords
-🎯 KEYWORDS LONG TAIL (específicas) — 15 keywords
-#️⃣ HASHTAGS — 10 hashtags
-
-Separe por vírgula dentro de cada grupo.`;
-
-  const btn = $('btnKeywords');
-  btn.innerHTML = '<span class="loading"></span> Pesquisando...';
+  var idioma = $('keywordsIdioma').value;
+  var tipo = $('keywordsTipo').value;
+  var idiomas = { pt: 'portugues brasileiro', en: 'ingles', es: 'espanhol' };
+  var prompt = 'Especialista em SEO para canais biblicos no YouTube.\n\nKeywords para: "' + tema + '"\nIdioma: ' + idiomas[idioma] + '\nTipo: ' + tipo + '\n\nKEYWORDS PRINCIPAIS (alta busca) - 10 keywords\nKEYWORDS SECUNDARIAS (media busca) - 15 keywords\nKEYWORDS LONG TAIL - 15 keywords\nHASHTAGS - 10 hashtags\n\nSepare por virgula dentro de cada grupo.';
+  var btn = $('btnKeywords');
+  btn.textContent = 'Pesquisando...';
   btn.disabled = true;
-  $('keywordsOutput').innerHTML = '<div class="output-placeholder"><span class="loading"></span> Pesquisando keywords...</div>';
+  $('keywordsOutput').innerHTML = '<div class="output-placeholder">Pesquisando keywords...</div>';
   try {
-    const result = await callAI(prompt, 1500);
-    renderKeywords(result);
+    var result = await callAI(prompt, 1500);
+    var html = '<div class="output-box" style="margin-bottom:12px">' + result + '</div><div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:8px;">';
+    var selected = {};
+    var words = result.match(/[^\n,|]+/g) || [];
+    words.forEach(function(w) {
+      w = w.trim();
+      if (w.length > 3) {
+        html += '<span class="keyword-tag" onclick="toggleKw(this,\'' + w.replace(/'/g,'') + '\')">' + w + '</span>';
+      }
+    });
+    html += '</div>';
+    $('keywordsOutput').innerHTML = html;
     showToast('Keywords geradas!', 'success');
   } catch(e) {
-    $('keywordsOutput').innerHTML = '<div class="output-placeholder" style="color:#e87070">❌ ' + e.message + '</div>';
+    $('keywordsOutput').innerHTML = '<div class="output-placeholder" style="color:#e87070">Erro: ' + e.message + '</div>';
     showToast(e.message, 'error');
-  } finally {
-    btn.innerHTML = '🔍 Pesquisar Keywords';
-    btn.disabled = false;
   }
+  btn.textContent = 'Pesquisar Keywords';
+  btn.disabled = false;
 }
 
-function renderKeywords(text) {
-  const container = $('keywordsOutput');
-  container.innerHTML = '<div class="output-box" style="margin-bottom:12px;">' + text + '</div>';
-  const words = text.match(/[^\n,|•\-]+/g) || [];
-  const grid = document.createElement('div');
-  grid.className = 'keywords-grid';
-  const selected = new Set();
-  words.filter(w => w.trim().length > 3).forEach(w => {
-    const tag = document.createElement('div');
-    tag.className = 'keyword-tag';
-    tag.textContent = w.trim();
-    tag.onclick = () => {
-      tag.classList.toggle('selected');
-      if (selected.has(w.trim())) selected.delete(w.trim()); else selected.add(w.trim());
-      updateSelected(selected);
-    };
-    grid.appendChild(tag);
-  });
-  container.appendChild(grid);
-}
-
-function updateSelected(selected) {
-  const div = $('keywordsSelected');
-  const txt = $('keywordsSelectedText');
-  if (selected.size > 0) {
-    div.style.display = 'block';
-    txt.textContent = [...selected].join(', ');
+function toggleKw(el, word) {
+  el.classList.toggle('selected');
+  var sel = $('keywordsSelected');
+  var txt = $('keywordsSelectedText');
+  var tags = document.querySelectorAll('.keyword-tag.selected');
+  if (tags.length > 0) {
+    sel.style.display = 'block';
+    var words = [];
+    tags.forEach(function(t) { words.push(t.textContent); });
+    txt.textContent = words.join(', ');
   } else {
-    div.style.display = 'none';
+    sel.style.display = 'none';
   }
 }
 
 async function gerarVisual() {
-  const tema = $('visualTema').value.trim();
-  if (!tema) { showToast('Digite uma cena bíblica!', 'error'); return; }
-  const estilo = $('visualEstilo').value;
-  const ferramenta = $('visualFerramenta').value;
-  const qtd = $('visualQtd').value;
-  const estilos = { cinematico:'photorealistic cinematic 8K dramatic lighting epic scale', painting:'epic oil painting renaissance style dramatic chiaroscuro', digital:'digital art concept art highly detailed vibrant colors', ancient:'ancient mosaic art byzantine style golden details', watercolor:'detailed watercolor illustration soft colors artistic' };
-
-  const prompt = `Especialista em prompts de imagem IA para o canal Explicador Bíblico.
-
-Crie ${qtd} prompts visuais épicos para: "${tema}"
-Estilo: ${estilos[estilo]} | Ferramenta: ${ferramenta}
-
-Para cada prompt:
-🎨 PROMPT [número]: [Prompt completo em inglês]
-📝 TRADUÇÃO: [O que será gerado em português]
-💡 DICA: [Configuração recomendada para ${ferramenta}]`;
-
-  const btn = $('btnVisual');
-  btn.innerHTML = '<span class="loading"></span> Gerando...';
+  var tema = $('visualTema').value.trim();
+  if (!tema) { showToast('Digite uma cena!', 'error'); return; }
+  var estilo = $('visualEstilo').value;
+  var ferramenta = $('visualFerramenta').value;
+  var qtd = $('visualQtd').value;
+  var estilos = { cinematico: 'photorealistic cinematic 8K dramatic lighting', painting: 'epic oil painting renaissance style', digital: 'digital art concept art highly detailed', ancient: 'ancient mosaic art byzantine style', watercolor: 'watercolor illustration soft colors' };
+  var prompt = 'Especialista em prompts de imagem IA.\n\nCrie ' + qtd + ' prompts visuais para: "' + tema + '"\nEstilo: ' + estilos[estilo] + '\nFerramenta: ' + ferramenta + '\n\nPara cada prompt:\nPROMPT [numero]: [prompt em ingles]\nTRADUCAO: [o que sera gerado]\nDICA: [configuracao para ' + ferramenta + ']';
+  var btn = $('btnVisual');
+  btn.textContent = 'Gerando...';
   btn.disabled = true;
-  $('visualOutput').innerHTML = '<div class="output-placeholder"><span class="loading"></span> Criando prompts visuais...</div>';
+  $('visualOutput').innerHTML = '<div class="output-placeholder">Criando prompts...</div>';
   try {
-    const result = await callAI(prompt, 2000);
+    var result = await callAI(prompt, 2000);
     $('visualOutput').textContent = result;
     showToast('Prompts gerados!', 'success');
   } catch(e) {
-    $('visualOutput').innerHTML = '<div class="output-placeholder" style="color:#e87070">❌ ' + e.message + '</div>';
+    $('visualOutput').innerHTML = '<div class="output-placeholder" style="color:#e87070">Erro: ' + e.message + '</div>';
     showToast(e.message, 'error');
-  } finally {
-    btn.innerHTML = '🎨 Gerar Prompts Visuais';
-    btn.disabled = false;
   }
+  btn.textContent = 'Gerar Prompts Visuais';
+  btn.disabled = false;
 }
 
 async function gerarThumbnails() {
-  const tema = $('thumbTema').value.trim();
+  var tema = $('thumbTema').value.trim();
   if (!tema) { showToast('Digite um tema!', 'error'); return; }
-  const estilo = $('thumbEstilo').value;
-  const cores = $('thumbCores').value;
-  const estilos = { choque:'choque e impacto visual', misterio:'mistério e curiosidade', epico:'épico cinematográfico', moderno:'moderno e clean' };
-  const paletas = { gold:'dourado e preto', fire:'vermelho e laranja', divine:'azul e dourado', dark:'escuro e dramático' };
-
-  const prompt = `Designer especialista em thumbnails para o canal Explicador Bíblico no YouTube.
-
-3 conceitos de thumbnail para: "${tema}"
-Estilo: ${estilos[estilo]} | Paleta: ${paletas[cores]}
-
-Para cada conceito:
-🖼️ CONCEITO [número]: [Nome]
-ELEMENTO CENTRAL: [Centro da imagem]
-FUNDO: [Descrição do fundo]
-TEXTO PRINCIPAL: [Máx 4 palavras]
-TEXTO SECUNDÁRIO: [Apoio]
-EFEITOS: [Luz, sombra, partículas]
-COMPOSIÇÃO: [Organização dos elementos]
-PROMPT IA: [Prompt em inglês para gerar a imagem]`;
-
-  const btn = $('btnThumbnails');
-  btn.innerHTML = '<span class="loading"></span> Gerando...';
+  var estilo = $('thumbEstilo').value;
+  var cores = $('thumbCores').value;
+  var estilos = { choque: 'choque e impacto', misterio: 'misterio e curiosidade', epico: 'epico cinematografico', moderno: 'moderno e clean' };
+  var paletas = { gold: 'dourado e preto', fire: 'vermelho e laranja', divine: 'azul e dourado', dark: 'escuro e dramatico' };
+  var prompt = 'Designer de thumbnails para o canal Explicador Biblico no YouTube.\n\n3 conceitos de thumbnail para: "' + tema + '"\nEstilo: ' + estilos[estilo] + '\nPaleta: ' + paletas[cores] + '\n\nPara cada conceito:\nCONCEITO [numero]: [nome]\nELEMENTO CENTRAL: [descricao]\nFUNDO: [descricao]\nTEXTO PRINCIPAL: [max 4 palavras]\nTEXTO SECUNDARIO: [apoio]\nEFEITOS: [luz sombra particulas]\nPROMPT IA: [prompt em ingles]';
+  var btn = $('btnThumbnails');
+  btn.textContent = 'Gerando...';
   btn.disabled = true;
-  $('thumbOutput').innerHTML = '<div class="output-placeholder"><span class="loading"></span> Criando conceitos...</div>';
+  $('thumbOutput').innerHTML = '<div class="output-placeholder">Criando conceitos...</div>';
   try {
-    const result = await callAI(prompt, 2000);
+    var result = await callAI(prompt, 2000);
     $('thumbOutput').innerHTML = '<div class="output-box">' + result.replace(/\n/g, '<br>') + '</div>';
     showToast('Conceitos gerados!', 'success');
   } catch(e) {
-    $('thumbOutput').innerHTML = '<div class="output-placeholder" style="color:#e87070">❌ ' + e.message + '</div>';
+    $('thumbOutput').innerHTML = '<div class="output-placeholder" style="color:#e87070">Erro: ' + e.message + '</div>';
     showToast(e.message, 'error');
-  } finally {
-    btn.innerHTML = '🖼 Gerar Conceitos';
-    btn.disabled = false;
   }
+  btn.textContent = 'Gerar Conceitos';
+  btn.disabled = false;
 }
 
 async function gerarSEO() {
-  const tema = $('seoTema').value.trim();
+  var tema = $('seoTema').value.trim();
   if (!tema) { showToast('Digite um tema!', 'error'); return; }
-  const plataforma = $('seoPlataforma').value;
-  const objetivo = $('seoObjetivo').value;
-  const objetivos = { views:'maximizar visualizações', subs:'ganhar inscritos', search:'ranquear na busca' };
-
-  const prompt = `Especialista em SEO para o canal Explicador Bíblico no YouTube.
-
-SEO completo para: "${tema}"
-Plataforma: ${plataforma} | Objetivo: ${objetivos[objetivo]}
-
-📌 TÍTULOS (3 opções por CTR):
-1. [Título A] 2. [Título B] 3. [Título C]
-
-📝 DESCRIÇÃO COMPLETA: [200-300 palavras com keywords naturais]
-
-🏷️ TAGS: [30 tags separadas por vírgula]
-
-#️⃣ HASHTAGS: [10 hashtags]
-
-🗂️ CATEGORIA RECOMENDADA
-
-📊 ANÁLISE DE COMPETITIVIDADE
-
-Escreva em português BR.`;
-
-  const btn = $('btnSEO');
-  btn.innerHTML = '<span class="loading"></span> Gerando...';
+  var plataforma = $('seoPlataforma').value;
+  var objetivo = $('seoObjetivo').value;
+  var objetivos = { views: 'maximizar visualizacoes', subs: 'ganhar inscritos', search: 'ranquear na busca' };
+  var prompt = 'Especialista em SEO para o canal Explicador Biblico no YouTube.\n\nSEO completo para: "' + tema + '"\nPlataforma: ' + plataforma + '\nObjetivo: ' + objetivos[objetivo] + '\n\nTITULOS (3 opcoes):\n1. [Titulo A]\n2. [Titulo B]\n3. [Titulo C]\n\nDESCRICAO: [200-300 palavras com keywords]\n\nTAGS: [30 tags separadas por virgula]\n\nHASHTAGS: [10 hashtags]\n\nCATEGORIA RECOMENDADA\n\nANALISE DE COMPETITIVIDADE\n\nEscreva em portugues BR.';
+  var btn = $('btnSEO');
+  btn.textContent = 'Gerando...';
   btn.disabled = true;
-  $('seoOutput').innerHTML = '<div class="output-placeholder"><span class="loading"></span> Gerando SEO...</div>';
+  $('seoOutput').innerHTML = '<div class="output-placeholder">Gerando SEO...</div>';
   try {
-    const result = await callAI(prompt, 2500);
+    var result = await callAI(prompt, 2500);
     $('seoOutput').textContent = result;
     showToast('SEO gerado!', 'success');
   } catch(e) {
-    $('seoOutput').innerHTML = '<div class="output-placeholder" style="color:#e87070">❌ ' + e.message + '</div>';
+    $('seoOutput').innerHTML = '<div class="output-placeholder" style="color:#e87070">Erro: ' + e.message + '</div>';
     showToast(e.message, 'error');
-  } finally {
-    btn.innerHTML = '
-'📊 Gerar SEO Completo';
-    btn.disabled = false;
   }
+  btn.textContent = 'Gerar SEO Completo';
+  btn.disabled = false;
 }
 
 async function gerarFormula() {
-  const tema = $('formulaTema').value.trim();
+  var tema = $('formulaTema').value.trim();
   if (!tema) { showToast('Digite um tema!', 'error'); return; }
-
-  const prompt = `Estrategista de vídeos virais do canal Explicador Bíblico no YouTube.
-
-Fórmula completa de vídeo viral para: "${tema}"
-
-⚡ GANCHO (0-30s): [Script exato de abertura cinematográfica]
-❓ PROBLEMA/TENSÃO (30s-2min): [Como criar curiosidade irresistível]
-📖 DESENVOLVIMENTO (2min-80%): [Estrutura de blocos de conteúdo]
-🔄 LOOPS DE RETENÇÃO: [3 momentos de suspense para manter audiência]
-💡 REVELAÇÃO PRINCIPAL: [O momento Uau do vídeo]
-🎯 CTA ESTRATÉGICO: [Call to action que converte]
-📊 MÉTRICAS ALVO: [CTR, retenção e performance esperados]
-🔑 PALAVRAS-CHAVE DO ROTEIRO: [Palavras que aumentam SEO falado]`;
-
-  const btn = $('btnFormula');
-  btn.innerHTML = '<span class="loading"></span> Gerando...';
+  var prompt = 'Estrategista de videos virais do canal Explicador Biblico no YouTube.\n\nFormula completa de video viral para: "' + tema + '"\n\nGANCHO (0-30s): [script exato de abertura]\nPROBLEMA/TENSAO (30s-2min): [como criar curiosidade]\nDESENVOLVIMENTO (2min-80%): [estrutura de blocos]\nLOOPS DE RETENCAO: [3 momentos de suspense]\nREVELACAO PRINCIPAL: [o momento uau]\nCTA ESTRATEGICO: [call to action que converte]\nMETRICAS ALVO: [CTR retencao e performance]\nPALAVRAS-CHAVE DO ROTEIRO: [palavras que aumentam SEO falado]';
+  var btn = $('btnFormula');
+  btn.textContent = 'Gerando...';
   btn.disabled = true;
   try {
-    const result = await callAI(prompt, 2000);
+    var result = await callAI(prompt, 2000);
     $('formulaOutput').style.display = 'block';
     $('formulaContent').innerHTML = '<div class="output-box">' + result.replace(/\n/g, '<br>') + '</div>';
-    showToast('Fórmula gerada!', 'success');
+    showToast('Formula gerada!', 'success');
   } catch(e) {
     showToast(e.message, 'error');
-  } finally {
-    btn.innerHTML = '⚡ Gerar Fórmula Viral';
-    btn.disabled = false;
   }
+  btn.textContent = 'Gerar Formula Viral';
+  btn.disabled = false;
 }
 
-function loadAPI() {
-  const key = localStorage.getItem('ebp_key');
-  const provider = localStorage.getItem('ebp_provider');
-  const model = localStorage.getItem('ebp_model');
-  if (key) {
-    $('apiKey').value = key;
-    $('apiStatus').innerHTML = '<div class="status-bar status-ok">✅ API carregada.</div>';
-  }
-  if (provider) $('apiProvider').value = provider;
-  if (model) {
-    const opt = $('aiModel');
-    let found = false;
-    for (let o of opt.options) { if (o.value === model) { found = true; break; } }
-    if (found) { opt.value = model; }
-    else { opt.value = 'custom'; $('customModel').value = model; $('customModel').style.display = 'block'; }
-  }
-}
-
-function loadCfg() {
-  const d = localStorage.getItem('ebp_duration');
-  const t = localStorage.getItem('ebp_tone');
-  const a = localStorage.getItem('ebp_audience');
-  const v = localStorage.getItem('ebp_visual');
-  if (d) $('videoDuration').value = d;
-  if (t) $('narrativeTone').value = t;
-  if (a) $('targetAudience').value = a;
-  if (v) $('visualStyle').value = v;
-}
-
-loadAPI();
-loadCfg();
+loadSaved();
 renderTemas('temasContainer', 'narrativaTema');
 renderTemas('temasContainerIdeias', 'ideiasTema');
 </script>
