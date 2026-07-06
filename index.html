@@ -37,120 +37,29 @@ body {
   gap: 16px;
   box-shadow: 0 4px 30px rgba(201,168,76,0.15);
 }
-.header-cross {
-  font-size: 2.2rem;
-  color: var(--gold);
-  text-shadow: 0 0 20px rgba(201,168,76,0.6);
-}
-.header-title {
-  font-size: 1.5rem;
-  font-weight: 800;
-  letter-spacing: 3px;
-  color: var(--gold);
-  text-transform: uppercase;
-  text-shadow: 0 0 15px rgba(201,168,76,0.4);
-}
-.header-sub {
-  font-size: 0.7rem;
-  color: var(--text2);
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  margin-top: 2px;
-}
-.header-badge {
-  margin-left: auto;
-  background: var(--gold);
-  color: #000;
-  padding: 4px 12px;
-  border-radius: 20px;
-  font-size: 0.7rem;
-  font-weight: 700;
-  letter-spacing: 1px;
-}
-.tabs-container {
-  background: var(--dark);
-  border-bottom: 1px solid var(--border);
-  padding: 0 16px;
-  display: flex;
-  gap: 2px;
-  overflow-x: auto;
-}
-.tab {
-  padding: 12px 20px;
-  cursor: pointer;
-  color: var(--text2);
-  font-size: 0.78rem;
-  font-weight: 600;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  border-bottom: 3px solid transparent;
-  white-space: nowrap;
-  transition: all 0.2s;
-}
+.header-cross { font-size: 2.2rem; color: var(--gold); text-shadow: 0 0 20px rgba(201,168,76,0.6); }
+.header-title { font-size: 1.5rem; font-weight: 800; letter-spacing: 3px; color: var(--gold); text-transform: uppercase; text-shadow: 0 0 15px rgba(201,168,76,0.4); }
+.header-sub { font-size: 0.7rem; color: var(--text2); letter-spacing: 2px; text-transform: uppercase; margin-top: 2px; }
+.header-badge { margin-left: auto; background: var(--gold); color: #000; padding: 4px 12px; border-radius: 20px; font-size: 0.7rem; font-weight: 700; letter-spacing: 1px; }
+.tabs-container { background: var(--dark); border-bottom: 1px solid var(--border); padding: 0 16px; display: flex; gap: 2px; overflow-x: auto; }
+.tab { padding: 12px 20px; cursor: pointer; color: var(--text2); font-size: 0.78rem; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; border-bottom: 3px solid transparent; white-space: nowrap; transition: all 0.2s; }
 .tab:hover { color: var(--gold); }
 .tab.active { color: var(--gold); border-bottom-color: var(--gold); }
 .main { padding: 24px; max-width: 1200px; margin: 0 auto; }
-.card {
-  background: var(--card);
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  padding: 20px;
-  margin-bottom: 20px;
-}
-.card-title {
-  font-size: 0.75rem;
-  font-weight: 700;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  color: var(--gold);
-  margin-bottom: 16px;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-label {
-  display: block;
-  font-size: 0.72rem;
-  font-weight: 600;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  color: var(--text2);
-  margin-bottom: 6px;
-}
-input[type=text], input[type=password], select, textarea {
-  width: 100%;
-  background: var(--darker);
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  padding: 10px 14px;
-  color: var(--text);
-  font-size: 0.88rem;
-  outline: none;
-  transition: border-color 0.2s;
-}
-input[type=text]:focus, input[type=password]:focus, select:focus, textarea:focus {
-  border-color: var(--gold);
-}
+.card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 20px; margin-bottom: 20px; }
+.card-title { font-size: 0.75rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); margin-bottom: 16px; display: flex; align-items: center; gap: 8px; }
+label { display: block; font-size: 0.72rem; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; color: var(--text2); margin-bottom: 6px; }
+input[type=text], input[type=password], select, textarea { width: 100%; background: var(--darker); border: 1px solid var(--border); border-radius: 8px; padding: 10px 14px; color: var(--text); font-size: 0.88rem; outline: none; transition: border-color 0.2s; }
+input[type=text]:focus, input[type=password]:focus, select:focus, textarea:focus { border-color: var(--gold); }
 select option { background: var(--darker); }
 textarea { resize: vertical; min-height: 80px; }
 .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px; }
 .form-group { margin-bottom: 16px; }
-.btn {
-  padding: 10px 20px;
-  border-radius: 8px;
-  border: none;
-  cursor: pointer;
-  font-size: 0.82rem;
-  font-weight: 700;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  transition: all 0.2s;
-}
+.btn { padding: 10px 20px; border-radius: 8px; border: none; cursor: pointer; font-size: 0.82rem; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; transition: all 0.2s; }
 .btn-gold { background: linear-gradient(135deg, var(--gold), var(--gold2)); color: #000; }
 .btn-gold:hover { opacity: 0.85; transform: translateY(-1px); }
 .btn-outline { background: transparent; border: 1px solid var(--gold); color: var(--gold); }
 .btn-outline:hover { background: rgba(201,168,76,0.1); }
-.btn-red { background: linear-gradient(135deg, var(--red), var(--red2)); color: #fff; }
 .api-input-wrap { position: relative; display: flex; align-items: center; }
 .api-input-wrap input { padding-right: 44px; }
 .api-eye { position: absolute; right: 12px; background: none; border: none; color: var(--text2); cursor: pointer; font-size: 1rem; padding: 4px; }
@@ -159,137 +68,33 @@ textarea { resize: vertical; min-height: 80px; }
 .status-ok { background: rgba(39,174,96,0.15); border: 1px solid rgba(39,174,96,0.3); color: #5dba7e; }
 .status-err { background: rgba(192,57,43,0.15); border: 1px solid rgba(192,57,43,0.3); color: #e87070; }
 .status-info { background: rgba(41,128,185,0.15); border: 1px solid rgba(41,128,185,0.3); color: #6ab0e0; }
-.output-box {
-  background: var(--darker);
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  padding: 16px;
-  min-height: 120px;
-  font-size: 0.88rem;
-  line-height: 1.7;
-  white-space: pre-wrap;
-  word-break: break-word;
-}
+.output-box { background: var(--darker); border: 1px solid var(--border); border-radius: 8px; padding: 16px; min-height: 120px; font-size: 0.88rem; line-height: 1.7; white-space: pre-wrap; word-break: break-word; }
 .output-placeholder { color: var(--text2); font-style: italic; text-align: center; padding: 40px 20px; }
 .tab-content { display: none; }
 .tab-content.active { display: block; }
-.grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
 .keywords-grid { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
-.keyword-tag {
-  background: rgba(201,168,76,0.15);
-  border: 1px solid rgba(201,168,76,0.3);
-  color: var(--gold2);
-  padding: 6px 14px;
-  border-radius: 20px;
-  font-size: 0.78rem;
-  cursor: pointer;
-  transition: all 0.2s;
-  user-select: none;
-}
+.keyword-tag { background: rgba(201,168,76,0.15); border: 1px solid rgba(201,168,76,0.3); color: var(--gold2); padding: 6px 14px; border-radius: 20px; font-size: 0.78rem; cursor: pointer; transition: all 0.2s; user-select: none; }
 .keyword-tag:hover { background: rgba(201,168,76,0.25); }
 .keyword-tag.selected { background: var(--gold); color: #000; font-weight: 700; }
-.loading {
-  display: inline-block;
-  width: 16px; height: 16px;
-  border: 2px solid rgba(201,168,76,0.3);
-  border-top-color: var(--gold);
-  border-radius: 50%;
-  animation: spin 0.8s linear infinite;
-  vertical-align: middle;
-  margin-right: 6px;
-}
+.loading { display: inline-block; width: 16px; height: 16px; border: 2px solid rgba(201,168,76,0.3); border-top-color: var(--gold); border-radius: 50%; animation: spin 0.8s linear infinite; vertical-align: middle; margin-right: 6px; }
 @keyframes spin { to { transform: rotate(360deg); } }
-.copy-btn {
-  background: rgba(201,168,76,0.1);
-  border: 1px solid rgba(201,168,76,0.3);
-  color: var(--gold);
-  padding: 6px 12px;
-  border-radius: 6px;
-  cursor: pointer;
-  font-size: 0.75rem;
-  transition: all 0.2s;
-}
+.copy-btn { background: rgba(201,168,76,0.1); border: 1px solid rgba(201,168,76,0.3); color: var(--gold); padding: 6px 12px; border-radius: 6px; cursor: pointer; font-size: 0.75rem; transition: all 0.2s; }
 .copy-btn:hover { background: rgba(201,168,76,0.2); }
-
-/* TEMAS BIBLIOTECA */
-.temas-biblioteca {
-  margin-bottom: 16px;
-}
-.temas-categoria-title {
-  font-size: 0.68rem;
-  font-weight: 700;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  color: var(--gold);
-  margin: 12px 0 8px 0;
-  display: flex;
-  align-items: center;
-  gap: 6px;
-}
-.temas-grid {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-}
-.tema-pill {
-  background: rgba(201,168,76,0.08);
-  border: 1px solid rgba(201,168,76,0.2);
-  color: var(--text);
-  padding: 5px 12px;
-  border-radius: 20px;
-  font-size: 0.76rem;
-  cursor: pointer;
-  transition: all 0.2s;
-}
-.tema-pill:hover {
-  background: rgba(201,168,76,0.2);
-  border-color: var(--gold);
-  color: var(--gold2);
-  transform: translateY(-1px);
-}
-.tema-pill.ativo {
-  background: var(--gold);
-  color: #000;
-  font-weight: 700;
-  border-color: var(--gold);
-}
-.temas-search {
-  margin-bottom: 12px;
-}
-
-#customModel {
-  display: none;
-  margin-top: 8px;
-  width: 100%;
-}
-.toasts {
-  position: fixed;
-  bottom: 24px;
-  right: 24px;
-  z-index: 9999;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-.toast {
-  background: var(--card2);
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  padding: 12px 18px;
-  font-size: 0.82rem;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.4);
-  animation: slideIn 0.3s ease;
-  max-width: 320px;
-}
+.temas-biblioteca { margin-bottom: 16px; }
+.temas-categoria-title { font-size: 0.68rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); margin: 12px 0 8px 0; display: flex; align-items: center; gap: 6px; }
+.temas-grid { display: flex; flex-wrap: wrap; gap: 6px; }
+.tema-pill { background: rgba(201,168,76,0.08); border: 1px solid rgba(201,168,76,0.2); color: var(--text); padding: 5px 12px; border-radius: 20px; font-size: 0.76rem; cursor: pointer; transition: all 0.2s; }
+.tema-pill:hover { background: rgba(201,168,76,0.2); border-color: var(--gold); color: var(--gold2); transform: translateY(-1px); }
+.tema-pill.ativo { background: var(--gold); color: #000; font-weight: 700; border-color: var(--gold); }
+.temas-search { margin-bottom: 12px; }
+#customModel { display: none; margin-top: 8px; width: 100%; }
+.toasts { position: fixed; bottom: 24px; right: 24px; z-index: 9999; display: flex; flex-direction: column; gap: 8px; }
+.toast { background: var(--card2); border: 1px solid var(--border); border-radius: 8px; padding: 12px 18px; font-size: 0.82rem; box-shadow: 0 4px 20px rgba(0,0,0,0.4); animation: slideIn 0.3s ease; max-width: 320px; }
 .toast.success { border-color: var(--success); color: #5dba7e; }
 .toast.error { border-color: var(--red2); color: #e87070; }
 .toast.info { border-color: var(--info); color: #6ab0e0; }
 @keyframes slideIn { from { transform: translateX(100%); opacity:0; } to { transform: translateX(0); opacity:1; } }
-
-@media (max-width: 768px) {
-  .form-row, .grid-2 { grid-template-columns: 1fr; }
-  .main { padding: 16px; }
-}
+@media (max-width: 768px) { .form-row { grid-template-columns: 1fr; } .main { padding: 16px; } }
 </style>
 </head>
 <body>
@@ -316,7 +121,6 @@ textarea { resize: vertical; min-height: 80px; }
 
 <div class="main">
 
-<!-- CONFIG TAB -->
 <div id="tab-config" class="tab-content active">
   <div class="card">
     <div class="card-title">🔑 Configuração da API</div>
@@ -339,13 +143,19 @@ textarea { resize: vertical; min-height: 80px; }
     <div class="form-group">
       <label>Modelo de IA</label>
       <select id="aiModel" onchange="handleModelChange()">
-        <optgroup label="— OpenRouter —">
+        <optgroup label="— Google —">
           <option value="google/gemini-2.5-flash">Gemini 2.5 Flash (Rápido)</option>
           <option value="google/gemini-2.5-pro">Gemini 2.5 Pro (Avançado)</option>
+        </optgroup>
+        <optgroup label="— Anthropic —">
           <option value="anthropic/claude-sonnet-4-5">Claude Sonnet 4.5</option>
           <option value="anthropic/claude-opus-4">Claude Opus 4</option>
+        </optgroup>
+        <optgroup label="— OpenAI —">
           <option value="openai/gpt-4o">GPT-4o</option>
           <option value="openai/gpt-4o-mini">GPT-4o Mini (Econômico)</option>
+        </optgroup>
+        <optgroup label="— Outros —">
           <option value="meta-llama/llama-3.3-70b-instruct">Llama 3.3 70B</option>
           <option value="deepseek/deepseek-r1">DeepSeek R1</option>
         </optgroup>
@@ -359,7 +169,6 @@ textarea { resize: vertical; min-height: 80px; }
     </div>
     <div id="apiStatus"></div>
   </div>
-
   <div class="card">
     <div class="card-title">📺 Configuração da Narrativa</div>
     <div class="form-row">
@@ -408,7 +217,6 @@ textarea { resize: vertical; min-height: 80px; }
   </div>
 </div>
 
-<!-- NARRATIVA TAB -->
 <div id="tab-narrativa" class="tab-content">
   <div class="card">
     <div class="card-title">📚 Biblioteca de Temas Bíblicos</div>
@@ -417,11 +225,10 @@ textarea { resize: vertical; min-height: 80px; }
     </div>
     <div class="temas-biblioteca" id="temasContainer"></div>
   </div>
-
   <div class="card">
     <div class="card-title">📖 Gerador de Narrativa Completa</div>
     <div class="form-group">
-      <label>Tema / Passagem Bíblica Selecionado</label>
+      <label>Tema Selecionado</label>
       <input type="text" id="narrativaTema" placeholder="Selecione um tema acima ou digite aqui...">
     </div>
     <div class="form-row">
@@ -445,23 +252,17 @@ textarea { resize: vertical; min-height: 80px; }
         </select>
       </div>
     </div>
-    <button class="btn btn-gold" onclick="gerarNarrativa()" id="btnNarrativa">
-      ✨ Gerar Narrativa Completa
-    </button>
+    <button class="btn btn-gold" onclick="gerarNarrativa()" id="btnNarrativa">✨ Gerar Narrativa Completa</button>
   </div>
-
   <div class="card">
     <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;">
       <div class="card-title" style="margin:0">📄 Resultado</div>
       <button class="copy-btn" onclick="copyOutput('narrativaOutput')">📋 Copiar</button>
     </div>
-    <div class="output-box" id="narrativaOutput">
-      <div class="output-placeholder">A narrativa gerada aparecerá aqui...</div>
-    </div>
+    <div class="output-box" id="narrativaOutput"><div class="output-placeholder">A narrativa gerada aparecerá aqui...</div></div>
   </div>
 </div>
 
-<!-- IDEIAS TAB -->
 <div id="tab-ideias" class="tab-content">
   <div class="card">
     <div class="card-title">📚 Biblioteca de Temas — Ideias</div>
@@ -470,7 +271,6 @@ textarea { resize: vertical; min-height: 80px; }
     </div>
     <div class="temas-biblioteca" id="temasContainerIdeias"></div>
   </div>
-
   <div class="card">
     <div class="card-title">💡 Gerador de Ideias de Vídeos</div>
     <div class="form-group">
@@ -499,19 +299,15 @@ textarea { resize: vertical; min-height: 80px; }
     </div>
     <button class="btn btn-gold" onclick="gerarIdeias()" id="btnIdeias">💡 Gerar Ideias</button>
   </div>
-
   <div class="card">
     <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;">
       <div class="card-title" style="margin:0">📋 Ideias Geradas</div>
       <button class="copy-btn" onclick="copyOutput('ideiasOutput')">📋 Copiar</button>
     </div>
-    <div class="output-box" id="ideiasOutput">
-      <div class="output-placeholder">As ideias geradas aparecerão aqui...</div>
-    </div>
+    <div class="output-box" id="ideiasOutput"><div class="output-placeholder">As ideias geradas aparecerão aqui...</div></div>
   </div>
 </div>
 
-<!-- KEYWORDS TAB -->
 <div id="tab-keywords" class="tab-content">
   <div class="card">
     <div class="card-title">🔑 Pesquisa de Keywords</div>
@@ -541,9 +337,7 @@ textarea { resize: vertical; min-height: 80px; }
   </div>
   <div class="card">
     <div class="card-title">🏷 Keywords Geradas</div>
-    <div id="keywordsOutput">
-      <div class="output-placeholder">As keywords aparecerão aqui como tags clicáveis...</div>
-    </div>
+    <div id="keywordsOutput"><div class="output-placeholder">As keywords aparecerão aqui como tags clicáveis...</div></div>
     <div id="keywordsSelected" style="margin-top:16px;display:none;">
       <label>Keywords Selecionadas:</label>
       <div class="output-box" id="keywordsSelectedText" style="min-height:60px;"></div>
@@ -552,7 +346,6 @@ textarea { resize: vertical; min-height: 80px; }
   </div>
 </div>
 
-<!-- VISUAL TAB -->
 <div id="tab-visual" class="tab-content">
   <div class="card">
     <div class="card-title">🎨 Gerador de Prompts Visuais</div>
@@ -596,13 +389,10 @@ textarea { resize: vertical; min-height: 80px; }
       <div class="card-title" style="margin:0">🖼 Prompts Gerados</div>
       <button class="copy-btn" onclick="copyOutput('visualOutput')">📋 Copiar</button>
     </div>
-    <div class="output-box" id="visualOutput">
-      <div class="output-placeholder">Os prompts visuais aparecerão aqui...</div>
-    </div>
+    <div class="output-box" id="visualOutput"><div class="output-placeholder">Os prompts visuais aparecerão aqui...</div></div>
   </div>
 </div>
 
-<!-- THUMBNAILS TAB -->
 <div id="tab-thumbnails" class="tab-content">
   <div class="card">
     <div class="card-title">🖼 Gerador de Conceitos de Thumbnails</div>
@@ -634,13 +424,10 @@ textarea { resize: vertical; min-height: 80px; }
   </div>
   <div class="card">
     <div class="card-title">🎯 Conceitos de Thumbnails</div>
-    <div id="thumbOutput">
-      <div class="output-placeholder">Os conceitos de thumbnails aparecerão aqui...</div>
-    </div>
+    <div id="thumbOutput"><div class="output-placeholder">Os conceitos de thumbnails aparecerão aqui...</div></div>
   </div>
 </div>
 
-<!-- SEO TAB -->
 <div id="tab-seo" class="tab-content">
   <div class="card">
     <div class="card-title">📊 Otimizador SEO Completo</div>
@@ -673,19 +460,16 @@ textarea { resize: vertical; min-height: 80px; }
       <div class="card-title" style="margin:0">📈 Resultado SEO</div>
       <button class="copy-btn" onclick="copyOutput('seoOutput')">📋 Copiar</button>
     </div>
-    <div class="output-box" id="seoOutput">
-      <div class="output-placeholder">O SEO completo aparecerá aqui...</div>
-    </div>
+    <div class="output-box" id="seoOutput"><div class="output-placeholder">O SEO completo aparecerá aqui...</div></div>
   </div>
 </div>
 
-<!-- FORMULA TAB -->
 <div id="tab-formula" class="tab-content">
   <div class="card">
     <div class="card-title">⚡ Fórmula de Vídeo Viral</div>
     <div class="form-group">
       <label>Tema do Vídeo</label>
-      <input type="text" id="formulaTema" placeholder="Ex: Os Gigantes da Bíblia - Quem eram os Nefilins?">
+      <input type="text" id="formulaTema" placeholder="Ex: Os Gigantes da Bíblia — Quem eram os Nefilins?">
     </div>
     <button class="btn btn-gold" onclick="gerarFormula()" id="btnFormula">⚡ Gerar Fórmula Viral</button>
   </div>
@@ -697,705 +481,7 @@ textarea { resize: vertical; min-height: 80px; }
 
 </div>
 <div class="toasts" id="toasts"></div>
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Explicador Bíblico Pro</title>
-<style>
-:root {
-  --dark: #0a0a0f;
-  --darker: #050508;
-  --card: #12121a;
-  --card2: #1a1a26;
-  --gold: #c9a84c;
-  --gold2: #e8c96d;
-  --gold3: #f5e6b0;
-  --red: #8b1a1a;
-  --red2: #c0392b;
-  --border: #2a2a3a;
-  --text: #e8e8f0;
-  --text2: #9999bb;
-  --success: #27ae60;
-  --info: #2980b9;
-}
-* { margin:0; padding:0; box-sizing:border-box; }
-body {
-  font-family: 'Segoe UI', sans-serif;
-  background: var(--darker);
-  color: var(--text);
-  min-height: 100vh;
-}
-.header {
-  background: linear-gradient(135deg, #1a0a0a 0%, #2d1810 40%, #1a0f05 70%, #0f0a1a 100%);
-  border-bottom: 2px solid var(--gold);
-  padding: 16px 24px;
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  box-shadow: 0 4px 30px rgba(201,168,76,0.15);
-}
-.header-cross {
-  font-size: 2.2rem;
-  color: var(--gold);
-  text-shadow: 0 0 20px rgba(201,168,76,0.6);
-}
-.header-title {
-  font-size: 1.5rem;
-  font-weight: 800;
-  letter-spacing: 3px;
-  color: var(--gold);
-  text-transform: uppercase;
-  text-shadow: 0 0 15px rgba(201,168,76,0.4);
-}
-.header-sub {
-  font-size: 0.7rem;
-  color: var(--text2);
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  margin-top: 2px;
-}
-.header-badge {
-  margin-left: auto;
-  background: var(--gold);
-  color: #000;
-  padding: 4px 12px;
-  border-radius: 20px;
-  font-size: 0.7rem;
-  font-weight: 700;
-  letter-spacing: 1px;
-}
-.tabs-container {
-  background: var(--dark);
-  border-bottom: 1px solid var(--border);
-  padding: 0 16px;
-  display: flex;
-  gap: 2px;
-  overflow-x: auto;
-}
-.tab {
-  padding: 12px 20px;
-  cursor: pointer;
-  color: var(--text2);
-  font-size: 0.78rem;
-  font-weight: 600;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  border-bottom: 3px solid transparent;
-  white-space: nowrap;
-  transition: all 0.2s;
-}
-.tab:hover { color: var(--gold); }
-.tab.active { color: var(--gold); border-bottom-color: var(--gold); }
-.main { padding: 24px; max-width: 1200px; margin: 0 auto; }
-.card {
-  background: var(--card);
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  padding: 20px;
-  margin-bottom: 20px;
-}
-.card-title {
-  font-size: 0.75rem;
-  font-weight: 700;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  color: var(--gold);
-  margin-bottom: 16px;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-label {
-  display: block;
-  font-size: 0.72rem;
-  font-weight: 600;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  color: var(--text2);
-  margin-bottom: 6px;
-}
-input[type=text], input[type=password], select, textarea {
-  width: 100%;
-  background: var(--darker);
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  padding: 10px 14px;
-  color: var(--text);
-  font-size: 0.88rem;
-  outline: none;
-  transition: border-color 0.2s;
-}
-input[type=text]:focus, input[type=password]:focus, select:focus, textarea:focus {
-  border-color: var(--gold);
-}
-select option { background: var(--darker); }
-textarea { resize: vertical; min-height: 80px; }
-.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px; }
-.form-group { margin-bottom: 16px; }
-.btn {
-  padding: 10px 20px;
-  border-radius: 8px;
-  border: none;
-  cursor: pointer;
-  font-size: 0.82rem;
-  font-weight: 700;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  transition: all 0.2s;
-}
-.btn-gold { background: linear-gradient(135deg, var(--gold), var(--gold2)); color: #000; }
-.btn-gold:hover { opacity: 0.85; transform: translateY(-1px); }
-.btn-outline { background: transparent; border: 1px solid var(--gold); color: var(--gold); }
-.btn-outline:hover { background: rgba(201,168,76,0.1); }
-.btn-red { background: linear-gradient(135deg, var(--red), var(--red2)); color: #fff; }
-.api-input-wrap { position: relative; display: flex; align-items: center; }
-.api-input-wrap input { padding-right: 44px; }
-.api-eye { position: absolute; right: 12px; background: none; border: none; color: var(--text2); cursor: pointer; font-size: 1rem; padding: 4px; }
-.api-eye:hover { color: var(--gold); }
-.status-bar { display: flex; align-items: center; gap: 8px; padding: 10px 14px; border-radius: 8px; font-size: 0.8rem; margin-top: 10px; }
-.status-ok { background: rgba(39,174,96,0.15); border: 1px solid rgba(39,174,96,0.3); color: #5dba7e; }
-.status-err { background: rgba(192,57,43,0.15); border: 1px solid rgba(192,57,43,0.3); color: #e87070; }
-.status-info { background: rgba(41,128,185,0.15); border: 1px solid rgba(41,128,185,0.3); color: #6ab0e0; }
-.output-box {
-  background: var(--darker);
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  padding: 16px;
-  min-height: 120px;
-  font-size: 0.88rem;
-  line-height: 1.7;
-  white-space: pre-wrap;
-  word-break: break-word;
-}
-.output-placeholder { color: var(--text2); font-style: italic; text-align: center; padding: 40px 20px; }
-.tab-content { display: none; }
-.tab-content.active { display: block; }
-.grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-.keywords-grid { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
-.keyword-tag {
-  background: rgba(201,168,76,0.15);
-  border: 1px solid rgba(201,168,76,0.3);
-  color: var(--gold2);
-  padding: 6px 14px;
-  border-radius: 20px;
-  font-size: 0.78rem;
-  cursor: pointer;
-  transition: all 0.2s;
-  user-select: none;
-}
-.keyword-tag:hover { background: rgba(201,168,76,0.25); }
-.keyword-tag.selected { background: var(--gold); color: #000; font-weight: 700; }
-.loading {
-  display: inline-block;
-  width: 16px; height: 16px;
-  border: 2px solid rgba(201,168,76,0.3);
-  border-top-color: var(--gold);
-  border-radius: 50%;
-  animation: spin 0.8s linear infinite;
-  vertical-align: middle;
-  margin-right: 6px;
-}
-@keyframes spin { to { transform: rotate(360deg); } }
-.copy-btn {
-  background: rgba(201,168,76,0.1);
-  border: 1px solid rgba(201,168,76,0.3);
-  color: var(--gold);
-  padding: 6px 12px;
-  border-radius: 6px;
-  cursor: pointer;
-  font-size: 0.75rem;
-  transition: all 0.2s;
-}
-.copy-btn:hover { background: rgba(201,168,76,0.2); }
 
-/* TEMAS BIBLIOTECA */
-.temas-biblioteca {
-  margin-bottom: 16px;
-}
-.temas-categoria-title {
-  font-size: 0.68rem;
-  font-weight: 700;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  color: var(--gold);
-  margin: 12px 0 8px 0;
-  display: flex;
-  align-items: center;
-  gap: 6px;
-}
-.temas-grid {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-}
-.tema-pill {
-  background: rgba(201,168,76,0.08);
-  border: 1px solid rgba(201,168,76,0.2);
-  color: var(--text);
-  padding: 5px 12px;
-  border-radius: 20px;
-  font-size: 0.76rem;
-  cursor: pointer;
-  transition: all 0.2s;
-}
-.tema-pill:hover {
-  background: rgba(201,168,76,0.2);
-  border-color: var(--gold);
-  color: var(--gold2);
-  transform: translateY(-1px);
-}
-.tema-pill.ativo {
-  background: var(--gold);
-  color: #000;
-  font-weight: 700;
-  border-color: var(--gold);
-}
-.temas-search {
-  margin-bottom: 12px;
-}
-
-#customModel {
-  display: none;
-  margin-top: 8px;
-  width: 100%;
-}
-.toasts {
-  position: fixed;
-  bottom: 24px;
-  right: 24px;
-  z-index: 9999;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-.toast {
-  background: var(--card2);
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  padding: 12px 18px;
-  font-size: 0.82rem;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.4);
-  animation: slideIn 0.3s ease;
-  max-width: 320px;
-}
-.toast.success { border-color: var(--success); color: #5dba7e; }
-.toast.error { border-color: var(--red2); color: #e87070; }
-.toast.info { border-color: var(--info); color: #6ab0e0; }
-@keyframes slideIn { from { transform: translateX(100%); opacity:0; } to { transform: translateX(0); opacity:1; } }
-
-@media (max-width: 768px) {
-  .form-row, .grid-2 { grid-template-columns: 1fr; }
-  .main { padding: 16px; }
-}
-</style>
-</head>
-<body>
-
-<div class="header">
-  <div class="header-cross">✝</div>
-  <div>
-    <div class="header-title">Explicador Bíblico</div>
-    <div class="header-sub">Ferramenta Profissional de Conteúdo</div>
-  </div>
-  <div class="header-badge">PRO</div>
-</div>
-
-<div class="tabs-container">
-  <div class="tab active" onclick="switchTab('config',this)">⚙ Config</div>
-  <div class="tab" onclick="switchTab('narrativa',this)">📖 Narrativa</div>
-  <div class="tab" onclick="switchTab('ideias',this)">💡 Ideias</div>
-  <div class="tab" onclick="switchTab('keywords',this)">🔑 Keywords</div>
-  <div class="tab" onclick="switchTab('visual',this)">🎨 IA Visual</div>
-  <div class="tab" onclick="switchTab('thumbnails',this)">🖼 Thumbnails</div>
-  <div class="tab" onclick="switchTab('seo',this)">📊 SEO</div>
-  <div class="tab" onclick="switchTab('formula',this)">⚡ Fórmula</div>
-</div>
-
-<div class="main">
-
-<!-- CONFIG TAB -->
-<div id="tab-config" class="tab-content active">
-  <div class="card">
-    <div class="card-title">🔑 Configuração da API</div>
-    <div class="form-group">
-      <label>Provedor de IA</label>
-      <select id="apiProvider" onchange="updateProviderInfo()">
-        <option value="openrouter">OpenRouter (Recomendado)</option>
-        <option value="openai">OpenAI</option>
-        <option value="anthropic">Anthropic (Claude)</option>
-        <option value="gemini">Google Gemini</option>
-      </select>
-    </div>
-    <div class="form-group">
-      <label>Chave API</label>
-      <div class="api-input-wrap">
-        <input type="password" id="apiKey" placeholder="sk-or-v1-...">
-        <button class="api-eye" onclick="toggleKey()">👁</button>
-      </div>
-    </div>
-    <div class="form-group">
-      <label>Modelo de IA</label>
-      <select id="aiModel" onchange="handleModelChange()">
-        <optgroup label="— OpenRouter —">
-          <option value="google/gemini-2.5-flash">Gemini 2.5 Flash (Rápido)</option>
-          <option value="google/gemini-2.5-pro">Gemini 2.5 Pro (Avançado)</option>
-          <option value="anthropic/claude-sonnet-4-5">Claude Sonnet 4.5</option>
-          <option value="anthropic/claude-opus-4">Claude Opus 4</option>
-          <option value="openai/gpt-4o">GPT-4o</option>
-          <option value="openai/gpt-4o-mini">GPT-4o Mini (Econômico)</option>
-          <option value="meta-llama/llama-3.3-70b-instruct">Llama 3.3 70B</option>
-          <option value="deepseek/deepseek-r1">DeepSeek R1</option>
-        </optgroup>
-        <option value="custom">✏ Digitar manualmente...</option>
-      </select>
-      <input type="text" id="customModel" placeholder="Ex: openai/gpt-4-turbo">
-    </div>
-    <div style="display:flex;gap:10px;flex-wrap:wrap;">
-      <button class="btn btn-gold" onclick="saveAPI()">💾 Salvar API</button>
-      <button class="btn btn-outline" onclick="testAPI()">🧪 Testar Conexão</button>
-    </div>
-    <div id="apiStatus"></div>
-  </div>
-
-  <div class="card">
-    <div class="card-title">📺 Configuração da Narrativa</div>
-    <div class="form-row">
-      <div class="form-group">
-        <label>Duração do Vídeo</label>
-        <select id="videoDuration">
-          <option value="short">Curto (3-5 min)</option>
-          <option value="medium" selected>Médio (8-12 min)</option>
-          <option value="long">Longo (15-20 min)</option>
-          <option value="extended">Estendido (25-35 min)</option>
-        </select>
-      </div>
-      <div class="form-group">
-        <label>Tom da Narrativa</label>
-        <select id="narrativeTone">
-          <option value="cinematico">Cinematográfico</option>
-          <option value="didatico">Didático</option>
-          <option value="devocional">Devocional</option>
-          <option value="investigativo">Investigativo</option>
-          <option value="epico">Épico</option>
-        </select>
-      </div>
-    </div>
-    <div class="form-row">
-      <div class="form-group">
-        <label>Público-Alvo</label>
-        <select id="targetAudience">
-          <option value="geral">Geral</option>
-          <option value="iniciantes">Iniciantes na Bíblia</option>
-          <option value="estudantes">Estudantes Bíblicos</option>
-          <option value="pastores">Líderes/Pastores</option>
-          <option value="jovens">Jovens</option>
-        </select>
-      </div>
-      <div class="form-group">
-        <label>Estilo Visual</label>
-        <select id="visualStyle">
-          <option value="cinematico">Cinematográfico Épico</option>
-          <option value="moderno">Moderno Minimalista</option>
-          <option value="artistico">Artístico Bíblico</option>
-          <option value="documental">Documental</option>
-        </select>
-      </div>
-    </div>
-    <button class="btn btn-gold" onclick="saveConfig()">💾 Salvar Configurações</button>
-  </div>
-</div>
-
-<!-- NARRATIVA TAB -->
-<div id="tab-narrativa" class="tab-content">
-  <div class="card">
-    <div class="card-title">📚 Biblioteca de Temas Bíblicos</div>
-    <div class="temas-search">
-      <input type="text" id="temasSearch" placeholder="🔍 Buscar tema na biblioteca..." oninput="filtrarTemas()">
-    </div>
-    <div class="temas-biblioteca" id="temasContainer"></div>
-  </div>
-
-  <div class="card">
-    <div class="card-title">📖 Gerador de Narrativa Completa</div>
-    <div class="form-group">
-      <label>Tema / Passagem Bíblica Selecionado</label>
-      <input type="text" id="narrativaTema" placeholder="Selecione um tema acima ou digite aqui...">
-    </div>
-    <div class="form-row">
-      <div class="form-group">
-        <label>Ângulo da Narrativa</label>
-        <select id="narrativaAngulo">
-          <option value="historico">Histórico-Cultural</option>
-          <option value="teologico">Teológico</option>
-          <option value="aplicacao">Aplicação Prática</option>
-          <option value="profecia">Profético</option>
-          <option value="arqueologico">Arqueológico</option>
-        </select>
-      </div>
-      <div class="form-group">
-        <label>Extras</label>
-        <select id="narrativaExtras">
-          <option value="none">Nenhum</option>
-          <option value="curiosidades">+ Curiosidades Históricas</option>
-          <option value="arqueologia">+ Evidências Arqueológicas</option>
-          <option value="contexto">+ Contexto Cultural Profundo</option>
-        </select>
-      </div>
-    </div>
-    <button class="btn btn-gold" onclick="gerarNarrativa()" id="btnNarrativa">
-      ✨ Gerar Narrativa Completa
-    </button>
-  </div>
-
-  <div class="card">
-    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;">
-      <div class="card-title" style="margin:0">📄 Resultado</div>
-      <button class="copy-btn" onclick="copyOutput('narrativaOutput')">📋 Copiar</button>
-    </div>
-    <div class="output-box" id="narrativaOutput">
-      <div class="output-placeholder">A narrativa gerada aparecerá aqui...</div>
-    </div>
-  </div>
-</div>
-
-<!-- IDEIAS TAB -->
-<div id="tab-ideias" class="tab-content">
-  <div class="card">
-    <div class="card-title">📚 Biblioteca de Temas — Ideias</div>
-    <div class="temas-search">
-      <input type="text" id="temasSearchIdeias" placeholder="🔍 Buscar tema..." oninput="filtrarTemasIdeias()">
-    </div>
-    <div class="temas-biblioteca" id="temasContainerIdeias"></div>
-  </div>
-
-  <div class="card">
-    <div class="card-title">💡 Gerador de Ideias de Vídeos</div>
-    <div class="form-group">
-      <label>Nicho / Tema Selecionado</label>
-      <input type="text" id="ideiasTema" placeholder="Selecione um tema acima ou digite aqui...">
-    </div>
-    <div class="form-row">
-      <div class="form-group">
-        <label>Quantidade de Ideias</label>
-        <select id="ideiasQtd">
-          <option value="5">5 ideias</option>
-          <option value="10" selected>10 ideias</option>
-          <option value="20">20 ideias</option>
-          <option value="30">30 ideias</option>
-        </select>
-      </div>
-      <div class="form-group">
-        <label>Formato</label>
-        <select id="ideiasFormato">
-          <option value="viral">Potencial Viral</option>
-          <option value="serie">Série Temática</option>
-          <option value="perguntas">Perguntas Intrigantes</option>
-          <option value="misterios">Mistérios Bíblicos</option>
-        </select>
-      </div>
-    </div>
-    <button class="btn btn-gold" onclick="gerarIdeias()" id="btnIdeias">💡 Gerar Ideias</button>
-  </div>
-
-  <div class="card">
-    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;">
-      <div class="card-title" style="margin:0">📋 Ideias Geradas</div>
-      <button class="copy-btn" onclick="copyOutput('ideiasOutput')">📋 Copiar</button>
-    </div>
-    <div class="output-box" id="ideiasOutput">
-      <div class="output-placeholder">As ideias geradas aparecerão aqui...</div>
-    </div>
-  </div>
-</div>
-
-<!-- KEYWORDS TAB -->
-<div id="tab-keywords" class="tab-content">
-  <div class="card">
-    <div class="card-title">🔑 Pesquisa de Keywords</div>
-    <div class="form-group">
-      <label>Tema do Vídeo</label>
-      <input type="text" id="keywordsTema" placeholder="Ex: Arca de Noé, Apocalipse, Salmos...">
-    </div>
-    <div class="form-row">
-      <div class="form-group">
-        <label>Idioma</label>
-        <select id="keywordsIdioma">
-          <option value="pt">Português BR</option>
-          <option value="en">Inglês</option>
-          <option value="es">Espanhol</option>
-        </select>
-      </div>
-      <div class="form-group">
-        <label>Tipo</label>
-        <select id="keywordsTipo">
-          <option value="youtube">YouTube</option>
-          <option value="blog">Blog/SEO</option>
-          <option value="ambos">Ambos</option>
-        </select>
-      </div>
-    </div>
-    <button class="btn btn-gold" onclick="gerarKeywords()" id="btnKeywords">🔍 Pesquisar Keywords</button>
-  </div>
-  <div class="card">
-    <div class="card-title">🏷 Keywords Geradas</div>
-    <div id="keywordsOutput">
-      <div class="output-placeholder">As keywords aparecerão aqui como tags clicáveis...</div>
-    </div>
-    <div id="keywordsSelected" style="margin-top:16px;display:none;">
-      <label>Keywords Selecionadas:</label>
-      <div class="output-box" id="keywordsSelectedText" style="min-height:60px;"></div>
-      <button class="copy-btn" style="margin-top:8px;" onclick="copyOutput('keywordsSelectedText')">📋 Copiar Selecionadas</button>
-    </div>
-  </div>
-</div>
-
-<!-- VISUAL TAB -->
-<div id="tab-visual" class="tab-content">
-  <div class="card">
-    <div class="card-title">🎨 Gerador de Prompts Visuais</div>
-    <div class="form-group">
-      <label>Cena / Momento Bíblico</label>
-      <input type="text" id="visualTema" placeholder="Ex: Moisés abrindo o Mar Vermelho...">
-    </div>
-    <div class="form-row">
-      <div class="form-group">
-        <label>Estilo Artístico</label>
-        <select id="visualEstilo">
-          <option value="cinematico">Cinematográfico Real</option>
-          <option value="painting">Pintura Épica</option>
-          <option value="digital">Arte Digital</option>
-          <option value="ancient">Arte Antiga/Mosaico</option>
-          <option value="watercolor">Aquarela</option>
-        </select>
-      </div>
-      <div class="form-group">
-        <label>Ferramenta Alvo</label>
-        <select id="visualFerramenta">
-          <option value="midjourney">Midjourney</option>
-          <option value="dalle">DALL-E 3</option>
-          <option value="stable">Stable Diffusion</option>
-          <option value="firefly">Adobe Firefly</option>
-        </select>
-      </div>
-    </div>
-    <div class="form-group">
-      <label>Quantidade de Prompts</label>
-      <select id="visualQtd">
-        <option value="3">3 prompts</option>
-        <option value="5" selected>5 prompts</option>
-        <option value="10">10 prompts</option>
-      </select>
-    </div>
-    <button class="btn btn-gold" onclick="gerarVisual()" id="btnVisual">🎨 Gerar Prompts Visuais</button>
-  </div>
-  <div class="card">
-    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;">
-      <div class="card-title" style="margin:0">🖼 Prompts Gerados</div>
-      <button class="copy-btn" onclick="copyOutput('visualOutput')">📋 Copiar</button>
-    </div>
-    <div class="output-box" id="visualOutput">
-      <div class="output-placeholder">Os prompts visuais aparecerão aqui...</div>
-    </div>
-  </div>
-</div>
-
-<!-- THUMBNAILS TAB -->
-<div id="tab-thumbnails" class="tab-content">
-  <div class="card">
-    <div class="card-title">🖼 Gerador de Conceitos de Thumbnails</div>
-    <div class="form-group">
-      <label>Tema do Vídeo</label>
-      <input type="text" id="thumbTema" placeholder="Ex: O Dilúvio de Noé, A Torre de Babel...">
-    </div>
-    <div class="form-row">
-      <div class="form-group">
-        <label>Estilo Visual</label>
-        <select id="thumbEstilo">
-          <option value="choque">Choque e Impacto</option>
-          <option value="misterio">Mistério e Curiosidade</option>
-          <option value="epico">Épico Cinematográfico</option>
-          <option value="moderno">Moderno e Clean</option>
-        </select>
-      </div>
-      <div class="form-group">
-        <label>Paleta de Cores</label>
-        <select id="thumbCores">
-          <option value="gold">Dourado/Preto</option>
-          <option value="fire">Vermelho/Laranja</option>
-          <option value="divine">Azul/Dourado</option>
-          <option value="dark">Escuro/Dramático</option>
-        </select>
-      </div>
-    </div>
-    <button class="btn btn-gold" onclick="gerarThumbnails()" id="btnThumbnails">🖼 Gerar Conceitos</button>
-  </div>
-  <div class="card">
-    <div class="card-title">🎯 Conceitos de Thumbnails</div>
-    <div id="thumbOutput">
-      <div class="output-placeholder">Os conceitos de thumbnails aparecerão aqui...</div>
-    </div>
-  </div>
-</div>
-
-<!-- SEO TAB -->
-<div id="tab-seo" class="tab-content">
-  <div class="card">
-    <div class="card-title">📊 Otimizador SEO Completo</div>
-    <div class="form-group">
-      <label>Tema / Título Provisório</label>
-      <input type="text" id="seoTema" placeholder="Ex: Por que Deus permitiu o sofrimento de Jó?">
-    </div>
-    <div class="form-row">
-      <div class="form-group">
-        <label>Plataforma</label>
-        <select id="seoPlataforma">
-          <option value="youtube">YouTube</option>
-          <option value="blog">Blog WordPress</option>
-          <option value="ambos">YouTube + Blog</option>
-        </select>
-      </div>
-      <div class="form-group">
-        <label>Objetivo</label>
-        <select id="seoObjetivo">
-          <option value="views">Maximizar Views</option>
-          <option value="subs">Ganhar Inscritos</option>
-          <option value="search">Ranquear no Search</option>
-        </select>
-      </div>
-    </div>
-    <button class="btn btn-gold" onclick="gerarSEO()" id="btnSEO">📊 Gerar SEO Completo</button>
-  </div>
-  <div class="card">
-    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;">
-      <div class="card-title" style="margin:0">📈 Resultado SEO</div>
-      <button class="copy-btn" onclick="copyOutput('seoOutput')">📋 Copiar</button>
-    </div>
-    <div class="output-box" id="seoOutput">
-      <div class="output-placeholder">O SEO completo aparecerá aqui...</div>
-    </div>
-  </div>
-</div>
-
-<!-- FORMULA TAB -->
-<div id="tab-formula" class="tab-content">
-  <div class="card">
-    <div class="card-title">⚡ Fórmula de Vídeo Viral</div>
-    <div class="form-group">
-      <label>Tema do Vídeo</label>
-      <input type="text" id="formulaTema" placeholder="Ex: Os Gigantes da Bíblia - Quem eram os Nefilins?">
-    </div>
-    <button class="btn btn-gold" onclick="gerarFormula()" id="btnFormula">⚡ Gerar Fórmula Viral</button>
-  </div>
-  <div class="card" id="formulaOutput" style="display:none;">
-    <div class="card-title">📐 Sua Fórmula de Vídeo</div>
-    <div id="formulaContent"></div>
-  </div>
-</div>
-
-</div>
-<div class="toasts" id="toasts"></div>
 <script>
 const $ = id => document.getElementById(id);
 
@@ -1527,13 +613,8 @@ function renderTemas(containerId, inputId, searchVal='') {
   });
 }
 
-function filtrarTemas() {
-  renderTemas('temasContainer', 'narrativaTema', $('temasSearch').value);
-}
-
-function filtrarTemasIdeias() {
-  renderTemas('temasContainerIdeias', 'ideiasTema', $('temasSearchIdeias').value);
-}
+function filtrarTemas() { renderTemas('temasContainer', 'narrativaTema', $('temasSearch').value); }
+function filtrarTemasIdeias() { renderTemas('temasContainerIdeias', 'ideiasTema', $('temasSearchIdeias').value); }
 
 function showToast(msg, type='info') {
   const t = document.createElement('div');
@@ -1545,8 +626,7 @@ function showToast(msg, type='info') {
 
 function copyOutput(id) {
   const el = $(id);
-  const text = el.innerText || el.textContent;
-  navigator.clipboard.writeText(text).then(() => showToast('Copiado!', 'success'));
+  navigator.clipboard.writeText(el.innerText || el.textContent).then(() => showToast('Copiado!', 'success'));
 }
 
 function toggleKey() {
@@ -1566,8 +646,6 @@ function handleModelChange() {
   const custom = $('customModel');
   if (sel.value === 'custom') {
     custom.style.display = 'block';
-    custom.style.marginTop = '8px';
-    custom.style.width = '100%';
     setTimeout(() => custom.focus(), 100);
   } else {
     custom.style.display = 'none';
@@ -1575,9 +653,8 @@ function handleModelChange() {
 }
 
 function updateProviderInfo() {
-  const prov = $('apiProvider').value;
   const placeholders = { openrouter:'sk-or-v1-...', openai:'sk-...', anthropic:'sk-ant-...', gemini:'AIza...' };
-  $('apiKey').placeholder = placeholders[prov] || 'Sua chave API...';
+  $('apiKey').placeholder = placeholders[$('apiProvider').value] || 'Sua chave API...';
 }
 
 function saveAPI() {
@@ -1619,15 +696,8 @@ async function callAI(prompt, maxTokens=2000) {
   const model = localStorage.getItem('ebp_model') || 'google/gemini-2.5-flash';
   if (!key) throw new Error('Configure sua chave API na aba Config!');
 
-  const endpoints = {
-    openrouter: 'https://openrouter.ai/api/v1/chat/completions',
-    openai: 'https://api.openai.com/v1/chat/completions',
-    anthropic: 'https://api.anthropic.com/v1/messages',
-    gemini: `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${key}`
-  };
-
   if (provider === 'anthropic') {
-    const r = await fetch(endpoints.anthropic, {
+    const r = await fetch('https://api.anthropic.com/v1/messages', {
       method: 'POST',
       headers: { 'x-api-key': key, 'anthropic-version': '2023-06-01', 'content-type': 'application/json' },
       body: JSON.stringify({ model, max_tokens: maxTokens, messages: [{ role: 'user', content: prompt }] })
@@ -1638,7 +708,7 @@ async function callAI(prompt, maxTokens=2000) {
   }
 
   if (provider === 'gemini') {
-    const r = await fetch(endpoints.gemini, {
+    const r = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${key}`, {
       method: 'POST',
       headers: { 'content-type': 'application/json' },
       body: JSON.stringify({ contents: [{ parts: [{ text: prompt }] }], generationConfig: { maxOutputTokens: maxTokens } })
@@ -1653,7 +723,8 @@ async function callAI(prompt, maxTokens=2000) {
     headers['HTTP-Referer'] = 'https://leotrajano41.github.io/-explicador-biblico-v3/';
     headers['X-Title'] = 'Explicador Bíblico Pro';
   }
-  const r = await fetch(endpoints[provider], {
+  const url = provider === 'openai' ? 'https://api.openai.com/v1/chat/completions' : 'https://openrouter.ai/api/v1/chat/completions';
+  const r = await fetch(url, {
     method: 'POST',
     headers,
     body: JSON.stringify({ model, max_tokens: maxTokens, messages: [{ role: 'user', content: prompt }] })
@@ -1695,13 +766,12 @@ ESTRUTURA OBRIGATÓRIA:
 6. 🎯 CONCLUSÃO IMPACTANTE
 7. 📣 CALL TO ACTION (inscrição, like, comentário)
 
-Escreva em português BR. Use linguagem envolvente, épica e cinematográfica. Seja detalhado e completo.`;
+Escreva em português BR. Use linguagem envolvente, épica e cinematográfica.`;
 
   const btn = $('btnNarrativa');
   btn.innerHTML = '<span class="loading"></span> Gerando...';
   btn.disabled = true;
   $('narrativaOutput').innerHTML = '<div class="output-placeholder"><span class="loading"></span> A IA está criando sua narrativa...</div>';
-
   try {
     const result = await callAI(prompt, 3000);
     $('narrativaOutput').textContent = result;
@@ -1722,7 +792,7 @@ async function gerarIdeias() {
   const formato = $('ideiasFormato').value;
   const formatos = { viral:'com alto potencial viral', serie:'organizadas como série temática', perguntas:'baseadas em perguntas intrigantes', misterios:'focadas em mistérios bíblicos' };
 
-  const prompt = `Você é um estrategista de conteúdo do canal Explicador Bíblico no YouTube, especializado em vídeos épicos e investigativos sobre a Bíblia.
+  const prompt = `Você é estrategista de conteúdo do canal Explicador Bíblico no YouTube.
 
 Gere ${qtd} ideias de vídeos sobre: "${tema}"
 Formato: ${formatos[formato]}
@@ -1730,17 +800,16 @@ Formato: ${formatos[formato]}
 Para cada ideia:
 1. 🎬 TÍTULO PRINCIPAL (otimizado para CTR alto)
 2. 🔄 TÍTULO ALTERNATIVO
-3. 📝 DESCRIÇÃO (2-3 linhas do que o vídeo abordará)
+3. 📝 DESCRIÇÃO (2-3 linhas)
 4. 🎯 GANCHO (primeira frase irresistível)
-5. 📊 POTENCIAL (por que esse vídeo vai performar bem)
+5. 📊 POTENCIAL (por que vai performar bem)
 
-Escreva em português BR. Seja criativo, épico e estratégico.`;
+Escreva em português BR. Seja épico e estratégico.`;
 
   const btn = $('btnIdeias');
   btn.innerHTML = '<span class="loading"></span> Gerando...';
   btn.disabled = true;
   $('ideiasOutput').innerHTML = '<div class="output-placeholder"><span class="loading"></span> Gerando ideias...</div>';
-
   try {
     const result = await callAI(prompt, 2500);
     $('ideiasOutput').textContent = result;
@@ -1761,23 +830,21 @@ async function gerarKeywords() {
   const tipo = $('keywordsTipo').value;
   const idiomas = { pt:'português brasileiro', en:'inglês', es:'espanhol' };
 
-  const prompt = `Você é um especialista em SEO para canais bíblicos no YouTube como o Explicador Bíblico.
+  const prompt = `Especialista em SEO para canais bíblicos no YouTube.
 
-Gere keywords completas para: "${tema}"
-Idioma: ${idiomas[idioma]} | Tipo: ${tipo}
+Keywords para: "${tema}" | Idioma: ${idiomas[idioma]} | Tipo: ${tipo}
 
 🔥 KEYWORDS PRINCIPAIS (alta busca) — 10 keywords
 📈 KEYWORDS SECUNDÁRIAS (média busca) — 15 keywords
 🎯 KEYWORDS LONG TAIL (específicas) — 15 keywords
-#️⃣ HASHTAGS RECOMENDADAS — 10 hashtags
+#️⃣ HASHTAGS — 10 hashtags
 
-Separe cada keyword por vírgula dentro de cada grupo.`;
+Separe por vírgula dentro de cada grupo.`;
 
   const btn = $('btnKeywords');
   btn.innerHTML = '<span class="loading"></span> Pesquisando...';
   btn.disabled = true;
   $('keywordsOutput').innerHTML = '<div class="output-placeholder"><span class="loading"></span> Pesquisando keywords...</div>';
-
   try {
     const result = await callAI(prompt, 1500);
     renderKeywords(result);
@@ -1829,28 +896,22 @@ async function gerarVisual() {
   const estilo = $('visualEstilo').value;
   const ferramenta = $('visualFerramenta').value;
   const qtd = $('visualQtd').value;
-  const estilos = { cinematico:'photorealistic cinematic, 8K, dramatic lighting, epic scale', painting:'epic oil painting, renaissance style, dramatic chiaroscuro', digital:'digital art, concept art, highly detailed, vibrant colors', ancient:'ancient mosaic art, byzantine style, golden details', watercolor:'detailed watercolor illustration, soft colors, artistic' };
+  const estilos = { cinematico:'photorealistic cinematic 8K dramatic lighting epic scale', painting:'epic oil painting renaissance style dramatic chiaroscuro', digital:'digital art concept art highly detailed vibrant colors', ancient:'ancient mosaic art byzantine style golden details', watercolor:'detailed watercolor illustration soft colors artistic' };
 
-  const prompt = `Você é especialista em prompts de imagem IA para o canal Explicador Bíblico.
+  const prompt = `Especialista em prompts de imagem IA para o canal Explicador Bíblico.
 
 Crie ${qtd} prompts visuais épicos para: "${tema}"
 Estilo: ${estilos[estilo]} | Ferramenta: ${ferramenta}
 
 Para cada prompt:
-🎨 PROMPT [número]:
-[Prompt completo em inglês, detalhado e cinematográfico]
-
-📝 TRADUÇÃO:
-[O que será gerado em português]
-
-💡 DICA:
-[Configuração recomendada para ${ferramenta}]`;
+🎨 PROMPT [número]: [Prompt completo em inglês]
+📝 TRADUÇÃO: [O que será gerado em português]
+💡 DICA: [Configuração recomendada para ${ferramenta}]`;
 
   const btn = $('btnVisual');
   btn.innerHTML = '<span class="loading"></span> Gerando...';
   btn.disabled = true;
   $('visualOutput').innerHTML = '<div class="output-placeholder"><span class="loading"></span> Criando prompts visuais...</div>';
-
   try {
     const result = await callAI(prompt, 2000);
     $('visualOutput').textContent = result;
@@ -1872,26 +933,25 @@ async function gerarThumbnails() {
   const estilos = { choque:'choque e impacto visual', misterio:'mistério e curiosidade', epico:'épico cinematográfico', moderno:'moderno e clean' };
   const paletas = { gold:'dourado e preto', fire:'vermelho e laranja', divine:'azul e dourado', dark:'escuro e dramático' };
 
-  const prompt = `Você é designer especialista em thumbnails para o canal Explicador Bíblico no YouTube.
+  const prompt = `Designer especialista em thumbnails para o canal Explicador Bíblico no YouTube.
 
-Crie 3 conceitos de thumbnail para: "${tema}"
+3 conceitos de thumbnail para: "${tema}"
 Estilo: ${estilos[estilo]} | Paleta: ${paletas[cores]}
 
 Para cada conceito:
 🖼️ CONCEITO [número]: [Nome]
-ELEMENTO CENTRAL: [O que está no centro]
+ELEMENTO CENTRAL: [Centro da imagem]
 FUNDO: [Descrição do fundo]
-TEXTO PRINCIPAL: [Máx 4 palavras em destaque]
-TEXTO SECUNDÁRIO: [Texto de apoio]
+TEXTO PRINCIPAL: [Máx 4 palavras]
+TEXTO SECUNDÁRIO: [Apoio]
 EFEITOS: [Luz, sombra, partículas]
-COMPOSIÇÃO: [Como os elementos se organizam]
+COMPOSIÇÃO: [Organização dos elementos]
 PROMPT IA: [Prompt em inglês para gerar a imagem]`;
 
   const btn = $('btnThumbnails');
   btn.innerHTML = '<span class="loading"></span> Gerando...';
   btn.disabled = true;
   $('thumbOutput').innerHTML = '<div class="output-placeholder"><span class="loading"></span> Criando conceitos...</div>';
-
   try {
     const result = await callAI(prompt, 2000);
     $('thumbOutput').innerHTML = '<div class="output-box">' + result.replace(/\n/g, '<br>') + '</div>';
@@ -1912,22 +972,19 @@ async function gerarSEO() {
   const objetivo = $('seoObjetivo').value;
   const objetivos = { views:'maximizar visualizações', subs:'ganhar inscritos', search:'ranquear na busca' };
 
-  const prompt = `Você é especialista em SEO para o canal Explicador Bíblico no YouTube.
+  const prompt = `Especialista em SEO para o canal Explicador Bíblico no YouTube.
 
-Crie o SEO completo para: "${tema}"
+SEO completo para: "${tema}"
 Plataforma: ${plataforma} | Objetivo: ${objetivos[objetivo]}
 
-📌 TÍTULOS (3 opções por potencial de CTR):
-1. [Título A]
-2. [Título B]
-3. [Título C]
+📌 TÍTULOS (3 opções por CTR):
+1. [Título A] 2. [Título B] 3. [Título C]
 
-📝 DESCRIÇÃO COMPLETA:
-[200-300 palavras otimizadas com keywords naturais]
+📝 DESCRIÇÃO COMPLETA: [200-300 palavras com keywords naturais]
 
-🏷️ TAGS (30 tags separadas por vírgula)
+🏷️ TAGS: [30 tags separadas por vírgula]
 
-#️⃣ HASHTAGS (10 hashtags)
+#️⃣ HASHTAGS: [10 hashtags]
 
 🗂️ CATEGORIA RECOMENDADA
 
@@ -1938,8 +995,7 @@ Escreva em português BR.`;
   const btn = $('btnSEO');
   btn.innerHTML = '<span class="loading"></span> Gerando...';
   btn.disabled = true;
-  $('seoOutput').innerHTML = '<div class="output-placeholder"><span class="loading"></span> Analisando e gerando SEO...</div>';
-
+  $('seoOutput').innerHTML = '<div class="output-placeholder"><span class="loading"></span> Gerando SEO...</div>';
   try {
     const result = await callAI(prompt, 2500);
     $('seoOutput').textContent = result;
@@ -1948,7 +1004,8 @@ Escreva em português BR.`;
     $('seoOutput').innerHTML = '<div class="output-placeholder" style="color:#e87070">❌ ' + e.message + '</div>';
     showToast(e.message, 'error');
   } finally {
-    btn.innerHTML = '📊 Gerar SEO Completo';
+    btn.innerHTML = '
+'📊 Gerar SEO Completo';
     btn.disabled = false;
   }
 }
@@ -1957,9 +1014,9 @@ async function gerarFormula() {
   const tema = $('formulaTema').value.trim();
   if (!tema) { showToast('Digite um tema!', 'error'); return; }
 
-  const prompt = `Você é estrategista de vídeos virais do canal Explicador Bíblico no YouTube.
+  const prompt = `Estrategista de vídeos virais do canal Explicador Bíblico no YouTube.
 
-Crie a fórmula completa de vídeo viral para: "${tema}"
+Fórmula completa de vídeo viral para: "${tema}"
 
 ⚡ GANCHO (0-30s): [Script exato de abertura cinematográfica]
 ❓ PROBLEMA/TENSÃO (30s-2min): [Como criar curiosidade irresistível]
@@ -1968,14 +1025,11 @@ Crie a fórmula completa de vídeo viral para: "${tema}"
 💡 REVELAÇÃO PRINCIPAL: [O momento Uau do vídeo]
 🎯 CTA ESTRATÉGICO: [Call to action que converte]
 📊 MÉTRICAS ALVO: [CTR, retenção e performance esperados]
-🔑 PALAVRAS-CHAVE DO ROTEIRO: [Palavras que aumentam SEO falado]
-
-Seja épico, cinematográfico e focado em máximo engajamento.`;
+🔑 PALAVRAS-CHAVE DO ROTEIRO: [Palavras que aumentam SEO falado]`;
 
   const btn = $('btnFormula');
   btn.innerHTML = '<span class="loading"></span> Gerando...';
   btn.disabled = true;
-
   try {
     const result = await callAI(prompt, 2000);
     $('formulaOutput').style.display = 'block';
@@ -1995,7 +1049,7 @@ function loadAPI() {
   const model = localStorage.getItem('ebp_model');
   if (key) {
     $('apiKey').value = key;
-    $('apiStatus').innerHTML = '<div class="status-bar status-ok">✅ API carregada do armazenamento local.</div>';
+    $('apiStatus').innerHTML = '<div class="status-bar status-ok">✅ API carregada.</div>';
   }
   if (provider) $('apiProvider').value = provider;
   if (model) {
@@ -2003,12 +1057,7 @@ function loadAPI() {
     let found = false;
     for (let o of opt.options) { if (o.value === model) { found = true; break; } }
     if (found) { opt.value = model; }
-    else {
-      opt.value = 'custom';
-      $('customModel').value = model;
-      $('customModel').style.display = 'block';
-      $('customModel').style.marginTop = '8px';
-    }
+    else { opt.value = 'custom'; $('customModel').value = model; $('customModel').style.display = 'block'; }
   }
 }
 
@@ -2023,7 +1072,6 @@ function loadCfg() {
   if (v) $('visualStyle').value = v;
 }
 
-// INICIALIZAÇÃO
 loadAPI();
 loadCfg();
 renderTemas('temasContainer', 'narrativaTema');
