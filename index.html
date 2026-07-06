@@ -198,7 +198,7 @@ select option { background: var(--darker); }
         <option value="pt">Português BR</option>
         <option value="en">Inglês</option>
         <option value="es">Espanhol</option>
-        <option value="la">Latim</option>
+        <option value="es-LA">Espanhol LatAm</option>
         <option value="fr">Francês</option>
         <option value="de">Alemão</option>
         <option value="it">Italiano</option>
@@ -643,7 +643,7 @@ async function callAI(prompt, maxTokens) {
     pt: 'portugues BR',
     en: 'ingles',
     es: 'espanhol',
-    la: 'latim',
+    'es-LA': 'espanhol latino-americano', // Novo: Espanhol LatAm
     fr: 'frances',
     de: 'alemao',
     it: 'italiano',
@@ -693,7 +693,7 @@ async function callAI(prompt, maxTokens) {
   var publicos = { geral: 'publico geral', iniciantes: 'iniciantes na Biblia', estudantes: 'estudantes biblicos', pastores: 'lideres e pastores', jovens: 'jovens' };
 
   var langMap = {
-    pt: 'portugues BR', en: 'ingles', es: 'espanhol', la: 'latim', fr: 'frances', de: 'alemao', it: 'italiano', ru: 'russo', zh: 'mandarim (chines simplificado)', ja: 'japones', ar: 'arabe'
+    pt: 'portugues BR', en: 'ingles', es: 'espanhol', 'es-LA': 'espanhol latino-americano', fr: 'frances', de: 'alemao', it: 'italiano', ru: 'russo', zh: 'mandarim (chines simplificado)', ja: 'japones', ar: 'arabe'
   };
   var langName = langMap[language] || 'portugues BR';
 
@@ -725,7 +725,7 @@ async function gerarIdeias() {
   var formatos = { viral: 'com alto potencial viral', serie: 'como serie tematica', perguntas: 'com perguntas intrigantes', misterios: 'focadas em misterios biblicos' };
 
   var langMap = {
-    pt: 'portugues BR', en: 'ingles', es: 'espanhol', la: 'latim', fr: 'frances', de: 'alemao', it: 'italiano', ru: 'russo', zh: 'mandarim (chines simplificado)', ja: 'japones', ar: 'arabe'
+    pt: 'portugues BR', en: 'ingles', es: 'espanhol', 'es-LA': 'espanhol latino-americano', fr: 'frances', de: 'alemao', it: 'italiano', ru: 'russo', zh: 'mandarim (chines simplificado)', ja: 'japones', ar: 'arabe'
   };
   var langName = langMap[language] || 'portugues BR';
 
@@ -757,7 +757,7 @@ async function gerarKeywords() {
   var idiomas = { pt: 'portugues brasileiro', en: 'ingles', es: 'espanhol' }; // Mapeamento para o campo de seleção de idioma da keyword
 
   var langMap = {
-    pt: 'portugues BR', en: 'ingles', es: 'espanhol', la: 'latim', fr: 'frances', de: 'alemao', it: 'italiano', ru: 'russo', zh: 'mandarim (chines simplificado)', ja: 'japones', ar: 'arabe'
+    pt: 'portugues BR', en: 'ingles', es: 'espanhol', 'es-LA': 'espanhol latino-americano', fr: 'frances', de: 'alemao', it: 'italiano', ru: 'russo', zh: 'mandarim (chines simplificado)', ja: 'japones', ar: 'arabe'
   };
   var langName = langMap[language] || 'portugues BR';
 
@@ -815,7 +815,7 @@ async function gerarVisual() {
   var estilos = { cinematico: 'photorealistic cinematic 8K dramatic lighting', painting: 'epic oil painting renaissance style', digital: 'digital art concept art highly detailed', ancient: 'ancient mosaic art byzantine style', watercolor: 'watercolor illustration soft colors' };
 
   var langMap = {
-    pt: 'portugues BR', en: 'ingles', es: 'espanhol', la: 'latim', fr: 'frances', de: 'alemao', it: 'italiano', ru: 'russo', zh: 'mandarim (chines simplificado)', ja: 'japones', ar: 'arabe'
+    pt: 'portugues BR', en: 'ingles', es: 'espanhol', 'es-LA': 'espanhol latino-americano', fr: 'frances', de: 'alemao', it: 'italiano', ru: 'russo', zh: 'mandarim (chines simplificado)', ja: 'japones', ar: 'arabe'
   };
   var langName = langMap[language] || 'portugues BR';
 
@@ -848,7 +848,7 @@ async function gerarThumbnails() {
   var paletas = { gold: 'dourado e preto', fire: 'vermelho e laranja', divine: 'azul e dourado', dark: 'escuro e dramatico' };
 
   var langMap = {
-    pt: 'portugues BR', en: 'ingles', es: 'espanhol', la: 'latim', fr: 'frances', de: 'alemao', it: 'italiano', ru: 'russo', zh: 'mandarim (chines simplificado)', ja: 'japones', ar: 'arabe'
+    pt: 'portugues BR', en: 'ingles', es: 'espanhol', 'es-LA': 'espanhol latino-americano', fr: 'frances', de: 'alemao', it: 'italiano', ru: 'russo', zh: 'mandarim (chines simplificado)', ja: 'japones', ar: 'arabe'
   };
   var langName = langMap[language] || 'portugues BR';
 
@@ -880,7 +880,7 @@ async function gerarSEO() {
   var objetivos = { views: 'maximizar visualizacoes', subs: 'ganhar inscritos', search: 'ranquear na busca' };
 
   var langMap = {
-    pt: 'portugues BR', en: 'ingles', es: 'espanhol', la: 'latim', fr: 'frances', de: 'alemao', it: 'italiano', ru: 'russo', zh: 'mandarim (chines simplificado)', ja: 'japones', ar: 'arabe'
+    pt: 'portugues BR', en: 'ingles', es: 'espanhol', 'es-LA': 'espanhol latino-americano', fr: 'frances', de: 'alemao', it: 'italiano', ru: 'russo', zh: 'mandarim (chines simplificado)', ja: 'japones', ar: 'arabe'
   };
   var langName = langMap[language] || 'portugues BR';
 
@@ -908,7 +908,7 @@ async function gerarFormula() {
   var language = localStorage.getItem('ebp_language') || 'pt'; // Pega o idioma salvo
 
   var langMap = {
-    pt: 'portugues BR', en: 'ingles', es: 'espanhol', la: 'latim', fr: 'frances', de: 'alemao', it: 'italiano', ru: 'russo', zh: 'mandarim (chines simplificado)', ja: 'japones', ar: 'arabe'
+    pt: 'portugues BR', en: 'ingles', es: 'espanhol', 'es-LA': 'espanhol latino-americano', fr: 'frances', de: 'alemao', it: 'italiano', ru: 'russo', zh: 'mandarim (chines simplificado)', ja: 'japones', ar: 'arabe'
   };
   var langName = langMap[language] || 'portugues BR';
 
